@@ -1,6 +1,13 @@
 import { flow } from "lodash";
 import * as sassGraph from "sass-graph";
 import * as path from "path";
+import * as express from "express";
+// @ts-ignore
+import * as opn from "opn";
+// @ts-ignore
+import * as Viz from "viz.js";
+// @ts-ignore
+import { Module, render } from "viz.js/full.render";
 
 type Path = string;
 
@@ -27,10 +34,10 @@ export class Graph {
     this.vertices.add(vertice);
   }
 
-  toString(): string {
-    let result = "";
-    this.vertices.forEach((vertice) => (result += `${vertice.toString()}\n`));
-    return result;
+  toDigraphString(): string {
+    return Array.from(this.vertices)
+      .map((vertice) => vertice.toDigraphString())
+      .join("\n");
   }
 }
 
@@ -41,9 +48,9 @@ export class Vertice {
     this.nodes = [parent, child];
   }
 
-  toString(): string {
-    const [parent, child] = this.nodes;
-    return `${parent} => ${child}`;
+  toDigraphString(): string {
+    const [parent, child] = this.nodes.map((node) => node.replace(/-/g, "_"));
+    return `${parent} -> ${child}`;
   }
 }
 
@@ -68,5 +75,18 @@ function nodeInFolder(rootFolder: Path, node: Node): Node {
 }
 
 function renderGraph(graph: Graph): void {
-  console.log(graph.toString());
+  const app = express();
+
+  new Viz({ Module, render })
+    .renderString(`digraph { ${graph.toDigraphString()} }`)
+    .then((graphHtml: any) => {
+      console.log("Rendering graph in the browser. Press Ctrl+C to exit.");
+      app.get("/", (req, res) => res.send(graphHtml));
+      app.listen("3000");
+      opn("http://localhost:3000");
+    })
+    .catch((error: any) => {
+      console.error(error);
+      console.log(graph.toDigraphString());
+    });
 }

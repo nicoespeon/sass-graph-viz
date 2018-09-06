@@ -17,6 +17,7 @@
     "examples:basic-tree": "ts-node examples/basic-tree"
   },
   "devDependencies": {
+    "@types/express": "4.16.0",
     "@types/jest": "23.3.1",
     "@types/lodash": "4.14.116",
     "@types/node": "10.9.4",
@@ -31,7 +32,10 @@
     "typescript": "3.0.3"
   },
   "dependencies": {
+    "express": "4.16.3",
     "lodash": "4.17.10",
-    "sass-graph": "3.0.0"
+    "opn": "5.3.0",
+    "sass-graph": "3.0.0",
+    "viz.js": "2.0.0"
   }
 }
