@@ -1,0 +1,26 @@
+{
+  "name": "sass-deps-graph",
+  "version": "1.0.0",
+  "description": "Draw graph of SASS dependencies",
+  "keywords": [
+    "sass",
+    "dependencies",
+    "graph"
+  ],
+  "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "23.3.1",
+    "jest": "23.5.0",
+    "prettier": "1.14.2",
+    "pretty-quick": "1.6.0",
+    "rimraf": "2.6.2",
+    "ts-jest": "23.1.4",
+    "typescript": "3.0.3"
+  }
+}
