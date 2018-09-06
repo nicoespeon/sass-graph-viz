@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "dist",
-    "target": "es5",
-    "module": "es2015",
+    "target": "es2015",
+    "module": "commonjs",
     "sourceMap": true,
     "declaration": true,
     "removeComments": true,
@@ -13,5 +12,6 @@
     "noImplicitThis": true,
     "noUnusedLocals": true
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
+  "includes": ["examples/**/*.ts"]
 }
