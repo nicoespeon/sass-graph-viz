@@ -1,5 +1,7 @@
 import * as sassGraph from "sass-graph";
-import { sassGraphGraphToGraph, Graph, Vertice } from "./index";
+
+import { Graph, Vertice } from "../graph";
+import { sassGraphGraphToGraph } from "./sass-graph";
 
 it("return empty graph if sass graph has empty index", () => {
   const dir = "path/to/dir";
