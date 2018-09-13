@@ -12,6 +12,6 @@
     "noImplicitThis": true,
     "noUnusedLocals": true
   },
-  "files": ["src/index.ts"],
+  "files": ["src/index.ts", "src/cli.ts"],
   "includes": ["examples/**/*.ts"]
 }
