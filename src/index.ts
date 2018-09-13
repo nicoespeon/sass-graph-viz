@@ -80,11 +80,14 @@ function renderGraph(graph: Graph): void {
   new Viz({ Module, render })
     .renderString(`digraph { ${graph.toDigraphString()} }`)
     .then((graphHtml: any) => {
-      console.log("Rendering graph in the browser. Press Ctrl+C to exit.");
       app.get("/", (req, res) => res.send(graphHtml));
       app.listen("3000");
-      opn("http://localhost:3000");
+      // If `wait: true`, opn won't resolve until we quit the browser.
+      // => don't wait and exit the process after page is open.
+      return opn("http://localhost:3000", { wait: false });
     })
+    // Wait a bit for the page to be open before we exit.
+    .then(() => setTimeout(() => process.exit(0), 300))
     .catch((error: any) => {
       console.error(error);
       console.log(graph.toDigraphString());
