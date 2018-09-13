@@ -1,7 +1,7 @@
 import * as sassGraph from "sass-graph";
 import * as path from "path";
 
-import { Graph, Vertice, Node } from "../graph";
+import { Graph, Node } from "../graph";
 
 export type Path = string;
 
@@ -17,7 +17,7 @@ export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   Object.keys(index).forEach((child) => {
     const parents = index[child].importedBy;
     parents.forEach((parent) => {
-      graph.addVertice(new Vertice(nodeInDir(parent), nodeInDir(child)));
+      graph.addVertice(nodeInDir(parent), nodeInDir(child));
     });
   });
 

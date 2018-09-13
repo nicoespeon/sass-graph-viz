@@ -1,6 +1,6 @@
 import * as sassGraph from "sass-graph";
 
-import { Graph, Vertice } from "../graph";
+import { Graph } from "../graph";
 import { sassGraphGraphToGraph } from "./sass-graph";
 
 it("return empty graph if sass graph has empty index", () => {
@@ -45,7 +45,7 @@ describe("sass graph with index", () => {
     const graph = sassGraphGraphToGraph(sassGraphWithIndex);
 
     const expectedGraph = new Graph();
-    expectedGraph.addVertice(new Vertice("parent", "_child"));
+    expectedGraph.addVertice("parent", "_child");
     expect(graph).toEqual(expectedGraph);
   });
 
@@ -95,11 +95,11 @@ describe("sass graph with index", () => {
     const graph = sassGraphGraphToGraph(sassGraphWithIndex);
 
     const expectedGraph = new Graph();
-    expectedGraph.addVertice(new Vertice("main", "_base"));
-    expectedGraph.addVertice(new Vertice("_footer", "_colors"));
-    expectedGraph.addVertice(new Vertice("_header", "_colors"));
-    expectedGraph.addVertice(new Vertice("main", "_footer"));
-    expectedGraph.addVertice(new Vertice("main", "_header"));
+    expectedGraph.addVertice("main", "_base");
+    expectedGraph.addVertice("_footer", "_colors");
+    expectedGraph.addVertice("_header", "_colors");
+    expectedGraph.addVertice("main", "_footer");
+    expectedGraph.addVertice("main", "_header");
     expect(graph).toEqual(expectedGraph);
   });
 });

@@ -5,12 +5,12 @@ export class Graph {
     this.vertices = new Set();
   }
 
-  addVertice(vertice: Vertice) {
-    this.vertices.add(vertice);
+  addVertice(parent: Node, child: Node) {
+    this.vertices.add(new Vertice(parent, child));
   }
 }
 
-export class Vertice {
+class Vertice {
   nodes: Node[];
 
   constructor(parent: Node, child: Node) {
