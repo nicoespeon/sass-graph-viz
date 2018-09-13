@@ -1,14 +1,16 @@
 {
-  "name": "sass-deps-graph",
+  "name": "sass-graph-viz",
   "version": "1.0.0",
-  "description": "Draw graph of SASS dependencies",
+  "description": "Draw a visual graph of SASS dependencies",
   "keywords": [
     "sass",
     "dependencies",
-    "graph"
+    "graph",
+    "visual"
   ],
   "bin": {
-    "sassdeps": "./dist/cli.js"
+    "sassgraphviz": "./dist/cli.js",
+    "sgv": "./dist/cli.js"
   },
   "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
   "license": "MIT",

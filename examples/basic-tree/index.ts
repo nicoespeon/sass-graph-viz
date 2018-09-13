@@ -1,4 +1,4 @@
 import * as path from "path";
-import { generateDepsGraph } from "../../src";
+import { generateVisualGraph } from "../../src";
 
-generateDepsGraph(path.join(__dirname, "fixtures"));
+generateVisualGraph(path.join(__dirname, "fixtures"));

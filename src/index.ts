@@ -11,7 +11,7 @@ import { Module, render } from "viz.js/full.render";
 
 type Path = string;
 
-export function generateDepsGraph(pathToFolder: Path): void {
+export function generateVisualGraph(pathToFolder: Path): void {
   flow(
     generateSassGraph,
     sassGraphGraphToGraph,

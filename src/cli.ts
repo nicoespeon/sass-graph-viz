@@ -3,7 +3,7 @@ import * as program from "commander";
 import * as path from "path";
 import * as fs from "fs";
 
-import { generateDepsGraph } from "./index";
+import { generateVisualGraph } from "./index";
 
 program
   .arguments("<dir>")
@@ -15,7 +15,7 @@ program
         return process.exit(1);
       }
 
-      generateDepsGraph(sassFolder);
+      generateVisualGraph(sassFolder);
     },
   )
   .parse(process.argv);
