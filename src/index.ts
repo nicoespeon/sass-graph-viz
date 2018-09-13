@@ -13,15 +13,12 @@ type Path = string;
 
 export function generateVisualGraph(pathToFolder: Path): void {
   flow(
-    generateSassGraph,
-    sassGraphGraphToGraph,
-    renderGraph,
+    generateGraphFromSassGraph,
+    renderGraphToVizGraph,
   )(pathToFolder);
 }
 
-function generateSassGraph(pathToFolder: Path): sassGraph.Graph {
-  return sassGraph.parseDir(pathToFolder);
-}
+// GRAPH DOMAIN
 
 export class Graph {
   vertices: Set<Vertice>;
@@ -33,12 +30,6 @@ export class Graph {
   addVertice(vertice: Vertice) {
     this.vertices.add(vertice);
   }
-
-  toDigraphString(): string {
-    return Array.from(this.vertices)
-      .map((vertice) => vertice.toDigraphString())
-      .join("\n");
-  }
 }
 
 export class Vertice {
@@ -47,14 +38,16 @@ export class Vertice {
   constructor(parent: Node, child: Node) {
     this.nodes = [parent, child];
   }
-
-  toDigraphString(): string {
-    const [parent, child] = this.nodes.map((node) => node.replace(/-/g, "_"));
-    return `${parent} -> ${child}`;
-  }
 }
 
 type Node = string;
+
+// GRAPH GENERATION (with sass-graph)
+
+function generateGraphFromSassGraph(pathToFolder: Path): Graph {
+  const sassGraphGraph = sassGraph.parseDir(pathToFolder);
+  return sassGraphGraphToGraph(sassGraphGraph);
+}
 
 export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   const nodeInDir = nodeInFolder.bind(null, dir);
@@ -74,11 +67,14 @@ function nodeInFolder(rootFolder: Path, node: Node): Node {
   return path.basename(path.relative(rootFolder, node), path.extname(node));
 }
 
-function renderGraph(graph: Graph): void {
+// GRAPH RENDERING (with viz)
+
+function renderGraphToVizGraph(graph: Graph): void {
   const app = express();
+  const vizGraph = graphToVizGraph(graph);
 
   new Viz({ Module, render })
-    .renderString(`digraph { ${graph.toDigraphString()} }`)
+    .renderString(`digraph { ${vizGraph} }`)
     .then((graphHtml: any) => {
       app.get("/", (req, res) => res.send(graphHtml));
       app.listen("3000");
@@ -90,6 +86,17 @@ function renderGraph(graph: Graph): void {
     .then(() => setTimeout(() => process.exit(0), 300))
     .catch((error: any) => {
       console.error(error);
-      console.log(graph.toDigraphString());
+      console.log(vizGraph);
     });
+}
+
+function graphToVizGraph(graph: Graph): string {
+  return Array.from(graph.vertices)
+    .map((vertice) => {
+      const [parent, child] = vertice.nodes.map((node) =>
+        node.replace(/-/g, "_"),
+      );
+      return `${parent} -> ${child}`;
+    })
+    .join("\n");
 }
