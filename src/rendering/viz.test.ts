@@ -36,11 +36,20 @@ it("should compute a complex graph", () => {
   expect(vizGraph).toBe(expectedVizGraph);
 });
 
-it("should parse unsupported '-' character in node name", () => {
+it("should escape unsupported '-' character in node", () => {
   const graph = new Graph();
   graph.addVertice("main", "_mobile-sidebar");
 
   const vizGraph = graphToVizGraph(graph);
 
-  expect(vizGraph).toBe("main -> _mobile_sidebar");
+  expect(vizGraph).toBe('main -> "_mobile-sidebar"');
+});
+
+it("should escape unsupported '/' character in node", () => {
+  const graph = new Graph();
+  graph.addVertice("main", "components/_header");
+
+  const vizGraph = graphToVizGraph(graph);
+
+  expect(vizGraph).toBe('main -> "components/_header"');
 });
