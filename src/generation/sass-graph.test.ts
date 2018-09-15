@@ -103,3 +103,50 @@ it("return graph for a basic import tree", () => {
   expectedGraph.addVertice("main", "_header");
   expect(graph).toEqual(expectedGraph);
 });
+
+it("display nested directories as folders in nodes", () => {
+  const dir = "path/to/dir";
+  const sassGraphWithIndex: sassGraph.Graph = {
+    dir,
+    extensions: ["scss", "sass"],
+    index: {
+      [`${dir}/_base.scss`]: {
+        imports: [],
+        importedBy: [`${dir}/main.scss`],
+        modified: "2018-01-01T00:00:00.000Z",
+      },
+      [`${dir}/components/_footer.scss`]: {
+        imports: [],
+        importedBy: [`${dir}/main.scss`],
+        modified: "2018-01-01T00:00:00.000Z",
+      },
+      [`${dir}/components/_header.scss`]: {
+        imports: [],
+        importedBy: [`${dir}/main.scss`],
+        modified: "2018-01-01T00:00:00.000Z",
+      },
+      [`${dir}/main.scss`]: {
+        imports: [
+          `${dir}/_base.scss`,
+          `${dir}/components/_header.scss`,
+          `${dir}/components/_footer.scss`,
+        ],
+        importedBy: [],
+        modified: "2018-01-01T00:00:00.000Z",
+      },
+    },
+    loadPaths: ["path/to/load"],
+    addFile: () => {},
+    visitAncestors: () => {},
+    visitDescendents: () => {},
+    visit: () => {},
+  };
+
+  const graph = sassGraphGraphToGraph(sassGraphWithIndex);
+
+  const expectedGraph = new Graph();
+  expectedGraph.addVertice("main", "_base");
+  expectedGraph.addVertice("main", "components/_footer");
+  expectedGraph.addVertice("main", "components/_header");
+  expect(graph).toEqual(expectedGraph);
+});

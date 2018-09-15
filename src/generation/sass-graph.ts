@@ -25,5 +25,5 @@ export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
 }
 
 function nodeInFolder(rootFolder: Path, node: Node): Node {
-  return path.basename(path.relative(rootFolder, node), path.extname(node));
+  return path.relative(rootFolder, node).replace(path.extname(node), "");
 }
