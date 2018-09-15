@@ -8,6 +8,8 @@ import { Module, render } from "viz.js/full.render";
 
 import { Graph } from "../graph";
 
+type VizGraph = string;
+
 export function renderGraphToVizGraph(graph: Graph): void {
   const app = express();
   const vizGraph = graphToVizGraph(graph);
@@ -29,7 +31,7 @@ export function renderGraphToVizGraph(graph: Graph): void {
     });
 }
 
-export function graphToVizGraph(graph: Graph): string {
+export function graphToVizGraph(graph: Graph): VizGraph {
   return Array.from(graph.vertices)
     .map((vertice) => {
       const [parent, child] = vertice.nodes.map(escapeUnsupportedCharacter);
