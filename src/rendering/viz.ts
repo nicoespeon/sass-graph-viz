@@ -29,7 +29,7 @@ export function renderGraphToVizGraph(graph: Graph): void {
     });
 }
 
-function graphToVizGraph(graph: Graph): string {
+export function graphToVizGraph(graph: Graph): string {
   return Array.from(graph.vertices)
     .map((vertice) => {
       const [parent, child] = vertice.nodes.map((node) =>
