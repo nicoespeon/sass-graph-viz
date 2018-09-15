@@ -1,7 +1,7 @@
 import { Graph } from "../graph";
 import { graphToVizGraph } from "./viz";
 
-it("should compute an empty graph", () => {
+it("compute an empty graph", () => {
   const graph = new Graph();
 
   const vizGraph = graphToVizGraph(graph);
@@ -9,7 +9,7 @@ it("should compute an empty graph", () => {
   expect(vizGraph).toBe("");
 });
 
-it("should compute an simple graph", () => {
+it("compute an simple graph", () => {
   const graph = new Graph();
   graph.addVertice("main", "_header");
 
@@ -18,7 +18,7 @@ it("should compute an simple graph", () => {
   expect(vizGraph).toBe("main -> _header");
 });
 
-it("should compute a complex graph", () => {
+it("compute a complex graph", () => {
   const graph = new Graph();
   graph.addVertice("main", "_header");
   graph.addVertice("main", "_footer");
@@ -36,7 +36,7 @@ it("should compute a complex graph", () => {
   expect(vizGraph).toBe(expectedVizGraph);
 });
 
-it("should escape unsupported '-' character in node", () => {
+it("escape unsupported '-' character in node", () => {
   const graph = new Graph();
   graph.addVertice("main", "_mobile-sidebar");
 
@@ -45,7 +45,7 @@ it("should escape unsupported '-' character in node", () => {
   expect(vizGraph).toBe('main -> "_mobile-sidebar"');
 });
 
-it("should escape unsupported '/' character in node", () => {
+it("escape unsupported '/' character in node", () => {
   const graph = new Graph();
   graph.addVertice("main", "components/_header");
 
