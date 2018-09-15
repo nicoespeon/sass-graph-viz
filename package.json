@@ -23,7 +23,8 @@
     "test": "jest",
     "examples": "run-s examples:*",
     "examples:basic-tree": "ts-node examples/basic-tree",
-    "examples:two-entry-points": "ts-node examples/two-entry-points"
+    "examples:two-entry-points": "ts-node examples/two-entry-points",
+    "examples:nested-folders": "ts-node examples/nested-folders"
   },
   "devDependencies": {
     "@types/commander": "2.12.2",
