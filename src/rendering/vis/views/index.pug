@@ -1,0 +1,42 @@
+doctype html
+head
+  title Sass Graph Viz
+  style.
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    #graph {
+      width: 100%;
+      height: 100%;
+    }
+
+  link(href='vis.4.21.0.min.css', rel='stylesheet', type='text/css')
+  script(src='vis.4.21.0.min.js')
+
+  script.
+    function renderVisGraph() {
+      var container = document.getElementById('graph');
+
+      var data = {
+        nodes: new vis.DataSet(JSON.parse('!{nodes}')),
+        edges: new vis.DataSet(JSON.parse('!{edges}'))
+      };
+
+      var options = {
+        autoResize: true,
+        height: '100%',
+        width: '100%',
+        edges: {
+          arrows: 'to'
+        }
+      };
+
+      var network = new vis.Network(container, data, options);
+    }
+
+  body(onload='renderVisGraph()')
+    div#graph

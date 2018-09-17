@@ -1,14 +1,13 @@
 import * as express from "express";
-// @ts-ignore
+// @ts-ignore (missing typings)
 import * as opn from "opn";
-// @ts-ignore
+// @ts-ignore (missing typings)
 import * as Viz from "viz.js";
-// @ts-ignore
+// @ts-ignore (missing typings)
 import { Module, render } from "viz.js/full.render";
 
-import { Graph } from "../graph";
-
-type VizGraph = string;
+import { Graph } from "../../graph";
+import { graphToVizGraph } from "./translator";
 
 export function renderGraphToVizGraph(graph: Graph): void {
   const app = express();
@@ -29,17 +28,4 @@ export function renderGraphToVizGraph(graph: Graph): void {
       console.error(error);
       console.log(vizGraph);
     });
-}
-
-export function graphToVizGraph(graph: Graph): VizGraph {
-  return Array.from(graph.vertices)
-    .map((vertice) => {
-      const [parent, child] = vertice.nodes.map(escapeUnsupportedCharacter);
-      return `${parent} -> ${child}`;
-    })
-    .join("\n");
-}
-
-function escapeUnsupportedCharacter(s: string): string {
-  return s.match(/[-\/]/g) ? `"${s}"` : s;
 }

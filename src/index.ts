@@ -1,11 +1,11 @@
 import { flow } from "lodash";
 
 import { Path, generateGraphFromSassGraph } from "./generation/sass-graph";
-import { renderGraphToVizGraph } from "./rendering/viz";
+import { renderGraphToVisGraph } from "./rendering/vis";
 
 export function generateVisualGraph(pathToFolder: Path): void {
   flow(
     generateGraphFromSassGraph,
-    renderGraphToVizGraph,
+    renderGraphToVisGraph,
   )(pathToFolder);
 }

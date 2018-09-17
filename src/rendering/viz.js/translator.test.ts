@@ -1,5 +1,5 @@
-import { Graph } from "../graph";
-import { graphToVizGraph } from "./viz";
+import { Graph } from "../../graph";
+import { graphToVizGraph } from "./translator";
 
 it("compute an empty graph", () => {
   const graph = new Graph();
