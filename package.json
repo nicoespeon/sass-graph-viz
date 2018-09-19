@@ -6,7 +6,9 @@
     "sass",
     "dependencies",
     "graph",
-    "visual"
+    "visual",
+    "dependency-graph",
+    "dataviz"
   ],
   "bin": {
     "sassgraphviz": "./dist/cli.js",
