@@ -1,5 +1,5 @@
 export class Graph {
-  vertices: Set<Vertice>;
+  private vertices: Set<Vertice>;
 
   constructor() {
     this.vertices = new Set();
@@ -7,6 +7,16 @@ export class Graph {
 
   addVertice(parent: Node, child: Node) {
     this.vertices.add(new Vertice(parent, child));
+  }
+
+  getVertices(): Node[][] {
+    const vertices: Node[][] = [];
+
+    this.vertices.forEach((vertice) => {
+      vertices.push(vertice.nodes);
+    });
+
+    return vertices;
   }
 }
 

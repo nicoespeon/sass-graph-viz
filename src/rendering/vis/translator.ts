@@ -8,8 +8,7 @@ export function graphToVisGraph(graph: Graph): VisGraph {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
 
-  graph.vertices.forEach((vertice) => {
-    const [parent, child] = vertice.nodes;
+  graph.getVertices().forEach(([parent, child]) => {
     const nodeIds = nodes.map(({ id }) => id);
 
     if (!nodeIds.includes(parent)) {
