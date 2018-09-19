@@ -7,6 +7,10 @@ import { generateVisualGraph } from "./index";
 
 program
   .arguments("<dir>")
+  .option(
+    "-s, --simple",
+    "Generate a simpler visualization (not recommended for complex graphs)",
+  )
   .action(
     (dir): void => {
       const sassFolder = path.join(process.cwd(), dir);
@@ -15,7 +19,7 @@ program
         return process.exit(1);
       }
 
-      generateVisualGraph(sassFolder);
+      generateVisualGraph(sassFolder, program.simple);
     },
   )
   .parse(process.argv);
