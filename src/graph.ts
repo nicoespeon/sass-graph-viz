@@ -1,3 +1,5 @@
+import * as path from "path";
+
 export class Graph {
   private vertices: Set<Vertice>;
 
@@ -5,7 +7,7 @@ export class Graph {
     this.vertices = new Set();
   }
 
-  addVertice(parent: Node, child: Node) {
+  addVertice(parent: string, child: string) {
     this.vertices.add(new Vertice(parent, child));
   }
 
@@ -23,9 +25,19 @@ export class Graph {
 class Vertice {
   nodes: Node[];
 
-  constructor(parent: Node, child: Node) {
-    this.nodes = [parent, child];
+  constructor(parent: string, child: string) {
+    this.nodes = [new Node(parent), new Node(child)];
   }
 }
 
-export type Node = string;
+class Node {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  isPartial(): boolean {
+    return path.basename(this.name).startsWith("_");
+  }
+}

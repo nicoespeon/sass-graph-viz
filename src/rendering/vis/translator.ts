@@ -1,5 +1,4 @@
 import { Node, Edge } from "vis";
-import * as path from "path";
 
 import { Graph } from "../../graph";
 
@@ -19,29 +18,24 @@ export function graphToVisGraph(graph: Graph): VisGraph {
   graph.getVertices().forEach(([parent, child]) => {
     const nodeIds = nodes.map(({ id }) => id);
 
-    if (!nodeIds.includes(parent)) {
+    if (!nodeIds.includes(parent.name)) {
       nodes.push({
-        id: parent,
-        label: parent,
-        color: isPartial(parent) ? partialColor : fileColor,
+        id: parent.name,
+        label: parent.name,
+        color: parent.isPartial() ? partialColor : fileColor,
       });
     }
 
-    if (!nodeIds.includes(child)) {
+    if (!nodeIds.includes(child.name)) {
       nodes.push({
-        id: child,
-        label: child,
-        color: isPartial(child) ? partialColor : fileColor,
+        id: child.name,
+        label: child.name,
+        color: child.isPartial() ? partialColor : fileColor,
       });
     }
 
-    edges.push({ from: parent, to: child });
+    edges.push({ from: parent.name, to: child.name });
   });
 
   return { nodes, edges };
-}
-
-// TODO: move this up to Grapsh domain
-function isPartial(node: string): boolean {
-  return path.basename(node).startsWith("_");
 }
