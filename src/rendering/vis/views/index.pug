@@ -9,15 +9,33 @@ head
       padding: 0;
     }
 
+    #preloader {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
     #graph {
       width: 100%;
       height: 100%;
     }
 
-  link(href='vis.4.21.0.min.css', rel='stylesheet', type='text/css')
-  script(src='vis.4.21.0.min.js')
+  link(href='https://fonts.googleapis.com/css?family=Orbitron', rel='stylesheet', defer)
+
+  link(href='preloader.css', rel='stylesheet')
+  link(href='vis.4.21.0.min.css', rel='stylesheet', defer)
 
   script.
+    function onLoad() {
+      //- Particles animation is disabled because Vis calculation is heavy, thus
+      //- the animation won't be fluid. Unless we find a way to use web workers…
+      particlesJS.load('preloader-particles', 'particles.json');
+      renderVisGraph();
+    }
+
     function renderVisGraph() {
       var container = document.getElementById('graph');
 
@@ -36,7 +54,33 @@ head
       };
 
       var network = new vis.Network(container, data, options);
+
+      network.on('stabilizationIterationsDone', () => {
+        // At this point, the graph is visible to the screen.
+        hidePreloader();
+      });
     }
 
-  body(onload='renderVisGraph()')
+    function hidePreloader() {
+      const preloaderMessage = document.getElementById('preloader-message');
+      preloaderMessage.innerText = 'Graph is ready!';
+
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => preloader.style.opacity = 0, 1000);
+      setTimeout(() => preloader.remove(), 2000);
+    }
+
+  body(onload='onLoad()')
+    div#preloader
+      div#preloader-particles.vertical-centered-box
+      div#preloader-content.vertical-centered-box
+        div.content
+          p#preloader-message Computing graph…
+          div.loader-circle
+          div.loader-line-mask
+            div.loader-line
+
     div#graph
+
+    script(src='particles.2.0.0.min.js', async)
+    script(src='vis.4.21.0.min.js', async)

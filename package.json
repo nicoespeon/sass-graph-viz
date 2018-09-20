@@ -21,7 +21,7 @@
     "prebuild": "rimraf ./dist",
     "build": "tsc",
     "postbuild": "chmod +x ./dist/cli.js && npm run copy-static-files",
-    "copy-static-files": "copyfiles -u 1 src/rendering/**/*.{js,css,pug} dist",
+    "copy-static-files": "copyfiles -u 1 src/rendering/**/*.{js,css,pug,json} dist",
     "build:watch": "npm run prebuild && tsc-watch --onSuccess \"npm run postbuild\"",
     "test": "jest",
     "examples": "run-s examples:*",
