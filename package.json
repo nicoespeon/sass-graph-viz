@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/commander": "2.12.2",
+    "@types/compression": "0.0.36",
     "@types/express": "4.16.0",
     "@types/jest": "23.3.1",
     "@types/lodash": "4.14.116",
@@ -52,6 +53,7 @@
   },
   "dependencies": {
     "commander": "2.18.0",
+    "compression": "1.7.3",
     "express": "4.16.3",
     "lodash": "4.17.10",
     "opn": "5.3.0",

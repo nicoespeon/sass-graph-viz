@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as compress from "compression";
 // @ts-ignore (missing typings)
 import * as opn from "opn";
 
@@ -9,6 +10,7 @@ export function renderGraphToVisGraph(graph: Graph): void {
   const visGraph = graphToVisGraph(graph);
 
   const app = express();
+  app.use(compress());
   app.set("view engine", "pug");
   app.set("views", `${__dirname}/views`);
   app.use(express.static(`${__dirname}/assets`));
