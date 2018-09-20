@@ -1,0 +1,131 @@
+$badge-width: 35px;
+
+.columnized-filter {
+  width: 100%;
+}
+
+.horizontal-filters {
+  background-color: $blue-primary;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.24);
+
+  .filter-tab {
+    position: relative;
+    font-size: 16px;
+
+    .filter-tab-dropdown {
+      padding: 12px 12px;
+      border-radius: 2px 2px 0 0;
+      color: $white;
+      white-space: nowrap;
+
+      &.filter-tab-disabled {
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .filter-tab-active,
+    .filter-tab-dropdown:hover:not(.filter-tab-disabled) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .filter-tab-content {
+    background: $white;
+
+    .filter-tab-content-row {
+      width: 100%;
+
+      .filter-tab-content-map-container {
+        width: 100%;
+
+        .filter-tab-content-map {
+          width: 100%;
+          height: 100%;
+          min-height: 240px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 0 0 4px 4px;
+  }
+
+  .form-check {
+    white-space: nowrap;
+    padding: 8px 0;
+    margin: 0;
+  }
+}
+
+.mobile-filters {
+  .list-mobile {
+    .list-title {
+      background-color: $gray-shade;
+      border-top: 1px solid $gray-tertiary;
+    }
+
+    &:last-child .list-title,
+    & .list-title.open {
+      border-bottom: 1px solid $gray-tertiary;
+    }
+  }
+}
+
+.form-check {
+  .custom-control-indicator {
+    // indicator is positioned absolutely, this way it is vertically centered
+    top: 50%;
+    margin-top: -$custom-control-indicator-size / 2;
+  }
+
+  @media #{$small-only} {
+    .custom-control-description {
+      img {
+        height: 44px;
+        width: 44px;
+      }
+    }
+  }
+}
+
+.side-filters {
+  .collapsible {
+    &.card {
+      .filter-set {
+        padding: 0;
+
+        .form-check {
+          margin: 0;
+          padding: 5px;
+
+          .custom-control {
+            min-height: 0;
+
+            &.with-badge {
+              max-width: calc(100% - #{$badge-width});
+            }
+
+            .custom-control-description {
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+          }
+
+          .badge {
+            position: absolute;
+            top: 50%;
+            margin-top: -11px;
+            right: 0;
+            width: $badge-width;
+          }
+        }
+      }
+    }
+  }
+
+  .locations-map {
+    min-height: 200px;
+  }
+}

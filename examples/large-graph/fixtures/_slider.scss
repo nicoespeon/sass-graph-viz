@@ -1,0 +1,132 @@
+.slider {
+  width: 100%;
+  min-width: 200px;
+  max-width: 600px;
+  margin: 20px;
+
+  .bars {
+    height: 100px;
+    display: flex;
+    justify-content: stretch;
+    align-items: flex-end;
+    margin-bottom: -35px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .bar {
+    background-color: rgba(102, 102, 102, 0.45);
+    flex: 1;
+  }
+
+  .bar.active {
+    background-color: rgba(29, 126, 200, 0.45);
+  }
+
+  .irs {
+    height: 55px;
+  }
+  .irs-with-grid {
+    height: 75px;
+  }
+  .irs-line {
+    height: 8px;
+    top: 35px;
+    background: #666666;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+  }
+  .irs-line-left {
+    height: 8px;
+  }
+  .irs-line-mid {
+    height: 8px;
+  }
+  .irs-line-right {
+    height: 8px;
+  }
+
+  .irs-bar {
+    height: 8px;
+    top: 35px;
+    background: #1d7ec8;
+  }
+  .irs-bar-edge {
+    height: 8px;
+    top: 35px;
+    width: 17px;
+    border-right: none;
+    background: #1d7ec8;
+    border-radius: 16px 0 0 16px;
+    -moz-border-radius: 16px 0 0 16px;
+  }
+
+  .irs-shadow {
+    height: 2px;
+    top: 38px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+
+  .irs-slider {
+    top: 24px;
+    width: 28px;
+    height: 28px;
+    border: 5px solid #1d7ec8;
+    background: white;
+    border-radius: 27px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  .irs-slider.state_hover,
+  .irs-slider:hover {
+    background: white;
+  }
+
+  .irs-min,
+  .irs-max {
+    color: #333;
+    font-size: 12px;
+    line-height: 1.333;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 5px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+
+  .irs-from,
+  .irs-to,
+  .irs-single {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: #428bca;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+
+  .irs-grid {
+    height: 27px;
+  }
+  .irs-grid-pol {
+    opacity: 0.5;
+    background: #666666;
+    width: 2px;
+    margin-left: -1px;
+  }
+  .irs-grid-pol.small {
+    display: none;
+  }
+
+  .irs-grid-text {
+    bottom: 5px;
+    color: #99a4ac;
+  }
+}

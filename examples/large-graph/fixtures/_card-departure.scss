@@ -1,0 +1,293 @@
+// OUTAGE_NOTIFICATIONS_ENABLED experiment
+.desktop-card,
+.card-mobile-departure {
+  position: relative;
+  > .mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+}
+
+.departure-card-warning {
+  svg {
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    color: $orange-primary;
+    fill: $orange-primary;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.card-departure {
+  .card-departure-title {
+    font-size: 16px;
+  }
+
+  .card-departure-arrow {
+    color: $gray-tertiary;
+    fill: $gray-tertiary;
+    margin-top: pxToRem(10px);
+  }
+
+  .card-departure-day-offset {
+    color: $gray-secondary;
+  }
+
+  .card-departure-price-block {
+    text-align: center;
+    padding: 2.5rem $card-spacer-x 0;
+  }
+
+  .card-departure-price {
+    font-weight: 500;
+    font-size: pxToRem(22px);
+  }
+
+  .card-departure-price-label {
+    color: $gray-secondary;
+    text-align: center;
+    margin: pxToRem(7.5px) 0 pxToRem(10.5px) 0;
+  }
+
+  .card-departure-footer {
+    border-right: 1px solid $gray-tertiary;
+    border-radius: 0 0 0 4px;
+    overflow: visible;
+  }
+
+  .btn.card-departure-footer-btn {
+    box-shadow: none;
+    height: 46px;
+    border-radius: 0 0 4px 0;
+
+    &.squared {
+      border-radius: 0;
+    }
+  }
+
+  .btn.btn-cta-inverse {
+    border-top: 1px solid $gray-tertiary;
+  }
+
+  .card-departure-details {
+    cursor: initial;
+  }
+}
+
+.card-mobile-departure,
+.card-chosen-departure {
+  .card-departure-arrow {
+    color: $gray-tertiary;
+    fill: $gray-tertiary;
+    margin: 4px 0;
+  }
+
+  .card-block-highlight {
+    padding: pxToRem(4px) pxToRem(16px);
+  }
+  .amenities-visible {
+    overflow: visible;
+  }
+}
+
+.card-mobile-departure {
+  margin: 0;
+  box-shadow: none;
+  border-top: 1px solid $card-border-color;
+
+  .card-departure-price {
+    font-size: pxToRem(18px);
+    font-weight: 500;
+  }
+
+  .card-mobile-departure-footer {
+    border: none;
+    background-color: $gray-shade;
+    padding: pxToRem(8px) pxToRem(16px);
+  }
+
+  .modal.fade.sticky-header .modal-content {
+    $modal-footer-height: 76px;
+
+    .modal-header {
+      background: $blue-primary;
+      color: white;
+    }
+
+    .modal-body {
+      padding: 0;
+      margin-bottom: $modal-footer-height;
+
+      .card {
+        margin: 0;
+
+        .card-header {
+          font-weight: normal;
+        }
+      }
+    }
+
+    .modal-footer {
+      background: white;
+      padding: $card-spacer-x;
+      height: $modal-footer-height;
+    }
+  }
+
+  .stop-transfer-header {
+    padding: 0.4rem;
+  }
+
+  .time {
+    height: 100%;
+    width: 64px;
+    background: #f6f6f6;
+  }
+
+  .fullscreen-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: $gray-shade;
+    z-index: 1010;
+
+    .fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 1011;
+
+      .modal-content {
+        min-height: 100vh;
+      }
+
+      .modal-content,
+      .modal-header {
+        @include border-radius(0);
+      }
+    }
+  }
+}
+
+.card-chosen-departure,
+.card-mobile-departure,
+.card-departure {
+  .card-departure-time {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .card-departure-location {
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .card-departure-price-currency {
+    padding-left: 4px;
+    font-size: 0.5em;
+    font-weight: 600;
+    top: -0.6em;
+  }
+
+  .card-departure-price-from {
+    @media #{$medium-up} {
+      color: $gray-secondary;
+    }
+  }
+}
+
+.card-departure,
+.card-mobile-departure {
+  .grouped-options {
+    .relative-price {
+      font-size: $font-size-md;
+    }
+
+    .full-price,
+    .relative-price {
+      white-space: nowrap;
+    }
+
+    .departure-class-name {
+      margin: auto 0;
+      font-size: $font-size-md;
+    }
+
+    .departure-fare-name {
+      margin: auto 0;
+    }
+  }
+}
+
+.card-intent-media {
+  margin-bottom: 20px;
+
+  @media #{$small-only} {
+    margin-bottom: 0px;
+  }
+}
+
+.card-mobile-departure,
+.card-chosen-departure,
+.card-departure-mobile-simplified {
+  .icon-duration {
+    margin-right: 4px;
+    vertical-align: text-top;
+  }
+}
+
+.desktop-card {
+  .card-departure {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+    }
+  }
+
+  .card-block {
+    flex: inherit;
+    padding: pxToRem(32px) pxToRem(24px);
+  }
+  .departure-time {
+    width: 90px;
+    text-align: right;
+    position: relative;
+    .card-departure-day-offset {
+      position: absolute;
+      top: -10px;
+      font-size: pxToRem(12px);
+      font-weight: 700;
+      color: $orange-secondary;
+    }
+  }
+  .card-departure-price {
+    line-height: pxToRem(27px);
+    margin-bottom: pxToRem(8px);
+  }
+  .card-highlight {
+    .card-departure-price {
+      color: $gray-primary;
+      line-height: initial;
+      margin-bottom: initial;
+    }
+  }
+  .card-departure-price-label {
+    margin: 0;
+  }
+}

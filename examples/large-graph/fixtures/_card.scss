@@ -1,0 +1,252 @@
+@import "colors";
+
+// ---------- !LEGACY CARD STYLES---------- \\
+.card {
+  margin: 0 auto 20px;
+  background-color: $color-background-content;
+  border-radius: 3px;
+  @include bb-shadow();
+
+  html.no-boxshadow & {
+    border: 1px solid $color-grey-light;
+  }
+
+  @media #{$medium-up} {
+    margin: 0 0 20px;
+  }
+
+  h2, h3, h4, h5, h6 {
+    color: $color-heading;
+  }
+
+  &.text-center {
+    text-align: center;
+  }
+
+  .card-header, .card-content, .card-footer {
+    @include micro-clearfix();
+    padding: 10px;
+    @media #{$medium-up} {
+      padding: 20px;
+    }
+  }
+
+  .card-header {
+    position: relative;
+    border-bottom: 1px solid $color-grey-light;
+    // for permalink hover to work.  make sure any other opacity: 0 elements have z-index: 0 when not hovered.  see .member-description in team.scss for example
+    z-index: 1;
+    h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: regular;
+      color: $color-heading;
+    }
+    &.centered {
+      text-align: center;
+    }
+
+    &:hover {
+      .permalink {
+        opacity: 1;
+      }
+    }
+    .permalink {
+      opacity: 0;
+      float: right;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .remove-button, .edit-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $color-grey;
+      font-size: 1.5em;
+      line-height: 49px;
+      width: 42px;
+      text-align: center;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .remove-button:hover {
+      color: $red-primary;
+    }
+
+    .edit-button:hover {
+      color: $blue-secondary;
+    }
+  }
+  .card-content {
+    font-size: $font-size-regular;
+  }
+  .table {
+    overflow-x: auto;
+  }
+
+  .card-footer {
+    @include micro-clearfix();
+    clear: both;
+    border-top: 1px solid $color-grey-light;
+  }
+
+  > .media {
+    margin: 0;
+    > .media-image {
+      margin-right: 0;
+
+      &.right {
+        margin-left: 0;
+      }
+    }
+  }
+}
+// ---------- !END LEGACY CARD STYLES---------- \\
+
+
+.card {
+  background-color: white;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.card.dark {
+  background-color: $gray-primary;
+
+  @media #{$medium-up} {
+    background-color: rgba(31, 36, 43, .9);
+  }
+}
+
+.card.dark address {
+  color: white;
+}
+
+.card .card-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid $gray-tertiary;
+
+  &.no-stroke {
+    border-bottom: none;
+  }
+
+  &.card-heading-large {
+    padding: 13.5px 15px;
+
+  }
+}
+
+.card .card-heading h3 {
+  font-weight: normal;
+  font-size: 20px;
+  margin: 0;
+  color: $gray-primary;
+
+  @media #{$small-only} {
+    font-size: 17px;
+  }
+}
+
+.card .card-content {
+  line-height: 24.48px;
+  font-size: 13.6px;
+  color: $gray-secondary;
+}
+
+.card .card-content strong {
+  font-weight: normal;
+  color: $gray-primary;
+}
+
+.card .card-content ul {
+  margin: 0;
+  padding: 0;
+}
+
+.card .card-content.stroke-bottom {
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  > div {
+    padding: 10px 0px;
+    border-bottom: 1px solid #D8DDE1;
+  }
+  > div:first-child {
+    padding-top: 0;
+  }
+  > div:last-child {
+    border-bottom: none;
+  }
+}
+.card .card-content.font-large {
+  font-size: 15px;
+}
+
+.card .card-content.richtext ul,
+.card .card-content .list-padded {
+  padding-left: 25px;
+}
+
+.card .card-content ul li {
+  padding: 3px 0;
+}
+
+.card.card-unpadded .card-content {
+  padding: 0;
+}
+
+.card .card-footer {
+  font-size: 13.6px;
+  line-height: 25px;
+  padding: 10px 15px;
+  border-top: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card .card-footer .card-footer-icon {
+  position: relative;
+  top: 4px;
+  padding-left: 5px;
+  fill: $blue-primary;
+}
+
+.card .card-footer-img {
+  max-height: 50px;
+  margin-top: 10px;
+}
+
+.card .card-content .card-links-list {
+  list-style-type: none;
+}
+
+.card .card-content .card-links-list li {
+  padding: 0;
+}
+
+.card .card-content .card-links-list li a {
+  display: block;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 8px 15px;
+
+  @media (min-width: 0px) and (max-width: 640px) {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+}
+
+.card .column:nth-child(odd) .card-links-list li:nth-child(odd) {
+  background-color: $gray-shade;
+}
+
+.card .column:nth-child(even) .card-links-list li:nth-child(even) {
+  background-color: $gray-shade;
+}

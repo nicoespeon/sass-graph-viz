@@ -1,0 +1,393 @@
+// Hide Safari autofill icon
+form[autocomplete="off"] input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.search-form-container {
+  padding: 20px;
+  font-size: 16px;
+  label,
+  label a {
+    line-height: 16px;
+    padding: 5px 5px 5px 0;
+    color: $white;
+  }
+  #discount-code-label {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media #{$small-only} {
+    padding: 20px 0;
+  }
+}
+
+.search-form input[type="checkbox"],
+.search-form input[type="radio"] {
+  margin-right: 5px;
+}
+
+.search-form .form-title {
+  color: $white;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  line-height: 20px;
+  text-shadow: none;
+  @media #{$large-up} {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 44px;
+    margin: 0 0 30px;
+  }
+}
+
+.search-form .form-subtitle {
+  font-weight: normal;
+  color: $white;
+  text-align: center;
+}
+
+@media #{$medium-up} {
+  .search-form-container.text-md-left .form-title {
+    text-align: left;
+  }
+}
+
+.search-form .form-group {
+  line-height: 1.1;
+  margin: 6px 0;
+}
+
+.search-form .form-group-right {
+  padding-left: 0;
+}
+
+.search-form .form-input {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  border: 2px solid $gray-quaternary;
+  border-bottom-color: $white;
+  border-radius: 3px;
+  background-color: $white;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  appearance: none;
+  transition: fill, color 250ms linear;
+  outline: none;
+  line-height: 20px;
+}
+
+.search-form select.form-input {
+  padding: 8px 10px;
+}
+
+.search-form select.form-input + .input-group-addon {
+  padding: 10px;
+}
+
+.search-form .form-error {
+  margin-top: 5px;
+}
+
+.search-form .text-danger {
+  color: $red-primary;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.search-form-inline .form-input {
+  box-shadow: none;
+  border-right: 1px solid $gray-tertiary;
+}
+
+.search-form .label-checkbox {
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+}
+
+.search-form .form-input.disabled,
+.search-form .label-checkbox.disabled input,
+.search-form .form-input.disabled + .input-group-addon use {
+  color: $gray-tertiary;
+  fill: $gray-tertiary;
+  background-color: $gray-quaternary;
+}
+
+.search-form .label-checkbox.disabled {
+  color: $gray-tertiary;
+}
+
+.search-form .btn.disabled {
+  background-color: darken($orange-primary, 15%);
+  border: 1px solid darken($orange-primary, 15%);
+  color: $gray-tertiary;
+}
+
+.search-form .form-input-inline {
+  min-width: 100px;
+}
+
+.search-form .form-input.has-errors {
+  border: 2px solid $red-primary;
+}
+
+.search-form .form-input-lg {
+  padding: 20px 16px;
+  border: none;
+  border-bottom: 1px solid $gray-tertiary;
+  font-size: 18px;
+  border-radius: 0;
+}
+
+.search-form .input-group {
+  position: relative;
+  display: block;
+  width: auto;
+}
+
+.search-form .input-group-left select,
+.search-form .input-group-left input {
+  padding-left: 32px;
+}
+
+.search-form .input-group-left input.return-date-input {
+  padding-left: 10px;
+}
+
+.search-form .input-group-right select,
+.search-form .input-group-right input {
+  padding-right: 36px;
+}
+
+.search-form .input-group-addon {
+  line-height: 1;
+  padding: 10px;
+  margin: -10px;
+  position: absolute;
+  bottom: 11px;
+  top: 11px;
+  pointer-events: none;
+}
+
+.search-form .input-group-addon.clickable {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.search-form .input-group-right .input-group-addon {
+  right: 10px;
+}
+
+.search-form .input-group-left .input-group-addon {
+  left: 10px;
+}
+
+.search-form .input-group-right .input-group-addon-right {
+  left: auto;
+  right: 10px;
+}
+
+.search-form .input-group-addon use {
+  fill: $gray-secondary;
+}
+
+.search-form .spinner {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -10px;
+}
+
+.search-form ::-webkit-input-placeholder {
+  color: $gray-secondary;
+}
+
+.search-form :-moz-placeholder {
+  /* Firefox 18- */
+  color: $gray-secondary;
+}
+
+.search-form ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $gray-secondary;
+}
+
+.search-form :-ms-input-placeholder {
+  color: $gray-secondary;
+}
+
+.search-form .btn.btn-cta {
+  background-color: $orange-secondary;
+  width: 100%;
+  &:focus {
+    background-color: darken($orange-secondary, 5);
+  }
+
+  &.inactive {
+    color: $gray-secondary;
+    background-color: $gray-tertiary;
+  }
+}
+
+.search-form-inline .btn.btn-cta {
+  margin-top: 0;
+}
+
+.search-form .swap-cities-icon use {
+  fill: $blue-primary;
+}
+
+.search-form-inline .btn-cta {
+  height: 52px;
+  width: 100%;
+  padding: 8px;
+}
+
+.input-search-bar {
+  .form-input-label {
+    color: black;
+    padding: 14px;
+    position: absolute;
+    left: 0;
+    text-transform: capitalize;
+    &.hidden {
+      display: none;
+    }
+    &.date-label {
+      padding-left: 32px;
+    }
+    &.return-date-label {
+      padding-left: 16px;
+    }
+  }
+}
+.search-form .input-wrapper {
+  position: relative;
+}
+
+@media #{$small-only, $medium-only} {
+  .search-form .hide-medium-down {
+    display: none;
+  }
+}
+
+@media #{$medium-only} {
+  .search-form .form-title {
+    text-align: left;
+  }
+}
+
+@media #{$large-up} {
+  .search-form .hide-large {
+    display: none;
+  }
+  .search-form-inline .btn.btn-cta:not(.cta-inline) {
+    width: 300px;
+  }
+  .search-form-inline .column-inline:not(:last-of-type) {
+    padding-right: 0;
+  }
+  .search-form-inline .column-inline:not(:first-of-type) {
+    padding-left: 0;
+  }
+  .search-form-inline .column-inline .form-input {
+    border-left-width: 1px;
+    border-right-width: 1px;
+  }
+  .search-form-inline .column-inline:not(:last-of-type) .form-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .search-form-inline .column-inline:not(:first-of-type) .form-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .search-form-inline .column-inline.form-group {
+    margin-bottom: 0;
+  }
+  .search-form-inline .btn.btn-cta {
+    box-shadow: none;
+    margin: 0;
+  }
+  .search-form-inline .btn-cta {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .input-search-bar {
+    .form-input {
+      height: 52px;
+    }
+  }
+}
+
+// Hide the arrow on the datepicker because it's facing the wrong way
+.datepicker-dropdown.datepicker-orient-left:after,
+.datepicker-dropdown.datepicker-orient-left:before {
+  display: none !important;
+}
+
+@media #{$medium-up} {
+  .search-form-inline .form-group-medium-right {
+    text-align: right;
+  }
+  .search-form-inline .form-group-medium-right div {
+    line-height: 1.1;
+  }
+}
+
+@media #{$small-only} {
+  .search-form .form-title {
+    line-height: 26px;
+    margin-bottom: 15px;
+  }
+  .search-form .swap-cities-icon {
+    transform: rotate(90deg);
+  }
+  .search-form-container {
+    padding: 20px 0;
+  }
+}
+
+@media #{$small-only, $medium-only} {
+  .search-form-inline .column-inline-sm .form-input {
+    font-size: 16px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+  }
+  .search-form-inline .column-inline-sm .input-group .form-input {
+    padding: 11px 5px 9px 33px;
+  }
+}
+
+@media #{$large-up} {
+  .search-form .return-date-calendar {
+    display: none;
+  }
+}
+
+@media #{$medium-only} {
+  .search-form-inline .column-inline-sm:not(:last-of-type) {
+    padding-right: 0;
+  }
+  .search-form-inline .column-inline-sm:not(:first-of-type) {
+    padding-left: 0;
+  }
+  .search-form-inline .column-inline-sm:first-of-type .form-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .search-form-inline .column-inline-sm:not(:first-of-type) .form-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

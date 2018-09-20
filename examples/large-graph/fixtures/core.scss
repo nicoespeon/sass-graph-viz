@@ -1,0 +1,153 @@
+@import "designkit/bourbon-custom";
+@import "designkit/variables";
+@import "designkit/mixins";
+
+@import "foundation/foundation";
+
+@import "designkit/base";
+@import "designkit/layout";
+@import "designkit/modules";
+@import "designkit/animations";
+
+@import "margin";
+@import "padding";
+@import "card";
+@import "list";
+@import "tooltip";
+@import "header";
+@import "footer";
+@import "form";
+
+.header-section {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $gray-primary;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+}
+
+.no-js-warning {
+  background: $red-primary;
+  padding: 10px;
+  margin: 10px 0;
+  color: $white;
+  text-align: center;
+}
+
+.bb-icon.big-blue {
+  font-size: 42px;
+  color: $blue-primary;
+}
+
+// Alerts
+.alert {
+  margin: 15px 0;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.alert--error {
+  border: 1px solid #ebccd1;
+  background-color: $red-shade;
+  color: $red-primary;
+}
+.alert--info {
+  border: 1px solid #bce8f1;
+  background-color: $blue-shade;
+  color: $blue-primary;
+}
+
+// Select tag input styles
+.input-wrapper {
+  position: relative;
+
+  .ie9 &,
+  .lt-ie9 &,
+  .gt-ie9 & {
+    select {
+      padding-right: 10px;
+    }
+
+    .select-arrow {
+      display: none;
+    }
+  }
+
+  &.no-label {
+    .select-arrow {
+      top: 10px;
+
+      @media #{$small-only} {
+        top: 6px;
+      }
+    }
+  }
+
+  .select-arrow {
+    position: absolute;
+    top: 34px;
+    right: 10px;
+    height: 38px;
+    width: 32px;
+    border: 1px solid $gray-tertiary;
+    @include border-right-radius(3px);
+    @include linear-gradient($gray-shade, #e0e0e0 85%, #e0e0e0 90%, #d6d6d6);
+    text-align: center;
+    pointer-events: none;
+
+    @media #{$small-only} {
+      top: 30px;
+    }
+
+    .bb-icon {
+      position: static;
+      color: $gray-secondary;
+      font-size: 13px;
+      line-height: 38px;
+    }
+  }
+
+  select:focus + .select-arrow {
+    height: 36px;
+    margin: 1px 1px 1px 0;
+    border: none;
+    border-left: 1px solid $gray-tertiary;
+  }
+
+  select.is-error + .select-arrow {
+    height: 36px;
+    margin: 1px 1px 1px 0;
+    border: none;
+    border-left: 1px solid $gray-tertiary;
+  }
+
+  .bb-icon {
+    position: absolute;
+    right: 20px;
+    top: 46px;
+    font-size: 16px;
+    color: lighten($gray-tertiary, 20%);
+    pointer-events: none;
+
+    @media #{$small-only} {
+      top: 42px;
+      right: 22px;
+    }
+  }
+
+  img {
+    position: absolute;
+    right: 18px;
+    top: 44px;
+    height: 20px;
+
+    @media #{$small-only} {
+      top: 40px;
+      right: 20px;
+    }
+  }
+}
+
+.view-main {
+  height: 100%;
+}

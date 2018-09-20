@@ -1,0 +1,79 @@
+@import "mobile-modal";
+@import "list-mobile";
+
+.mobile-modal.mobile-menu,
+.mobile-modal.mobile-menu .mobile-modal-header,
+.mobile-modal.mobile-menu .mobile-modal-content {
+  background-color: $gray-shade;
+}
+
+.mobile-modal .list-group {
+  border-bottom: 1px solid $gray-tertiary;
+  padding: 8px 16px;
+}
+
+
+.mobile-menu .list-mobile a,
+.mobile-menu .list-mobile span {
+  color: $gray-primary;
+  padding: 12px 0;
+}
+
+.mobile-menu svg {
+  fill: $gray-tertiary;
+}
+
+#coverage-links,
+#company-links {
+  margin-left: 20px;
+}
+
+.close {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+}
+
+// OVERWRITE
+
+.mobile-modal.mobile-menu {
+  .close {
+    svg use {
+      fill: $gray-primary;
+    }
+  }
+
+  .picker-wrapper {
+    padding: 16px;
+  }
+  .list-mobile li {
+    border: none;
+    outline: none;
+  }
+
+  .list-item-bold {
+    font-size: 18px;
+
+    svg {
+      display: inline-block;
+      margin-right: 12px;
+      fill: $gray-primary;
+    }
+
+    a {
+      display: block;
+    }
+  }
+
+  .list-mobile .list-item-input-group .list-item-input {
+    background-color: $blue-shade;
+    color: $blue-primary;
+    border: none;
+    padding: 16px;
+
+    svg {
+      fill: $blue-primary;
+      transform: rotate(-90deg);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.alert-card {
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 3px;
+  background-color: $white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.alert-header {
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: $gray-shade;
+  color: $gray-primary;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.alert-content {
+  padding: 20px 16px;
+  font-size: 14px;
+  color: $gray-primary;
+}
+
+.alert-footer {
+  padding: 0 16px 16px;
+
+  .btn {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert-wrapper {
+    padding: 0 20px;
+  }
+
+  .alert-card {
+    width: 100%;
+  }
+}
+
+.alert-markdown {
+  ul {
+    margin: 0 0 1rem 2rem;
+  }
+}

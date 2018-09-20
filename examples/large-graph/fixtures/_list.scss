@@ -1,0 +1,133 @@
+.list {
+  @include micro-clearfix;
+  padding: 0;
+  margin: 0;
+
+  &.inline {
+    @include micro-clearfix();
+    padding: 0;
+    ul {
+      float: left;
+    }
+    li {
+      float: left;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0 10px;
+      line-height: 30px;
+    }
+  }
+
+  &.no-bullets {
+    padding: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+
+  &.links {
+    margin: -10px;
+
+    @media #{$medium-up} {
+      margin: -15px;
+      font-size: $font-size-medium;
+    }
+
+    li {
+      color: $blue-primary;
+      list-style-type: none;
+      @include transition(background 0.3s);
+
+      &:nth-child(odd) {
+        background: $gray-shade; // use variable for this
+        .bbtouch & {
+          background: $gray-quaternary; // use variable for this
+        }
+      }
+    }
+
+    a {
+      @include grid-row();
+      display: block;
+      padding: 10px;
+      color: inherit;
+      @include transition(0.3s);
+
+      @media #{$medium-up} {
+        padding-left: 15px;
+      }
+      strong {
+        color: inherit;
+      }
+      &.is-active {
+        background: $blue-secondary !important;
+        color: $white !important;
+        .right {
+          .angle-icon {
+            fill: $white !important;
+          }
+        }
+      }
+
+      &:hover {
+        .no-bbtouch & {
+          background: $gray-quaternary; // use variable for this
+          color: $blue-primary; // use variable for this
+          .right {
+            .angle-icon {
+              fill: $gray-tertiary; // use variable for this
+              @include transition(none);
+            }
+          }
+        }
+      }
+
+      .right {
+        .angle-icon {
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .icon-right {
+      float: right;
+      position: relative;
+      top: 3px;
+      margin: -10px -10px -10px 10px; // for larger mobile button surface
+      padding: 10px;
+      color: $gray-quaternary;
+      cursor: pointer;
+    }
+
+    .full {
+      .left {
+        @include grid-column($collapse: true, $columns: 10);
+      }
+      .right {
+        @include grid-column($collapse: true, $columns: 2);
+      }
+    }
+
+    .left {
+      @include grid-column($collapse: true, $columns: 5);
+    }
+    .right {
+      @include grid-column($collapse: true, $columns: 7);
+      text-align: right;
+
+      .angle-icon {
+        position: relative;
+        top: 3px;
+        padding-left: 12px;
+        fill: $gray-quaternary;
+      }
+    }
+  }
+
+  &.no-anchors {
+    li {
+      @include grid-row();
+      padding: 10px 10px 10px 15px;
+    }
+  }
+}

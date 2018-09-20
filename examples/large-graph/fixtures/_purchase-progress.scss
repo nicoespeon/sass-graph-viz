@@ -1,0 +1,102 @@
+.purchase-status .purchase-status-header {
+  position: relative;
+
+  .purchase-status-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .purchase-step {
+    color: $gray-secondary;
+  }
+
+  .purchase-status-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    fill: $green-primary;
+
+    .error {
+      fill: $red-primary;
+    }
+  }
+}
+
+.purchase-status .purchase-progress-timeline {
+  display: flex;
+  justify-content: stretch;
+  text-align: center;
+  width: 100%;
+  margin: 32px 0;
+}
+
+.purchase-progress-timeline .purchase-progress-node {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: $gray-shade;
+  z-index: 2;
+
+  .fa {
+    margin-top: 11px;
+  }
+
+  &.is-complete {
+    background-color: $green-primary;
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  &.is-error {
+    background-color: $gray-secondary;
+  }
+}
+
+.purchase-progress-timeline .purchase-progress-edge {
+  display: inline-block;
+  margin: 0 -2px;
+  height: 8px;
+  background: $gray-shade;
+  background: linear-gradient(to right, $green-primary 50%, $gray-shade 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  border-radius: 3px;
+  flex-grow: 3;
+  align-self: center;
+
+  &.authorize {
+    transition-duration: 11s;
+  }
+
+  &.derisk {
+    transition-duration: 10s;
+  }
+
+  &.process {
+    transition-duration: 7s;
+  }
+
+  &.complete {
+    transition-duration: 10s;
+  }
+
+  &.is-active {
+    transition-property: background;
+    transition-timing-function: ease-out;
+    background-position: left bottom;
+  }
+
+  &.is-complete {
+    transition-duration: 0s;
+    background: $green-primary;
+  }
+
+  &.is-error {
+    transition-duration: 0s;
+    background: $gray-secondary;
+  }
+}

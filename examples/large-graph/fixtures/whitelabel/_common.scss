@@ -1,0 +1,52 @@
+@import "../colors";
+
+html.whitelabel {
+  height: auto;
+}
+
+body.whitelabel {
+  height: auto;
+  background-color: $white;
+}
+
+.hero {
+  background-color: $white;
+  box-shadow: none;
+}
+
+.results__hero .result__date,
+.checkout__hero .checkout__subtitle {
+  color: $gray-primary;
+}
+
+.hero p,
+.hero h1,
+.hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6 {
+  color: $gray-primary;
+  text-shadow: none;
+}
+
+.powered-by {
+  font-size: 14px;
+}
+
+.powered-by span,
+.powered-by svg {
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+.powered-by span {
+  line-height: 50px;
+  margin-right: 10px;
+}
+
+.powered-by-padded {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

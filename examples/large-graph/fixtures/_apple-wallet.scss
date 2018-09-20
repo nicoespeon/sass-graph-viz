@@ -1,0 +1,41 @@
+.apple-wallet-ticket-list {
+  max-width: 320px;
+  margin: auto;
+
+  .apple-wallet-wrapper {
+    &:not(:first-child) {
+      margin-top: -5rem;
+      position: relative;
+    }
+  }
+}
+
+.apple-wallet-ticket {
+  background-color: $blue-primary;
+  border: 1px solid $gray-primary;
+  border-radius: 8px;
+  color: $white;
+}
+
+.apple-wallet-passenger-name {
+  font-size: pxToRem(16px);
+}
+
+.apple-wallet-cities {
+  font-weight: 500;
+  font-size: pxToRem(12px);
+  vertical-align: bottom;
+  color: $gray-primary;
+}
+
+.apple-wallet-time {
+  font-size: pxToRem(26px);
+  font-weight: 200;
+}
+
+.apple-wallet-bus {
+  color: $gray-primary;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+}

@@ -1,0 +1,85 @@
+@import "foundation/foundation";
+@import "bootstrap";
+
+@import "mobile-menu";
+@import "amenities";
+@import "alert";
+@import "checkout";
+@import "tooltip";
+@import "header";
+@import "footer";
+@import "purchase-progress";
+@import "seat-selection";
+@import "sticky-sidebar";
+@import "departure";
+@import "departure-details";
+@import "card-departure";
+@import "filters";
+@import "toast";
+@import "key-stats";
+@import "search-form";
+@import "mobile-filter-bar";
+@import "pill-bar";
+@import "loading-bar";
+@import "calendar";
+@import "price-evolution";
+@import "mobile-autocomplete";
+@import "mobile-passenger-input";
+@import "animations";
+@import "terms";
+@import "apple-wallet";
+@import "slider";
+@import "spinner";
+@import "form";
+@import "stops-and-transfers";
+
+html {
+  font-size: 14px;
+}
+
+/**
+ *  Workaround to avoid mobile Safari allowing the user to scroll the background view instead
+ *  of the modal view
+ *  This fixes https://bugs.webkit.org/show_bug.cgi?id=153856 (for text inputs and links)
+ */
+html.fullscreen-overlay-is-open,
+html.fullscreen-overlay-is-open body {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+a {
+  font-weight: 500;
+}
+
+#content-atf {
+  background-color: $gray-shade;
+}
+
+.content-overlap {
+  margin-top: -40px;
+}
+
+.custom-modal {
+  max-width: 500px;
+  margin: auto;
+}
+
+.card .key-stats .key-stats-value {
+  font-size: 1rem;
+  margin: 10px 0 5px;
+}
+
+.card.card-loading-bar {
+  @include media-breakpoint-down(sm) {
+    box-shadow: none;
+    border-radius: $border-radius;
+    margin: pxToRem(20px) pxToRem(16px);
+  }
+}
+
+// stroke:none will ensure Chrome wil not render blurry icons
+svg use {
+  stroke: none;
+}

@@ -1,0 +1,725 @@
+// ---------- RICHTEXT --------- \\
+.richtext {
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  ol li ol {
+    list-style: lower-alpha;
+  }
+}
+
+// ---------- !HERO ---------- \\
+.hero {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  background-position: center center;
+}
+
+.list-view {
+  li {
+    font-size: $font-size-medium;
+    margin-bottom: 0;
+    padding-left: 15px;
+    &:active {
+      background: lighten($color-grey, 30%);
+    }
+  }
+  a,
+  li .list-link {
+    display: block;
+    height: 49px;
+    padding-left: 5px;
+    border-bottom: 1px solid $color-grey-light;
+    text-decoration: none;
+    line-height: 50px;
+    color: $color-text;
+    .value-pill {
+      margin-top: 8px;
+    }
+  }
+  &.dark {
+    a {
+      border-color: darken($color-grey-dark, 25%);
+      color: $white;
+    }
+    li {
+      &:active {
+        background: darken($blue-menu, 4%);
+      }
+    }
+  }
+}
+
+// ---------- !MEDIA OBJECT ---------- \\
+.media {
+  margin: 0 auto 10px;
+  @media #{$medium-up} {
+    margin: 0 auto 20px;
+  }
+  .media-image {
+    float: left;
+    margin-right: 10px;
+
+    &.right {
+      float: right;
+      margin-left: 10px;
+    }
+    img {
+      display: block;
+    }
+  }
+
+  &.stack {
+    text-align: center;
+    .media-image {
+      float: none;
+    }
+    @media #{$large-up} {
+      text-align: left;
+      .media-image {
+        float: left;
+        margin-right: 10px;
+        &.right {
+          float: right;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.media,
+.media-content {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1;
+}
+
+// ---------- !IMAGES ---------- \\
+.img {
+  position: relative;
+  overflow: hidden;
+  &.circle {
+    border-radius: 50%;
+    .inset-shadow {
+      border-radius: 50%;
+    }
+  }
+  &.rounded {
+    border-radius: 6px;
+    .inset-shadow {
+      border-radius: 6px;
+    }
+  }
+  .inset-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include bb-shadow-inset();
+  }
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+img {
+  &.circle {
+    border-radius: 50%;
+  }
+  &.rounded {
+    border-radius: 6px;
+  }
+}
+
+// ---------- !BUTTONS ---------- \\
+// Default Buttons
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 8px 26px;
+  border: none;
+  border-radius: 3px;
+  background-color: $blue-primary;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: $white;
+  line-height: 1.3em;
+  cursor: pointer;
+  @include transition(all 0.3s ease);
+  @include user-select(none);
+
+  // Default Sizes
+  &.tiny {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: $font-size-small;
+  }
+
+  &.small {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: $font-size-small;
+  }
+
+  &.large {
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: $font-size-large;
+  }
+
+  &.full {
+    width: 100%;
+    text-align: center;
+  }
+  &.icon-only {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-size: 24px;
+    text-align: center;
+
+    &:hover,
+    &:active {
+      background-color: inherit;
+    }
+
+    .bb-icon {
+      padding-left: 2px;
+      top: 0;
+      margin-right: 0;
+    }
+  }
+  // Default States
+  &:hover {
+    background-color: $blue-secondary;
+    text-decoration: none;
+  }
+  &:focus {
+    //TODO: add something here!
+    background-color: $blue-secondary;
+    outline: none;
+  }
+  &:active {
+    background-color: $blue-secondary;
+    @include transition(none);
+    outline: none;
+  }
+
+  // Button Types
+
+  // Primary Buttons
+  &.primary {
+    border-color: $color-btn-primary;
+    background-color: $color-btn-primary;
+
+    // Primary States
+    &:hover {
+      border-color: lighten($color-btn-primary, 6%);
+      background-color: lighten($color-btn-primary, 6%);
+    }
+    &:active,
+    &.is-disabled {
+      border-color: $color-btn-primary;
+      background-color: darken($color-btn-primary, 6%);
+    }
+  }
+
+  // Secondary Buttons
+  &.secondary {
+    @include box-sizing(border-box);
+    border: 1px solid lighten($rolling-stone-grey, 30%);
+    background: none;
+    color: $gray-secondary;
+    svg {
+      fill: $gray-secondary;
+    }
+
+    &.alt {
+      border-color: $white;
+      background: none;
+      color: $white;
+      svg {
+        fill: $white;
+      }
+    }
+    &.red {
+      border-color: $red-primary;
+      color: $red-primary;
+      svg {
+        fill: $red-primary;
+      }
+    }
+    &.blue {
+      border-color: $blue-primary;
+      background: $blue-primary;
+      color: $white;
+      svg {
+        fill: $white;
+      }
+    }
+    // Secondary States
+    &:hover {
+      border-color: darken($rolling-stone-grey, 5%);
+      background-color: darken($rolling-stone-grey, 5%);
+      color: $white;
+
+      svg {
+        fill: $white;
+      }
+
+      &.alt {
+        border-color: $white;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      &.red {
+        border-color: $red-primary;
+        background-color: $red-primary;
+      }
+      &.blue {
+        border-color: $blue-secondary;
+        background: $blue-secondary;
+      }
+    }
+    &:active,
+    &.is-disabled {
+      border-color: darken($rolling-stone-grey, 15%);
+      background-color: darken($rolling-stone-grey, 15%);
+      color: $white;
+
+      svg {
+        fill: $white;
+      }
+
+      &.alt {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  // Grey Buttons
+  &.grey {
+    background-color: $color-grey;
+
+    // Grey Button States
+    &:hover {
+      background-color: lighten($color-btn-primary, 6%);
+    }
+    &:active,
+    &.is-disabled {
+      background-color: darken($color-btn-primary, 6%);
+    }
+  }
+
+  &.square {
+    border-radius: 0;
+  }
+
+  &.left {
+    float: left;
+    margin-right: 10px;
+    @media #{$medium-up} {
+      margin-right: 15px;
+    }
+  }
+
+  &.right {
+    float: right;
+    margin-left: 10px;
+    @media #{$medium-up} {
+      margin-left: 15px;
+    }
+  }
+
+  // Juicy Orange CTA
+  &.cta.orange {
+    width: 100%;
+    height: 45px;
+    margin-top: 16px;
+    border: 1px solid $orange-tertiary;
+    border-radius: 3px;
+    background-color: $orange-secondary;
+    font-size: 16px;
+    color: $white;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background: $orange-tertiary;
+      box-shadow: none;
+    }
+
+    &:active {
+      background: $orange-tertiary;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  /*  add this class for full width only on mobile.
+      A good use case for this is when you have multiple buttons on desktop
+      and hide the other ones on mobile and want to keep one full width cta
+  */
+  &.mobile-cta {
+    @media #{$small-only} {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Icon Buttons
+  .bb-icon {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.2em;
+    &.right {
+      top: 0;
+      right: 0;
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+}
+
+// ---------- !PILLS ---------- \\
+a.pill,
+span.pill {
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: $white;
+  text-decoration: none;
+  font-family: $font-family-regular;
+  @include transition(all 0.2s ease);
+
+  &.small {
+    padding: 8px 10px;
+  }
+  &:hover {
+    color: $white;
+    background-color: lighten($color-grey, 4%);
+  }
+  &:active {
+    @include transition(none);
+  }
+
+  &.is-selected,
+  &:active {
+    color: $white;
+    background-color: $color-grey;
+  }
+
+  &.dark {
+    color: $color-grey;
+
+    &.is-selected,
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &.social {
+    i {
+      position: relative;
+      top: 4px;
+      font-size: $font-size-large;
+    }
+  }
+
+  i {
+    &.icon-left {
+      padding-right: 8px;
+      margin-right: 0;
+    }
+    &.icon-right {
+      padding-left: 8px;
+    }
+  }
+}
+
+// ---------- !TABLES ---------- \\
+table.table {
+  width: 100%;
+  margin: 10px 0;
+  // border: 1px solid #ccd9de;
+  border-radius: 8px;
+  border-collapse: collapse;
+  text-align: center;
+  overflow: auto;
+
+  thead {
+  }
+
+  th {
+    padding: 8px;
+    border-bottom: 2px solid #ccd9de;
+    color: $color-heading;
+  }
+
+  tbody {
+    width: 100%;
+    overflow: auto;
+    tr:hover {
+      background-color: lighten(#ccd9de, 14%);
+    }
+  }
+
+  td {
+    padding: 8px;
+  }
+
+  tr {
+    border-bottom: 1px solid #ccd9de;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.bb-popup {
+  // popups also use .card styles within the popup
+  position: absolute;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 2000;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  text-align: center;
+
+  left: 50%;
+  top: 10%;
+
+  width: 90%;
+  margin-left: -45%;
+
+  @media #{$large-up} {
+    width: 1000px;
+    margin-left: -500px;
+  }
+
+  @media #{$medium-only} {
+    width: 550px;
+    margin-left: -275px;
+  }
+
+  .bb-popup-inner {
+    margin: 5px;
+    background-color: $white;
+    border-radius: 6px;
+  }
+
+  &.is-visible {
+    display: block;
+    @include animated(700ms);
+    @extend .bounceInRight;
+  }
+  // this is only used if animations are supported
+  &.is-hidden {
+    display: block;
+    @include animated(400ms);
+    @extend .bounceOutLeft;
+  }
+
+  &.error {
+    text-align: center;
+    .popup-header .bb-icon {
+      color: $color-yellow-logo;
+      font-size: 24px;
+      width: 100%;
+    }
+  }
+
+  .popup-header {
+    background: $gray-shade;
+    border-radius: 10px 10px 0 0;
+
+    @media #{$medium-up} {
+      font-size: $font-size-medium;
+    }
+
+    .bb-icon {
+      vertical-align: middle;
+      margin-top: -5px;
+      padding-right: 10px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: inherit;
+      display: inline;
+    }
+  }
+  .popup-content {
+    @media #{$medium-up} {
+      font-size: $font-size-medium;
+    }
+  }
+  .popup-footer {
+    border-radius: 0 0 10px 10px;
+    .btn {
+      min-width: 80px;
+    }
+  }
+  .popup-debug {
+    color: $gray-tertiary;
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+  }
+}
+
+// ---------- !MISCELLANEOUS ---------- \\
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// ---------- !HELPERS ---------- \\
+
+.bb-font {
+  font-family: $font-family-regular;
+}
+
+.bb-font-light {
+  font-family: $font-family-light;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible-phone {
+  @media #{$medium-up} {
+    display: none !important;
+  }
+}
+
+.hidden-phone {
+  display: none !important;
+  @media #{$medium-up} {
+    display: inline !important;
+  }
+}
+
+.hidden-tablet {
+  @media #{$medium-only} {
+    display: none !important;
+  }
+}
+
+.hidden-desktop {
+  @media #{$large-up} {
+    display: none !important;
+  }
+}
+
+.visible-desktop {
+  display: none !important;
+  @media #{$large-up} {
+    display: inline !important;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+// ---------- !LOGO GRID ---------- \\
+
+// Can be a link
+.logo-grid {
+  display: block;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  vertical-align: top;
+  text-align: center;
+
+  @media #{$medium-up} {
+    padding-top: 10px;
+  }
+
+  &.with-text {
+    @media #{$medium-up} {
+      height: 180px;
+    }
+    @media #{$medium-up} {
+      height: 160px;
+    }
+  }
+  .oldie & {
+    @include ie8-png-fix();
+  }
+  .logo-grid__image {
+    display: block;
+    height: 80px;
+    padding: 0 10px;
+    line-height: 80px;
+
+    html.bbtouch & {
+      &:active {
+        img {
+          @include transition(all 0.3s);
+          opacity: 0.75;
+        }
+      }
+    }
+    img {
+      max-height: 80px;
+      vertical-align: middle;
+    }
+  }
+
+  .logo-grid__caption {
+    display: block;
+    margin-top: 10px;
+    font-family: $font-family-light;
+
+    strong:before {
+      content: " - ";
+    }
+  }
+}
+
+// If it's a link
+html.no-bbtouch a.logo-grid {
+  opacity: 0.75;
+  @include transition(all 0.3s);
+  &:hover {
+    opacity: 1;
+    @include transform(translate3d(0, -5px, 0));
+    text-decoration: none;
+    .press-logo img {
+      opacity: 1;
+    }
+  }
+  .logo-grid__caption {
+    font-family: $font-family-regular;
+  }
+}

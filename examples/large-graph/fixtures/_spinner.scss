@@ -1,0 +1,45 @@
+@import "designkit/bourbon-custom";
+@import "designkit/mixins";
+@import "designkit/animations";
+
+@mixin style-spinner($size, $color) {
+  border-top: $size solid $color;
+  border-right: $size solid $color;
+  border-bottom: $size solid $color;
+  border-left: $size solid rgba(0, 0, 0, 0);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  @include style-spinner(2px, $gray-secondary);
+  @include transform(translateZ(0));
+  @include spin(1.2s);
+
+  &__white {
+    @include style-spinner(2px, $white);
+  }
+
+  &__blue {
+    @include style-spinner(2px, $blue-primary);
+  }
+}
+
+.bus-spinner {
+  position: relative;
+  height: 144px;
+  padding: 22px 0;
+  margin-bottom: 10px;
+
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    margin-left: -80px;
+    margin-top: -10px;
+    @include style-spinner(5px, $green-primary);
+  }
+}

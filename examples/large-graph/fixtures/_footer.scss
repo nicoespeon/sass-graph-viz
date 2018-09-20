@@ -1,0 +1,139 @@
+$footer-height-medium-up: 385px;
+$footer-height-small-only: 212px;
+.sticky-wrapper {
+  min-height: 100%;
+  background-color: $gray-shade;
+}
+
+.sticky-wrapper:after {
+  content: "";
+  display: block;
+}
+
+.footer {
+  font-size: 16px;
+  padding: 16px;
+  color: $gray-primary;
+}
+
+.footer .list {
+  list-style: none;
+  padding: 0;
+  @media #{$small-only} {
+    margin-top: 20px;
+  }
+}
+
+.footer .list li {
+  line-height: 24px;
+  border: none;
+  font-size: 16px;
+}
+
+.footer .list a {
+  font-weight: 400;
+  display: inline;
+  color: $gray-primary;
+}
+
+.footer .list li > span {
+  padding: 0;
+  color: $gray-primary;
+}
+
+.footer .list a span {
+  display: inline;
+  padding: 0;
+  color: $gray-primary;
+}
+
+.footer .social-links svg {
+  position: relative;
+  top: 8px;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+  fill: $gray-primary;
+  @media #{$small-only} {
+    top: 8px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.footer-addendum {
+  color: $gray-secondary;
+  background-color: $gray-shade;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid $gray-tertiary;
+  @media #{$small-only} {
+    font-size: 16px;
+    border-top: none;
+  }
+  a {
+    color: $gray-secondary;
+    font-weight: 400;
+  }
+}
+
+.social-links {
+  list-style: none;
+  margin-bottom: 0;
+  li {
+    display: inline;
+  }
+  padding-bottom: 24px;
+}
+
+.social-links a {
+  padding-right: 8px;
+}
+
+.list-header {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: initial;
+}
+
+#main-footer {
+  background: $gray-shade;
+  @media #{$small-only} {
+    display: none;
+  }
+}
+
+.footer-content {
+  padding: 40px 0;
+}
+
+#mobile-footer {
+  background: $gray-shade;
+  border-top: 1px solid $gray-tertiary;
+  @media #{$medium-up} {
+    display: none;
+  }
+  .row {
+    text-align: center;
+    padding-top: 20px;
+  }
+  .separator {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .social-links {
+    padding: 0;
+  }
+  .social-links > li {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  a:not(.text-secondary) {
+    color: $gray-primary;
+  }
+  .social-links svg {
+    width: 24px;
+    height: 24px;
+  }
+}

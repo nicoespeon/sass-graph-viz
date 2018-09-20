@@ -1,0 +1,49 @@
+.bb-dropdown {
+  position: absolute;
+  display: none;
+  width: 150px;
+  right: -6px;
+  margin-top: 9px;
+  border-radius: 3px;
+  background: $white;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px 0px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px;
+  z-index: 50;
+  line-height: 25px;
+
+  //pseudo classes are for arrows
+  &:after, &:before {
+    bottom: 100%;
+    left: 114px;
+    right: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: $gray-shade;
+    border-width: 8px;
+    margin-left: -8px;
+  }
+
+  .list-item {
+    padding: 0;
+    list-style-type: none;
+
+    a, span {
+      padding: 5px 20px;
+      text-align: left;
+      display: block;
+      color: $gray-secondary;
+      text-decoration: none;
+
+      &:hover {
+        background: $gray-shade;
+      }
+    }
+  }
+}

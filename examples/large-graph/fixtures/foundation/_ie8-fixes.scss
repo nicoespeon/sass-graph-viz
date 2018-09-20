@@ -1,0 +1,4 @@
+.row {
+  // sets max width in PX for all rows -- this fixes ie8 max-width in REM issues
+  max-width: $row-width-px - $column-gutter-px;
+}

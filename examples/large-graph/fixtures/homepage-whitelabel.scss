@@ -1,0 +1,104 @@
+@import "secondary-file-setup";
+
+@import "colors";
+@import "featured-partners";
+@import "media-card";
+@import "banner-section";
+@import "search-form";
+@import "mobile-autocomplete";
+@import "mobile-passenger-input";
+
+h3.seo-link {
+  font-size: $font-size-regular;
+  font-weight: normal;
+
+  a & {
+    color: $blue-primary;
+  }
+}
+
+.banner-section .banner-title {
+  margin-bottom: 20px;
+  color: $gray-primary;
+  font-weight: bold;
+  text-align: center;
+}
+
+$home-padding: 15px;
+#content {
+  max-width: 100%;
+  &.tight {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.home-section {
+  padding: 25px 0;
+
+  &.home-section--white {
+    background: $white;
+
+    .header-section {
+      font-size: 20px;
+    }
+  }
+  header {
+    text-align: center;
+  }
+  .card {
+    header {
+      text-align: left;
+      padding: $home-padding;
+    }
+    .card-content {
+      padding: $home-padding;
+    }
+  }
+}
+
+.homepage-seo__button {
+  text-align: center;
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+  span {
+    color: $white;
+    font-size: 1.4em;
+    font-weight: normal;
+  }
+}
+
+.homepage-busbud__intro {
+  h1 {
+    margin-right: 5px;
+  }
+  h1,
+  h2 {
+    display: inline-block;
+    color: $gray-primary;
+    font-size: 14px;
+  }
+}
+
+.mobile-title {
+  padding-top: 10px;
+}
+
+.header-section {
+  color: $gray-secondary;
+  font-weight: normal;
+}
+
+@media #{$large-up} {
+  .hero {
+    padding: 95px 0;
+  }
+}
+
+@media #{$medium-only} {
+  .hero {
+    padding: 40px 0;
+  }
+}

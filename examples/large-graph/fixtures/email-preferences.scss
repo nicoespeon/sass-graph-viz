@@ -1,0 +1,81 @@
+@import "secondary-file-setup";
+@import "colors";
+@import "search-form";
+@import "card";
+@import "spinner";
+
+.sticky-wrapper {
+  background-color: #e7edf1;
+}
+
+.card {
+  margin: 0 auto;
+  margin-top: 20px;
+
+  .btn {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  .card-footer {
+    border-top: 1px solid $gray-tertiary;
+    padding: 10px 15px;
+    text-align: left;
+
+    h3 {
+      font-weight: bold;
+      font-size: 14px;
+      display: block;
+      color: $color-heading;
+      margin: 0px;
+    }
+  }
+}
+
+.status {
+  display: inline-block;
+
+  p {
+    display: inline-block;
+    margin: 0px 0px 0px 5px;
+    padding: 0px;
+    font-weight: 700;
+  }
+  .red {
+    color: $red-primary;
+    fill: $red-primary;
+  }
+  .green {
+    color: $green-primary;
+    fill: $green-primary;
+  }
+}
+
+.preferences {
+  .btn {
+    margin-bottom: 10px;
+
+    &.grey {
+      // Grey Button States
+      &:hover {
+        background-color: darken($color-grey, 20%);
+      }
+      &:active,
+      &.is-disabled {
+        background-color: darken($color-grey, 20%);
+      }
+    }
+  }
+}
+
+.form .label-checkbox {
+  display: block;
+}
+
+.form input[type="checkbox"] {
+  margin-right: 8px;
+}

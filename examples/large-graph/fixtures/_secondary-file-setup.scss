@@ -1,0 +1,12 @@
+@import "designkit/bourbon-custom";
+
+// disable including some classes from foundation
+// they will be included in the main stylesheet -- see _primary-file-setup.scss
+$include-html-global-classes: false;
+$include-html-grid-classes: false;
+
+@import "foundation/variables";
+@import "foundation/grid";
+
+@import "designkit/variables";
+@import "designkit/mixins";

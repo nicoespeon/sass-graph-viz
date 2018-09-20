@@ -1,0 +1,18 @@
+.price-evolution-svg {
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 5px;
+
+  @media #{$small-only} {
+    margin: 10px;
+  }
+
+  path {
+    stroke-width: 2px;
+    stroke: $green-primary;
+  }
+
+  rect {
+    fill: rgba(56, 117, 25, 0.2);
+  }
+}

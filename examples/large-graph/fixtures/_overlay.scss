@@ -1,0 +1,63 @@
+@import "colors";
+
+.overlay-card-wrapper {
+  padding: 20px;
+
+  @media #{$small-only} {
+    padding: 0px;
+  }
+}
+
+.overlay-card {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  @media #{$small-only} {
+    border-radius: 0px;
+    min-height: 100vh;
+  }
+
+  .overlay-card-header {
+    border-radius: 4px 4px 0px 0px;
+    background-color: $gray-shade;
+    display: block;
+    height: 54px;
+    box-shadow: $shadow-z-2;
+    text-align: center;
+    color: $gray-primary;
+    position: relative;
+    z-index: 1;
+
+    @media #{$small-only} {
+      border-radius: 0px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 700;
+      display: inline;
+      line-height: 54px;
+    }
+
+    i {
+      position: absolute;
+      font-size: 24px;
+      line-height: 34px;
+      top: 0;
+      right: 0;
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+  }
+
+  .overlay-body {
+    padding: 20px;
+  }
+
+}

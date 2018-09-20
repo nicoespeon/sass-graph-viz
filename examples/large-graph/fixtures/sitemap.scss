@@ -1,0 +1,13 @@
+$block-grid-default-spacing: 2px;
+@import "foundation/block-grid";
+@import "mobile-base";
+.suggestion {
+  font-size: 16px;
+}
+
+.pagination {
+  text-align: center;
+  .btn.selected {
+    cursor: default;
+  }
+}

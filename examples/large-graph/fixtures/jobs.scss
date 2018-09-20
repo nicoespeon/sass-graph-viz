@@ -1,0 +1,117 @@
+@import "secondary-file-setup";
+
+// over qualify selector to ensure lazy image loading doesn't interfere with placement
+#main-view .hero {
+  background-position: center 19%;
+  min-height: 200px;
+
+  @media #{$medium-up} {
+    min-height: 500px;
+  }
+
+  @media #{$xlarge-up} {
+    min-height: 700px;
+  }
+
+  @media #{$xxlarge-up} {
+    min-height: 1000px;
+  }
+}
+
+.job-openings {
+  .job {
+    line-height: 2em;
+
+    a {
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .location {
+      float: right;
+    }
+  }
+
+  margin-bottom: 12px;
+}
+
+.bottom-images {
+  img {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+.card-content.richtext.richtext-list {
+  li {
+    margin: 10px 0px;
+  }
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+.job-card-wrapper {
+  padding: 0;
+  .job-card {
+    .card-header {
+      h1 {
+        margin: 0;
+      }
+    }
+    .card-content {
+      padding: 2em;
+
+      ul {
+        margin: 0 0 2em 2em;
+      }
+    }
+  }
+
+  .right-menu {
+    .btn-primary {
+      width: 100%;
+    }
+
+    #jobs-email-address {
+      display: none;
+      text-align: center;
+      width: 100%;
+
+    }
+
+    dl {
+      margin: 2em 0;
+
+      dt {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: .4em;
+      }
+    }
+
+    .share_buttons {
+      margin-bottom: 1em;
+
+      a.btn {
+        width: 100%;
+        margin-bottom: 0.2em;
+      }
+    }
+  }
+
+  .back-button {
+    &::before {
+      content: "<";
+      position: absolute;
+      left: -0.1em;
+      top: 0;
+    }
+    display: inline-block;
+    margin-bottom: 1em;
+
+    @media #{$small-only} {
+      display: none;
+    }
+  }
+}

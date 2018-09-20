@@ -1,0 +1,337 @@
+.departure-card {
+  .schedule {
+    margin-bottom: 8px;
+    font-size: 16px;
+
+    & > strong {
+      width: 70px;
+      text-align: right;
+    }
+
+    & > span::before {
+      content: "\B7";
+      margin-right: 0.57rem;
+    }
+  }
+  .schedule:last-child {
+    margin-bottom: 0px;
+  }
+
+  .departure-car--icon-clock {
+    max-width: 14px; //IE11 fix
+  }
+
+  .btn-main {
+    min-width: 130px;
+
+    &.btn-sold-out {
+      border: 1px solid $gray-tertiary;
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-card {
+    margin: 0;
+  }
+}
+
+.with-page {
+  background-color: $white;
+
+  .modal-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: $with-page--header-height;
+  }
+
+  .page--content {
+    padding-top: $with-page--header-height;
+  }
+
+  .page--content__with_btn {
+    padding-bottom: $with-page--button-height;
+  }
+
+  .page--main-btn__middle {
+    display: none;
+  }
+
+  .page--main-btn__fixed {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: $with-page--button-height;
+    background-color: $white;
+  }
+}
+
+/**
+ * Trip info
+ */
+@include media-breakpoint-up(md) {
+  .departure-details--trip-info {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 16px;
+    border-top: 1px solid $gray-tertiary;
+
+    > div {
+      flex: 1 0 40%;
+      max-width: 50%;
+      &:nth-child(odd) {
+        padding-right: 8px;
+      }
+      &:nth-child(even) {
+        padding-left: 8px;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-details--trip-info {
+    > div {
+      padding: 20px 16px;
+    }
+  }
+}
+
+/**
+ * Amenities & terms
+ */
+.departure-details--amenities-terms {
+  > .collapsible {
+    padding: 0;
+    border: none;
+    border-top: 1px solid $gray-tertiary;
+    .card-title {
+      padding: 0 16px;
+      svg {
+        max-width: 16px; //IE11 fix
+      }
+    }
+  }
+
+  .terms {
+    > .row {
+      margin: 0; // override card style returned by terms component :/
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-details--amenities-terms {
+    .section {
+      > div {
+        padding: 20px 16px;
+        border-top: 1px solid $gray-tertiary;
+      }
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .departure-details--amenities-terms {
+    .section {
+      display: flex;
+      flex-direction: row;
+      padding: 20px 16px;
+      border-top: 1px solid $gray-tertiary;
+
+      > div {
+        flex: 1 0 40%;
+        max-width: 50%;
+        &:nth-child(odd) {
+          padding-right: 8px;
+        }
+        &:nth-child(even) {
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+.departure-details--amenities-terms__terms {
+  .list-group-item {
+    padding: 0 !important;
+
+    > div {
+      width: 100%; // IE11 fix
+    }
+  }
+
+  .terms-icon-content {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.departure-details-map-preview {
+  padding: 20px 16px;
+  border-top: 1px solid $gray-tertiary;
+
+  > .departure-details--col {
+    flex: 1 0 40%;
+    max-width: 50%;
+    &:nth-child(odd) {
+      padding-right: 8px;
+    }
+    &:nth-child(even) {
+      padding-left: 8px;
+    }
+  }
+}
+
+.departure-details-btn-select-middle,
+.departure-details-btn-select-fixed {
+  display: none;
+  padding: 20px 16px;
+  border-top: 1px solid $gray-tertiary;
+
+  button {
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .departure-details-btn-select-middle {
+    display: block;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-card {
+    margin: 0;
+  }
+}
+
+/**
+ * Trip info
+ */
+@include media-breakpoint-up(md) {
+  .departure-details--trip-info {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 16px;
+    border-top: 1px solid #d8dde1;
+
+    > div {
+      flex: 1 0 40%;
+      max-width: 50%;
+      &:nth-child(odd) {
+        padding-right: 8px;
+      }
+      &:nth-child(even) {
+        padding-left: 8px;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-details--trip-info {
+    > div {
+      padding: 20px 16px;
+    }
+  }
+}
+
+/**
+ * Amenities & terms
+ */
+.departure-details--amenities-terms {
+  > .collapsible {
+    padding: 0;
+    border: "none";
+    border-top: 1px solid #d8dde1;
+    .card-title {
+      padding: 0 16px;
+    }
+  }
+
+  // .section {
+  //   padding: 20px 16px;
+  //   border-top: 1px solid #d8dde1;
+  // }
+
+  .terms {
+    > .row {
+      margin: 0; // override card style returned by terms component :/
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .departure-details--amenities-terms {
+    .section {
+      > div {
+        padding: 20px 16px;
+        border-top: 1px solid #d8dde1;
+      }
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .departure-details--amenities-terms {
+    .section {
+      display: flex;
+      flex-direction: row;
+      padding: 20px 16px;
+      border-top: 1px solid #d8dde1;
+
+      > div {
+        flex: 1 0 40%;
+        max-width: 50%;
+        &:nth-child(odd) {
+          padding-right: 8px;
+        }
+        &:nth-child(even) {
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+.departure-details--amenities-terms__terms {
+  .list-group-item {
+    padding: 0 !important;
+  }
+
+  .terms-icon-content {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.departure-details-map-preview {
+  padding: 20px 16px;
+  border-top: 1px solid #d8dde1;
+
+  > div {
+    flex: 1 0 40%;
+    max-width: 50%;
+    &:nth-child(odd) {
+      padding-right: 8px;
+    }
+    &:nth-child(even) {
+      padding-left: 8px;
+    }
+  }
+}
+
+.departure-details-btn-select-middle,
+.departure-details-btn-select-fixed {
+  display: none;
+  padding: 20px 16px;
+  border-top: 1px solid #d8dde1;
+
+  button {
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .departure-details-btn-select-middle {
+    display: block;
+  }
+}

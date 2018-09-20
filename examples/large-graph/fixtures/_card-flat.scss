@@ -1,0 +1,11 @@
+.card-flat {
+  background-color: $gray-shade;
+  border-width: 0;
+  border-radius: 0;
+  margin: $card-spacer-y $card-spacer-x;
+}
+
+.card-flat .list-group-item {
+  margin-top: $spacer;
+  border: none;
+}

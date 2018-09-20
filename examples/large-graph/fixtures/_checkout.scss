@@ -1,0 +1,10 @@
+.price-detail--deflist {
+  dd {
+    border-bottom: 1px solid $gray-shade;
+  }
+}
+
+.price-detail--total {
+  margin: $card-spacer-x (-$card-spacer-x);
+  background-color: $gray-tertiary;
+}

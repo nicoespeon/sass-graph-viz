@@ -1,0 +1,56 @@
+.select-form-group {
+  line-height: 1.6;
+  position: relative;
+  border: $gray-primary;
+  color: $gray-primary;
+  padding: 0;
+  margin-bottom: 12px;
+
+  .select-form-control {
+    line-height: 1.6;
+    height: 44px;
+    background: inherit;
+    color: $blue-primary;
+    background-color: $blue-shade;
+    padding: 8px;
+    padding-right: 40px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    &.light-select {
+      background-color: $gray-shade;
+    }
+  }
+
+  .select-dropdown-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    right: 0.75em;
+    pointer-events: none;
+
+    svg {
+      fill: $blue-primary;
+    }
+  }
+
+  &.disabled {
+    $disabled-text-color: lighten(desaturate($blue-primary, 20%), 10%);
+    opacity: 0.6;
+
+    .select-form-control {
+      color: $disabled-text-color;
+    }
+
+    .select-dropdown-icon {
+      svg {
+        fill: $disabled-text-color;
+      }
+    }
+  }
+}

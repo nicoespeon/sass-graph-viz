@@ -1,0 +1,25 @@
+.key-stats {
+  .key-stats-value,
+  .key-stats-label,
+  .icon {
+    line-height: 24.47px;
+  }
+  .key-stats-value {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .key-stats-label {
+    font-size: 16px;
+  }
+  .key-stats-item {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .icon {
+    font-size: 30px;
+    color: #127ccb;
+    fill: #127ccb;
+    display: block;
+    margin-bottom: 10px;
+  }
+}

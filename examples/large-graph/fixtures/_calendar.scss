@@ -1,0 +1,49 @@
+.calendar .month,
+.calendar .calendar-dates {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.calendar .calendar-dates {
+  margin-bottom: 20px;
+}
+
+.calendar .month-wrapper {
+  padding: 12px;
+  color: $gray-primary;
+  background-color: $gray-shade;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.calendar .cell {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  text-align: center;
+  line-height: 34px;
+}
+
+.calendar .day {
+  position: relative;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.calendar .day.disabled {
+  color: $gray-tertiary;
+  cursor: default;
+}
+
+.calendar .day.selected {
+  background-color: $blue-primary;
+  box-shadow: $shadow-z-1;
+  color: $white;
+}
+
+.calendar .empty-day {
+  opacity: 0;
+}

@@ -1,0 +1,224 @@
+.seat-selection {
+  &.card > header {
+    padding-bottom: 8px;
+    a {
+      float: right;
+    }
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .error {
+    margin-top: 5px;
+    line-height: 1.25em;
+    color: $red-primary;
+  }
+
+  .warning-message {
+    text-align: center;
+  }
+
+  .unified-subheader {
+    margin-bottom: 0;
+    dt {
+      min-width: 100%;
+    }
+    dd {
+      margin: 0;
+
+      svg {
+        display: inline-block;
+        height: 20px;
+        max-width: 20px;
+        margin-right: 4px;
+        vertical-align: text-bottom;
+      }
+    }
+  }
+  .subheader {
+    line-height: 24px;
+    .legend-label {
+      padding-left: 3px;
+      font-size: 0.85em;
+    }
+    svg {
+      height: 20px;
+      max-width: 20px;
+      margin-bottom: 2px;
+      vertical-align: bottom;
+    }
+  }
+  &.has-multiple-floor .seat-selection__bus header {
+    min-height: 150px;
+    @media #{$medium-only} {
+      min-height: 200px;
+    }
+  }
+  .seat-selection__bus {
+    header {
+      min-height: 100px; // Setup a min height to be sure all bus start at the same position
+    }
+    .bus__route {
+      display: block;
+      width: 100%;
+      padding-bottom: 4px;
+      border-bottom: 1px solid $gray-primary;
+    }
+    .bus__count-passengers-value {
+      float: right;
+    }
+    .bus__select-floor {
+      border: 1px solid $blue-primary;
+      border-radius: 3px;
+      margin-top: 15px;
+
+      .bus__select-floor__button {
+        font-weight: bold;
+        color: $blue-primary;
+        text-align: center;
+        cursor: pointer;
+
+        &.is-selected {
+          background: $blue-primary;
+          color: $white;
+          cursor: auto;
+        }
+        .count-available {
+          font-size: 0.85em;
+        }
+      }
+    }
+
+    .bus {
+      position: relative; // For the wheels
+
+      .bus__content-wrapper {
+        position: relative;
+        z-index: 1;
+
+        padding: 0 20%;
+
+        background-size: 100%;
+        background-position: center center;
+
+        .seat-selection-svg--available,
+        .seat-selection-svg--selected {
+          cursor: pointer;
+        }
+        .seat-selection-svg--available:hover {
+          path {
+            fill: #888888;
+          }
+          .color-1 path {
+            fill: #989898;
+          }
+          .color-2 path {
+            fill: #b1b1b1;
+          }
+        }
+      }
+      .bus__row {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 3px 0;
+      }
+
+      .cell {
+        flex: 1;
+        max-height: 25px;
+        padding: 0 3px;
+      }
+      .bus__wheels {
+        position: absolute;
+        left: 0;
+        z-index: 0;
+      }
+      .bus__wheels--top {
+        top: 150px;
+      }
+      .bus__wheels--bottom {
+        bottom: 75px;
+      }
+      @media #{$small-only} {
+        .bus__wheels--top {
+          top: 300px;
+        }
+        .bus__wheels--bottom {
+          bottom: 150px;
+        }
+      }
+    }
+
+    .header__bus-unavailable-legend {
+      display: none;
+    }
+    .bus-unavailable-legend {
+      position: absolute;
+      top: 300px;
+      padding: 0 26% 0 18%;
+      text-align: center;
+    }
+    @media #{$small-only} {
+      .header__bus-unavailable-legend {
+        display: block;
+      }
+      .bus-unavailable,
+      .bus-unavailable-legend {
+        display: none;
+      }
+    }
+  }
+
+  .seat-selection-svg {
+    width: 100%;
+    height: 100%;
+
+    path {
+      transition: fill 0.4s ease;
+    }
+    .seat-cross {
+      display: none;
+    }
+    // Available
+    &.seat-selection-svg--available {
+      path {
+        fill: #686868;
+      }
+      .color-1 path {
+        fill: #787878;
+      }
+      .color-2 path {
+        fill: #919191;
+      }
+    }
+    // Selected
+    &.seat-selection-svg--occupied {
+      path {
+        fill: #c4c4c4;
+      }
+      .color-1 path {
+        fill: #d4d4d4;
+      }
+      .color-2 path {
+        fill: #eaeaea;
+      }
+      .seat-cross {
+        display: block;
+        fill: #c4c4c4;
+      }
+    }
+    // Occupied
+    &.seat-selection-svg--selected {
+      path {
+        fill: #e97d1a;
+      }
+      .color-1 path {
+        fill: #f0942e;
+      }
+      .color-2 path {
+        fill: #fbaf17;
+      }
+    }
+  }
+}

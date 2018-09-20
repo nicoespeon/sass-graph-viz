@@ -1,0 +1,76 @@
+.list-mobile {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-mobile li {
+  border-bottom: 1px solid $gray-tertiary;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.list-inline li {
+  display: inline-block;
+  margin: 10px 20px 10px 0;
+  border: none;
+}
+
+.list-mobile > li > span,
+.list-mobile li .list-link,
+.list-mobile li a,
+.list-mobile span.custom-control-description {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: $gray-primary;
+}
+
+.list-mobile span.custom-control-indicator {
+  padding: 15px;
+  margin-top: -1.1rem;
+}
+
+.list-mobile .list-item-bold {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 16px;
+}
+
+.list-mobile .icon-right {
+  float: right;
+}
+
+.list-mobile .is-hidden {
+  display: none;
+}
+
+.list-mobile .list-item-unbordered {
+  border: none;
+}
+
+.list-mobile .list-nested li {
+  font-size: 16px;
+  border-bottom: none;
+}
+
+.list-mobile .list-item-input-group {
+  margin-top: 16px;
+  border-bottom: none;
+}
+
+.list-mobile .list-item-input-group .list-item-input {
+  background-color: #565a5c;
+  padding: 10px;
+  border: 1px solid $gray-tertiary;
+  border-radius: 3px;
+}
+
+// Transitions and Transformations
+.list-title.open .icon-dropdown {
+  transform: rotate(180deg);
+}
+
+.list-mobile .icon-dropdown {
+  transition: transform 200ms;
+}

@@ -1,0 +1,26 @@
+$large-up: "only screen and (min-width: 64.063em)";
+
+.hero {
+  position: relative;
+  padding: 50px 0 0;
+
+  @media #{$large-up} {
+    padding: 96px 0;
+  }
+}
+
+.hero-gradient {
+  background: $blue-primary;
+  background: linear-gradient($blue-primary, $blue-gradient-end);
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  height: 100%;
+  opacity: 1;
+  width: 100%;
+
+  @media #{$large-up} {
+    opacity: 0.85;
+  }
+}
+

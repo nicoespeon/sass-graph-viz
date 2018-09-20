@@ -1,0 +1,48 @@
+@import "gam";
+
+.whitelabel-gam-kiosk {
+
+  // Kiosk Header
+  // ============================================
+
+  .kiosk-header {
+    padding: 20px 40px;
+    font-weight: 200;
+    color: $white;
+    background: $gam-grey-medium;
+    letter-spacing: 0.04em;
+  }
+
+  .kiosk-header.is-fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .has-fixed-kiosk-header {
+    padding-top: 90px;
+  }
+
+  .kiosk-header-left {
+    float: left;
+    font-size: 28px;
+    height: 50px;
+  }
+
+  .kiosk-header-right {
+    float: right;
+    font-size: 14px;
+  }
+
+  .kiosk-header-right span,
+  .kiosk-header-right svg {
+    display: inline-block;
+    vertical-align: top;
+
+  }
+
+  .kiosk-header-right span {
+    line-height: 50px;
+    margin-right: 10px;
+  }
+}

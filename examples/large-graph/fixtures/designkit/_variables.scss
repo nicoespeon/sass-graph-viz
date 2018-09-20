@@ -1,0 +1,73 @@
+@import "../colors";
+// Sizes
+$font-size-tiny : 0.75em;
+$font-size-small : 0.85em;
+$font-size-regular: 1em;
+$font-size-medium : 1.25em;
+$font-size-large : 1.5em;
+$font-size-x-large : 2em;
+$font-size-xx-large : 3em;
+$font-size-xxx-large : 4em;
+
+// Weights
+$font-weight-regular : 400;
+$font-weight-semi-bold: 600;
+
+// Families
+$font-family-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-family-light: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-family-helvetica: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+// ---------- !COLORS ---------- \\
+// Brand Colors
+$color-yellow-logo: $orange-primary;
+$color-orange-logo: $orange-secondary;
+
+$shark-black: $gray-primary;
+$rolling-stone-grey: $gray-secondary;
+$mystic: #ebf0f2;
+$blue-primary : $blue-primary;
+$facebook-blue: #39589A;
+
+$concrete: $gray-shade;
+$black: $gray-primary;
+
+$white: $white;
+$color-grey-light: $gray-tertiary;
+$color-grey: $gray-secondary;
+$color-grey-dark: $gray-secondary;
+
+$blue-header: $blue-primary;
+$color-blue-searchbar: #2089da;
+$blue-menu: $gray-primary;
+
+// Text
+$color-heading: $shark-black;
+$color-text: $rolling-stone-grey;
+$color-text-bold: $shark-black;
+$color-link: $blue-primary;
+
+// Inputs
+$color-input-border: lighten($color-grey, 8%);
+$color-input-error-bg: $red-shade;
+$color-input-error-border: $red-primary;
+// Background
+$color-background-content: $white;
+$color-background-header: $blue-primary;
+$color-background-secondary-header: $blue-menu;
+$color-background-body: $concrete;
+
+// Buttons
+$color-btn-default: $blue-primary;
+$color-btn-primary: #10a961;
+$color-btn-secondary: none;
+$color-btn-alert: $red-primary;
+
+// BBKit Colots
+$logo-yellow: $orange-primary;
+
+$error-red: $red-primary;
+$warning-orange: #F18623;
+
+$bright-green: $green-primary;
+$main-pad: 20px;

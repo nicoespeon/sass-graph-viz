@@ -1,0 +1,175 @@
+.passenger-input .passenger-controls {
+  float: right;
+}
+
+.passenger-input .passenger-count-container label,
+.passenger-input .passenger-count-container .passenger-count,
+.passenger-dropdown .passenger-input .passenger-count-container label,
+.passenger-dropdown .passenger-input .passenger-count-container .passenger-count {
+  line-height: 40px;
+
+  @media #{$small-only} {
+    line-height: 50px;
+  }
+}
+
+.passenger-input .passenger-count {
+  color: $gray-primary;
+  margin: 0 15px;
+  position: relative;
+  top: -5px;
+}
+
+.passenger-dropdown-section {
+  border-bottom: 1px solid $gray-tertiary;
+  padding: 8px 16px;
+}
+
+.passenger-dropdown-section .passenger-count-container .passenger-count {
+  display: inline-block;
+}
+
+.passenger-input .passenger-age-container {
+  padding: 12px 0;
+}
+
+.passenger-input .passenger-age-container .label-age {
+  line-height: 38px;
+}
+
+.passenger-input .passenger-age-container select {
+  line-height: 1.1;
+}
+
+.passenger-input .passenger-age-container:last-of-type {
+  padding-bottom: 20px;
+}
+
+.passenger-age-container .form-input:focus {
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.passenger-input label {
+  font-weight: bold;
+}
+
+.passenger-input button {
+  background-color: transparent;
+  border: none;
+  color: $blue-primary;
+  fill: $blue-primary;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.passenger-input button[disabled] {
+  color: $gray-secondary;
+  fill: $gray-secondary;
+  opacity: 0.5;
+}
+
+.passenger-input button:last-of-type {
+  margin-right: -16px;
+}
+
+.passenger-input button svg {
+  height: 20px;
+  width: 20px;
+}
+
+.passenger-input .input-group-addon {
+  top: 11px;
+}
+
+.passenger-age-containers.well {
+  padding: 5px 11px 10px 11px;
+  margin: 10px -10px 5px -10px;
+}
+
+.passenger-dropdown .text-danger p {
+  color: $red-primary;
+  text-shadow: none;
+}
+
+.passenger-dropdown-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.passenger-dropdown {
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  margin-top: 1px;
+  right: 10px;
+  width: 275px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.passenger-dropdown strong {
+  font-weight: bold;
+}
+
+.passenger-dropdown .passenger-count-container label,
+.passenger-dropdown .passenger-wheelchair-container label {
+  margin: 0;
+  padding: 0;
+}
+
+.passenger-wheelchair-container label {
+  display: block;
+}
+
+.passenger-wheelchair-container label span {
+  color: $gray-primary;
+}
+
+.passenger-dropdown .text-secondary,
+.passenger-dropdown .passenger-wheelchair-container label,
+.passenger-dropdown .passenger-count-container label {
+  color: $gray-primary;
+  font-weight: normal;
+  text-shadow: none;
+}
+
+.passenger-wheelchair-container .passenger-wheelchair-title,
+.passenger-wheelchair-container .passenger-wheelchair-input-group {
+  padding: 10px 0;
+  line-height: 16px;
+}
+
+.passenger-wheelchair-container label {
+  font-weight: normal;
+}
+
+.passenger-wheelchair-container .passenger-wheelchair-title input,
+.passenger-wheelchair-container .passenger-wheelchair-input-group input {
+  margin-top: 2px;
+}
+
+.passenger-wheelchair-container .float-right {
+  float: right;
+}
+
+.passenger-dropdown .passenger-input:nth-child(even) {
+  background-color: $white
+}
+
+.passenger-dropdown .passenger-input button {
+  padding: 8px;
+}
+
+@media #{$small-only} {
+  .search-form-inline .passenger-age-container {
+    margin-bottom: 10px;
+  }
+
+  .search-form-inline .passenger-age-containers.well {
+    margin: 5px -10px 0 -10px;
+  }
+}

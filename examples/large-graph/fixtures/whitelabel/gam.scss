@@ -1,0 +1,134 @@
+@import "common";
+
+$gam-grey-light: #f2f6fa;
+$gam-grey-medium: #52555d;
+$gam-grey-dark: #34363d;
+$gam-black: #141312;
+$gam-blue: $blue-primary;
+$gam-yellow: #fdaa28;
+$gam-grey-border: $gray-tertiary;
+$gam-blue-border: #73b8ee;
+
+body.whitelabel-gam,
+body.whitelabel-gam-kiosk {
+  background-color: $gam-grey-light;
+}
+
+.whitelabel-gam,
+.whitelabel-gam-kiosk {
+
+  // Home page
+  // ============================================
+
+  .hero {
+    background-color: $gam-grey-light;
+  }
+
+  .card.dark.search-card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .search-form-wrapper .search-card .h2 {
+    display: none;
+  }
+
+  .card.dark label {
+    font-size: 12px;
+    color: $gam-grey-medium;
+    text-transform: uppercase;
+  }
+
+  .card.dark input[type=text],
+  .card.dark input[type=password],
+  .card.dark input[type=email],
+  .card.dark input[type=number],
+  .card.dark input[type=tel],
+  .card.dark input[type=date],
+  .card.dark textarea,
+  .card.dark select {
+    border-color: $gam-grey-border;
+    box-shadow: none;
+
+    &:focus {
+      border-color: $gam-blue-border;
+    }
+  }
+
+  .search-form-wrapper .well {
+    padding-left: 5px;
+    padding-right: 5px;
+    background: none;
+    border-top: 1px solid $gam-grey-border;
+  }
+
+  .btn.cta.orange {
+    box-shadow: none;
+  }
+
+  // Results & Checkout page hero
+  // ============================================
+
+  .hero-top-line {
+    display: none;
+  }
+
+  .hero h1.result__title,
+  .hero h1.checkout__title {
+    font-size: 2.5em;
+    color: $gam-grey-dark;
+    margin-bottom: 5px;
+  }
+
+  .checkout__hero h1 {
+    display: block;
+    font-weight: normal!important;
+  }
+
+  .hero .result__date,
+  .hero .checkout__subtitle {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  .results__hero .result__date span {
+    display: inline;
+    margin-top: 0;
+    font-size: inherit;
+  }
+}
+
+html.whitelabel-gam-kiosk,
+body.whitelabel-gam-kiosk {
+  height: 100%;
+}
+
+.gam-clickngo {
+  .item {
+    margin-bottom: 10px;
+  }
+
+  .info {
+    display: table-cell;
+    padding-right: 5px;
+  }
+
+  .action {
+    width: 100px;
+    float: right;
+    text-align: right;
+  }
+
+  .action .btn {
+    display: inline-block!important;
+    height: inherit!important;
+    margin: 0!important;
+    padding: 0 10px!important;
+    box-sizing: border-box!important;
+    font-size: 14px!important;
+    line-height: 28px!important;
+    text-align: center!important;
+  }
+}

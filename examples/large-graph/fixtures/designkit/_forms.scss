@@ -1,0 +1,148 @@
+.bb-search-form {
+
+  $search-input-height: 50px;
+  $search-input-icon-width: 40px;
+
+  // border-bottom: 1px solid $color-grey-light;
+
+  h3 {
+    padding-left: $search-input-icon-width !important;
+  }
+  label.search-input {
+    position: relative;
+    display: block;
+
+    input {
+      position: relative;
+      display: block;
+      z-index: 1;
+      width: 100%;
+      background-color: $white;
+
+      height: $search-input-height;
+      margin: 0;
+      padding: 0 $search-input-icon-width;
+      border-radius: 0;
+      font-size: $font-size-medium;
+      @include text-ellipsis();
+      border-left: 0;
+      border-right: 0;
+      border-top: 1px solid white;
+
+      box-shadow: none;
+
+      &:focus {
+        background-color: $white;
+        border-color: lighten($color-link, 25%);
+      }
+    }
+
+    .bb-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: $font-size-large;
+      z-index: 2;
+      line-height: $search-input-height;
+      width: $search-input-icon-width;
+      text-align: center;
+
+      &:first-child {
+        color: $color-grey;
+      }
+    }
+
+    .input-empty-button {
+      right: 0;
+      left: auto;
+      color: $color-grey-light;
+      cursor: pointer;
+      z-index: 2;
+      display: none;
+
+      &.is-visible {
+        display: block;
+      }
+    }
+  }
+
+  .twitter-typeahead {
+    width: 100%;
+    .tt-dropdown-menu {
+      position: static !important;
+      height: 150px;
+      margin-bottom: 0;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      // margin-bottom: -30px;
+    }
+    .tt-suggestion {
+      height: 50px;
+      margin: 0 !important;
+      padding: 0 20px 0 40px;
+      border-bottom: 1px solid lighten($color-grey, 30%);
+      font-size: $font-size-medium;
+      display: block;
+      @include text-ellipsis();
+
+      &:active {
+        background-color: lighten($color-grey, 30%);
+      }
+    }
+
+    .tt-suggestion.tt-cursor {
+    }
+
+    .tt-suggestion p {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+}
+
+.bb-radio {
+  margin-right: 10px;
+}
+
+.bb-radio-label {
+  cursor: pointer;
+}
+
+
+.bb-checkbox {
+  > input[type='checkbox'] {
+    display:none;
+  }
+  label {
+    cursor:pointer;
+  }
+  .bb-icon {
+    cursor: pointer;
+    display:inline-block;
+    margin-right:10px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    font-size: 1.4em;
+    width: 1em;
+  }
+  .icon-ok {
+    display: none;
+  }
+
+  input[type='checkbox']:checked + label {
+    .icon-ok {
+      display: inline-block;
+    }
+    .icon-remove {
+      display: none;
+    }
+  }
+
+  .lt-ie9 & {
+    > input[type='checkbox'] {
+      display:inline-block;
+    }
+    .bb-icon { display:none; }
+  }
+}

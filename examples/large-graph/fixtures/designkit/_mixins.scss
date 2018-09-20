@@ -1,0 +1,162 @@
+// // ---------- !MIXINS ---------- \\
+
+
+@mixin full-row {
+  max-width: $row-width-px - $column-gutter-px;
+  max-width: $row-width - $column-gutter;
+}
+
+@mixin opacity($opacity) {
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  opacity: $opacity;
+}
+
+
+@mixin bgfade($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: transparent;
+  zoom: 1;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+@mixin ie8-png-fix(){
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */
+}
+
+@mixin iepngfix(){
+  background: transparent;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";   /* IE6 & 7 */
+  zoom: 1;
+}
+
+//Micro clearfix by Nicholas Gallagher
+  @mixin micro-clearfix() {
+    & {
+        *zoom: 1;
+    }
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+  }
+
+//Detect high resolution disply by 37 signals
+  @mixin image-2x($image, $width, $height) {
+    @media (min--moz-device-pixel-ratio: 1.3),
+           (-o-min-device-pixel-ratio: 2.6/2),
+           (-webkit-min-device-pixel-ratio: 1.3),
+           (min-device-pixel-ratio: 1.3),
+           (min-resolution: 1.3dppx) {
+      /* on retina, use image that's scaled by 2 */
+      background-image: url($image);
+      background-size: $width $height;
+    }
+  }
+
+// Adds "..." to text overflow by Naoufal Kadhom
+  @mixin text-ellipsis {
+    text-overflow: ellipsis;  
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+// Adds Busbud shadow
+  @mixin bb-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15),0 0 0 1px rgba(0, 0, 0, 0.05);
+    html.no-boxshadow & {
+      border: 1px solid $color-grey-light;
+    }
+  }
+
+// Adds Busbud inset shadow
+  @mixin bb-shadow-inset {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    html.no-boxshadow & {
+      border: 1px solid $color-grey-light;
+    }
+  }
+
+// Placeholder Mixin by Michael Sacca (https://github.com/michaelsacca/Compass-Placeholder-Text-Mixin)
+  @mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; } 
+  }
+
+// Keyframes Mixin by Eric AM (https://gist.github.com/ericam/1607696)
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+ 
+// use of keyframes mixin
+
+// @include keyframes(bgcolor) {
+//   0% {
+//     background-color: #ffccf2;
+//   }
+//   50% {
+//     background-color: #ccffcc;
+//   }
+//   100% {
+//     background-color: #ccffff;
+//   } 
+// }
+
+// Before adding mixins, make sure it's not included in Bourbon or Foundation.
+// http://compass-style.org/reference/compass/css3/
+// http://foundation.zurb.com/docs/
+
+
+
+// Animation mixins
+@mixin scale( $x, $y ){
+  @include transform( scale( $x, $y ) );
+}
+
+@mixin rotate( $angle_deg: 90deg ){
+  @include transform( rotate($angle_deg) );
+}
+
+@mixin spin( $duration ) {
+  @include animation( rotation $duration infinite linear );
+}
+
+
+// This mixin must be used with the animate.css classes
+// it lets you set the animation duration
+@mixin animated( $duration ){
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+
+
+// Fixes for bourbon's broken transition shorthand mixin
+// (the shorthand does not include vendor prefixes)
+@mixin transition-transform($duration) {
+  @include transition-property(transform);
+  @include transition-duration($duration);
+}

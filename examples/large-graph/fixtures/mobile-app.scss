@@ -1,0 +1,12 @@
+@import "core";
+
+body {
+  padding: 15px 0;
+  background-color: $color-background-body;
+
+  header h1 {
+    color: $gray-primary;
+    font-weight: 700;
+    text-shadow: 0 1px $white;
+  }
+}

@@ -1,0 +1,35 @@
+.sticky-sidebar-relative,
+.sticky-sidebar {
+  position: relative;
+}
+
+.sticky-sidebar.bottom {
+  height: 100%;
+  position: absolute;
+  right: 0;
+
+  .sticky-sidebar-content {
+    position: absolute;
+    padding-right: 0.625rem;
+  }
+
+  @media #{$medium-up} {
+    .card:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sticky-sidebar-fixed {
+  position: fixed;
+  top: 0;
+
+  // Mimic foundation grid for width
+  @media #{$medium-only} {
+    width: calc((100% * 0.333) - (0.625rem * 2));
+  }
+  @media #{$large-up} {
+    width: calc((982px * 0.333) - (0.625rem * 2));
+  }
+}
+

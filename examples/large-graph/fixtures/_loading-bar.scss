@@ -1,0 +1,21 @@
+.loading-bar {
+  $loading-bar-height: pxToRem(20px);
+  position: relative;
+  height: $loading-bar-height;
+  border-radius: $border-radius;
+  background: $gray-shade;
+  overflow: hidden;
+
+  @media #{$medium-up} {
+    margin: $spacer 0;
+  }
+
+  .bar {
+    height: $loading-bar-height;
+    background: $blue-primary;
+  }
+
+  .peg {
+    display: none;
+  }
+}

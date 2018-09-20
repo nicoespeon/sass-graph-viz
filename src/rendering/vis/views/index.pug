@@ -29,19 +29,32 @@ head
   link(href='vis.4.21.0.min.css', rel='stylesheet', defer)
 
   script.
+    var nodes = JSON.parse('!{nodes}');
+    var edges = JSON.parse('!{edges}');
+    var shouldDisplayPreloader = (nodes.length > 30);
+
     function onLoad() {
+      if (shouldDisplayPreloader) {
+        showPreloader();
+      }
+
+      renderVisGraph();
+    }
+
+    function showPreloader() {
+      document.getElementById('preloader').style.display = 'block';
+
       //- Particles animation is disabled because Vis calculation is heavy, thus
       //- the animation won't be fluid. Unless we find a way to use web workers…
       particlesJS.load('preloader-particles', 'particles.json');
-      renderVisGraph();
     }
 
     function renderVisGraph() {
       var container = document.getElementById('graph');
 
       var data = {
-        nodes: new vis.DataSet(JSON.parse('!{nodes}')),
-        edges: new vis.DataSet(JSON.parse('!{edges}'))
+        nodes: new vis.DataSet(nodes),
+        edges: new vis.DataSet(edges)
       };
 
       var options = {
@@ -71,7 +84,7 @@ head
     }
 
   body(onload='onLoad()')
-    div#preloader
+    div#preloader(style='display: none')
       div#preloader-particles.vertical-centered-box
       div#preloader-content.vertical-centered-box
         div.content

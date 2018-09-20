@@ -1,0 +1,23 @@
+.testimonial .img-container {
+  text-align: center;
+}
+
+.testimonial .img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.testimonial .title {
+  color: $gray-primary;
+  display: block;
+  font-size: 1.4em;
+  padding: 7px 0;
+  font-weight: normal;
+}
+
+.testimonial .subtitle {
+  color: $gray-primary;
+  display: block;
+  margin: 5px 0;
+  font-weight: normal;
+}

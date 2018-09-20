@@ -1,0 +1,23 @@
+.mobile-filter-bar {
+  font-size: 16px;
+  background-color: $blue-primary;
+  color: $white;
+  fill: $white;
+  border-radius: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 10px;
+
+  .mobile-filter-bar-icon {
+    display: inline;
+    font-size: 24px;
+    margin-right: 16px;
+    white-space: nowrap;
+    line-height: 0;
+  }
+
+  &.mobile-filter-bar-disabled {
+    color: transparentize($white, 0.4);
+    fill: transparentize($white, 0.4);
+  }
+}

@@ -1,0 +1,344 @@
+$header-height-small: 48px;
+$header-height-medium: 60px;
+
+header.header-bar {
+  min-height: $header-height-small;
+  background-color: $blue-primary;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) ;
+  color: $white;
+  z-index: 51;
+
+  @media #{$medium-up} {
+    min-height: 60px;
+  }
+
+  &#main-header-bar {
+    position: relative;
+    &.is-above-screen {
+      z-index: 1010;
+    }
+  }
+
+  .header-title {
+    text-align: center;
+    h2 {
+      line-height: $header-height-small;
+    }
+    .mobile-logo {
+      height: 30px;
+      margin: 9px 0;
+      //- height: 24px; margin: 12px 0; // for no-post
+      display: inline-block;
+    }
+    .desktop-logo {
+      float: left;
+      height: 36px;
+      margin: 12px 0;
+      display: none;
+    }
+    @media #{$medium-up} {
+      .mobile-logo { display: none; }
+      .desktop-logo { display: inline-block; }
+    }
+  }
+  .header-icon-button {
+    height: $header-height-small;
+    width: $header-height-small;
+    text-align: center;
+    line-height: $header-height-small;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: $white;
+    font-size: 24px;
+
+    &.right {
+      right: 0;
+      left: auto;
+    }
+
+    &:hover, &:active {
+      background: none !important;
+      text-decoration: none;
+    }
+  }
+
+  nav.header-nav {
+    height: $header-height-small;
+    float: right;
+    padding: 15px 0;
+    display:none;
+
+    // counteract the padding-right on the last nav link
+    margin-right: -10px;
+
+    @media #{$medium-up} {
+      display:block;
+    }
+
+    > ul {
+      margin: 0;
+      float: right;
+    }
+    li {
+      @media #{$small-only} {
+        padding: 0;
+      }
+      position: relative;
+      margin: 0;
+    }
+    a:hover {
+      background-color: $blue-secondary;
+    }
+    a:active {
+      background-color: $blue-secondary;
+    }
+    .pill:hover {
+      background-color: $blue-secondary;
+      cursor:pointer;
+    }
+    .pill:active {
+      background-color: $blue-secondary;
+    }
+    .pill.pill--bordered {
+      border: 1px solid $white;
+      &:hover {
+        border-color: $blue-secondary;
+      }
+    }
+  }
+}
+
+#currency-dropdown {
+  ul {
+    width: 210px;
+  }
+}
+
+#content {
+  margin: 10px 0;
+  @media #{$large-up} {
+    margin: 20px auto;
+    @include full-row;
+  }
+
+  > .row {
+    > .column {
+      > p {
+        text-shadow: 0 1px $white;
+      }
+
+      > h1, > h2, > h3, > h4, > h5, > h6 {
+        color: $color-heading;
+        font-weight: $font-weight-bold;
+        text-shadow: 0 1px $white;
+      }
+    }
+  }
+}
+
+
+
+// ---------- !HERO UNIT ---------- \\
+.hero {
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3), inset 0 -2px 10px rgba(0, 0, 0, 0.3) ;
+  min-height: 100px;
+  background-color: $gray-primary;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @include transition(none);
+
+  @media #{$medium-up} {
+    min-height: 200px;
+  }
+  @media #{$large-up} {
+    min-height: 250px;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    color: $white;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+
+
+#sidebar {
+  ul {
+    padding: 0;
+  }
+}
+
+// ---------- !VIEWS ---------- \\
+%view {
+  position: absolute;
+  width: 100%;
+}
+.view-main {
+  background-color: $color-background-body;
+  z-index: 3;
+  @media #{$small-only} {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 0px 12px 0 darken($blue-menu, 10%);
+    @include transition-transform(.3s);
+  }
+  height: 100%; // for stick wrapper
+
+  &.is-visible {
+    // margin-left: 0%;
+  }
+  &.is-hidden {
+    // overflow: hidden;
+  }
+  &.is-hidden-left {
+    @include transform( translate3d(-200px, 0px, 0px) );
+  }
+  &.is-hidden-right {
+    @include transform( translate3d(200px, 0px, 0px) );
+  }
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+.view-fullscreen {
+  @extend %view;
+  height: 100%;
+  @include transition-transform(.35s);
+  z-index: 1001;
+  overflow: hidden;
+  display: none;
+  box-shadow: 0 0 30px;
+
+  &.is-hidden {
+    display: none;
+  }
+
+  &.is-visible {
+    @include transform( translate3d(0px, 0px, 0px) !important); // overrides t3d height set in js
+  }
+
+  header.header-bar {
+    position: relative;
+    box-shadow: 0 5px 10px 5px $white;
+  }
+
+  header.header-bar {
+    z-index: 6;
+  }
+
+  .view-content {
+    z-index: 5;
+    position:absolute;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+    top: $header-height-small;
+    bottom: 0px;
+    width: 100%;
+    padding: 15px 10px;
+    // Must make room for footer
+    // Either add padding bottom, or change bottom
+
+    background-color: $white;
+
+    &.full {
+      padding: 0;
+      z-index: 7;
+      h3 {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0;
+  }
+  h3 {
+    margin: 0 -10px;
+    padding: 0 10px;
+    background-color: $color-grey-light;
+    color: $white;
+    text-transform: uppercase;
+    font-size: $font-size-regular;
+
+    &.fat {
+      padding: 4px 0;
+    }
+
+    .subheading {
+      color: $gray-tertiary;
+      float: right;
+      text-transform: none;
+    }
+  }
+  .view-footer {
+    width: 100%;
+    background: $white;
+    .btn {
+      margin: 10px;
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+      font-size: 24px;
+      color: $white;
+      text-align: center;
+    }
+  }
+  > .view-footer {
+    box-shadow: 0 -5px 10px 5px $white;
+    border-top: 1px solid $gray-tertiary;
+    margin: 0;
+    position: absolute;
+    z-index: 8;
+    bottom: 0;
+  }
+}
+
+.popup-screen {
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  @include transition(background-color .5s);
+
+  position: absolute;
+  @media #{$medium-up} {
+    position: fixed;
+  }
+
+  &.is-visible {
+    @include bgfade(#000000, 0.5);
+  }
+  &.is-hidden {
+    height: 0;
+  }
+}
+
+#main-loading-spinner {
+  display: none;
+  z-index: 1001;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 12em;
+  .bb-icon {
+    position:absolute;
+    margin-left: -.5em;
+    margin-top: -.5em;
+    color: $logo-yellow;
+    @include spin(3s);
+  }
+  &.is-visible {
+    display: block;
+  }
+}

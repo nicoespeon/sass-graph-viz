@@ -1,0 +1,66 @@
+@import "secondary-file-setup";
+
+$black_half_opacity: #808080;
+$plus_offset: 24px;
+
+.referral-banner {
+  background: $white;
+  border-top: $white 4px solid;
+  padding: 14px 10px 10px;
+}
+
+.referral-banner-intro {
+  color: $black_half_opacity;
+  font-size: 16px;
+
+  &:last-child {
+    margin-top: 16px;
+  }
+}
+
+.referral-banner-title {
+  line-height: 24.5px;
+  color: $gray-primary;
+  font-size: 18px;
+  font-weight: normal;
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.referral-banner-plus {
+  display: inline-block;
+  top: -$plus_offset;
+  margin: 0 10px (-$plus_offset) 10px;
+  position: relative;
+  color: $black_half_opacity;
+  font-size: 28px;
+}
+
+.referral-banner-logos-area {
+  text-align: center;
+
+  @media #{$medium-up} {
+    text-align: right;
+  }
+}
+
+.referral-banner-logo-busbud,
+.referral-banner-logo-partner {
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+
+.referral-banner-logo-busbud {
+  // Optimized via Kraken.io
+  // Encoded http://jpillora.com/base64-encoder/
+  background-image: url(data:image/png;base64,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);
+  background-position: right;
+  // Half-sizing the busbud logo vs the partner logo provides visual balance in the surface area they occupy
+  width: 30px;
+}

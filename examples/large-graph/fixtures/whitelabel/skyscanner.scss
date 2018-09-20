@@ -1,0 +1,115 @@
+@import "common";
+
+.whitelabel-skyscanner {
+
+  a {
+    color: #10acc9;
+  }
+
+  // Home page
+  // ============================================
+
+  .search-form-container.form-container-dark {
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+    background-color: rgba(52, 54, 61, .85);
+    color: #625a70;
+    padding: 50px 20px;
+  }
+
+  .search-form-container.form-container-dark a {
+    color: #7fd7e8;
+  }
+
+  .search-form-container.form-container-dark button:not([disabled="disabled"]) svg,
+  .search-form-container.form-container-dark .close a,
+  .search-form-container.form-container-dark .passenger-count {
+    fill: darken(#7fd7e8, 10%);
+    color: darken(#7fd7e8, 10%);
+  }
+
+  .search-form .form-title {
+    display: none;
+  }
+
+  .card .card-content {
+    padding: 16px;
+  }
+
+  .search-form-container.form-container-dark label {
+    font-weight: normal;
+    color: #a8a4b0;
+  }
+
+  .search-form-container.form-container-dark .passenger-dropdown label {
+    color: darken(#a8a4b0, 20%);
+  }
+
+  .btn.cta.orange,
+  .Button__call-to-action____qKdu {
+    text-shadow: 1px 1px 1px $white;
+    box-shadow: none;
+
+    box-sizing: border-box;
+    border: 1px solid #55bd00;
+    background: #aae700;
+    background-image: linear-gradient(rgba(255, 255, 255, .5) 20%, rgba(255, 255, 255, .1) 80%);
+    color: #34363d;
+    cursor: pointer;
+    outline: 0;
+    overflow: visible;
+    text-decoration: none;
+    transition: background-color .1s ease-in;
+
+    &:hover,
+    &:focus {
+      background-image: none;
+      background-color: #5be2ed;
+      border-color: #21c4d9;
+    }
+  }
+
+  .Button__call-to-action____qKdu[disabled] {
+    opacity: 0.5;
+  }
+
+  // Results page
+  // ============================================
+
+  #content,
+  #react-content {
+    background-color: #454750;
+    border-radius: 6px;
+  }
+
+  .dropdown-label,
+  .showing {
+    color: #a8a4b0;
+  }
+
+  .dropdown-group .dropdown-select {
+    color: #7fd7e8;
+  }
+
+  .card {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    padding-right: 0;
+  }
+
+  .sidebar .filter-list-content {
+    padding: 8px;
+    background-color: #f6f8fa;
+    border-radius: 2px;
+  }
+
+  .sorting-list {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+}

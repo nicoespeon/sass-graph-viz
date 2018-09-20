@@ -1,0 +1,353 @@
+@import "../colors";
+
+* {
+  -webkit-font-smoothing: antialiased;
+  @include box-sizing(border-box);
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-animation: bugfix infinite 1s;
+  background-color: $blue-menu;
+  font: {
+    family: $font-family-light;
+    size: $font-size-small;
+  }
+  color: $color-text;
+  line-height: 1.5em;
+}
+html, body {
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+
+  font-weight: normal;
+  line-height: 1.4em;
+}
+
+h1, .h1 {
+  font-size: $font-size-large;
+  @media #{$medium-up} {
+    font-size: $font-size-x-large;
+  }
+  @media #{$large-up} {
+    font-size: $font-size-xx-large;
+  }
+}
+
+h2, .h2{
+  font-size: $font-size-large;
+}
+
+h3, .h3 {
+  font-size: $font-size-medium;
+  @media #{$large-up} {
+    font-size: $font-size-large;
+  }
+}
+
+// ---------- !GROUPINGS ---------- \\
+
+p {
+  margin: 0 0 10px;
+  padding: 0 0 10px;
+  line-height: 1.7em;
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ccd9de;
+}
+
+blockquote {
+  margin: 10px 0 20px;
+  padding-left: 20px;
+  border-left: 4px solid #ccd9de;
+  overflow: auto;
+}
+
+ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+}
+
+div {
+  line-height: 1.8em;
+}
+
+// ---------- !FORMS ---------- \\
+
+fieldset {
+  padding: 0;
+  border: none;
+}
+
+label {
+  position: relative;
+  font-weight: bold;
+  color: $gray-primary;
+
+  .card.dark & {
+    color: $gray-secondary;
+  }
+
+  // use .bb-icon this class to add an icon inside an input
+  .bb-icon {
+    &.input-icon {
+      position: absolute;
+      left: 10px;
+      top: 36px;
+      color: $gray-secondary;
+      font-size: 16px;
+      z-index: 40;
+
+      @media #{$medium-up} {
+        top: 40px;
+      }
+
+      &.icon-map-marker{
+        left: 12px;
+      }
+    }
+
+    &.tooltip-icon {
+      @media #{$small-only} {
+        display: none;
+      }
+
+      position: relative;
+      top: 1px;
+      left: 10px;
+      color: $gray-tertiary;
+      opacity: 0.7;
+    }
+  }
+
+  html.bbtouch & {
+    .tooltip-icon {
+      display: none;
+    }
+  }
+}
+
+// INPUTS
+$error_red: $red-primary;
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=date], textarea, select {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin: 6px 0 12px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #fbfbfc;
+  border: 1px solid #b7c1c9;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.10);
+  font: {
+    family: $font-family-helvetica;
+    size: $font-size-regular;
+    weight: 400;
+  }
+  -webkit-appearance: none;
+  @include text-ellipsis();
+
+  @media #{$medium-up} {
+    margin: 10px 0 12px;
+    padding: 10px;
+  }
+
+  &.with-icon {
+    padding-left: 30px !important;
+  }
+  &.is-error, .card.dark &.is-error {
+    border-color: $red-primary;
+    border-width: 1px;
+    box-shadow: 0 0 0 1px $red-primary;
+
+    @include input-placeholder {
+      color: $gray-secondary;
+    }
+  }
+  & + label {
+    @include text-ellipsis;
+  }
+
+  .card.dark & {
+    box-shadow: none;
+    border: 1px solid $gray-tertiary;
+    border-bottom-color: #b7c1c9;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15);
+    @include text-ellipsis();
+  }
+}
+
+
+select {
+  &.is-error {
+    border-color: $red-primary !important;
+    border-width: 1px !important;
+    box-shadow: 0 0 0 1px $red-primary !important;
+  }
+  &.is-placeholder {
+    color: $color-grey-dark;
+  }
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 0;
+  border: 1px solid $blue-primary;
+  background-color: $white;
+  box-shadow: 0 0 0 1px $blue-primary;
+}
+
+input:disabled, textarea:disabled, select:disabled {
+  background-color: $gray-shade;
+  cursor: not-allowed;
+}
+
+textarea {
+  resize: vertical;
+  text-indent: none;
+  line-height: 1.5em;
+
+  &:focus {
+    &.is-error {
+      background: $red-shade;
+      border-color: $red-primary;
+      color: $white;
+
+      @include input-placeholder {
+        color: $red-primary;
+      }
+    }
+  }
+}
+
+// CHECKBOXES
+// If browser doesn't support border-radius serve default radio
+html.no-borderradius {
+  input[type=checkbox].bb-checkbox {
+    margin: 0 10px 10px 0;
+    & + label {
+      font-weight: $font-weight-regular;
+      cursor: pointer;
+    }
+  }
+}
+// If browser supports border-radius serve nice radio buttons
+  $checkbox-color: $color-grey-dark;
+ input[type=checkbox].bb-checkbox {
+  display:none;
+
+  & + label {
+    display: inline-block;
+    width: 100%;
+    padding: 0 0 5px 25px;
+    font-weight: $font-weight-regular;
+    color: $gray-primary;
+    cursor: pointer;
+    @include user-select(none);
+
+    & span:first-of-type {
+      position: absolute;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 2px 10px 0 -25px;
+      border: 1px solid $checkbox-color;
+      background-color: lighten($color-text, 40%);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+      vertical-align: middle;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+  }
+
+  &[disabled] {
+    & + label {
+      cursor: not-allowed;
+      color: $gray-tertiary;
+      span:first-of-type {
+        cursor: inherit;
+        border: 1px solid lighten($color-input-border, 10%);
+        background-color: lighten($color-text, 48%);
+      }
+    }
+  }
+
+  &:checked + label span:first-of-type {
+    &:after {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+input[type=checkbox] {
+  & + label span {
+    border-radius: 2px;
+  }
+
+  // Checkmark icon
+  &:checked + label span:first-of-type {
+    &:after {
+      font-family: 'icomoon';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      content: "\e613";
+      left: -1px;
+      top: -2px;
+      color: $blue-primary;
+      font-size: 18px;
+    }
+  }
+}
+
+// ---------- !TEXT-LEVEL ---------- \\
+a {
+  @media #{$small-only} {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  text-decoration: none;
+  color: $blue-primary;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  img {
+    border: 0;
+  }
+}
+
+code {
+  strong, b {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: $font-weight-bold;
+  }
+}
+
+strong, b {
+  font-family: $font-family-regular;
+  font-weight: $font-weight-regular;
+  color: $gray-primary;
+}

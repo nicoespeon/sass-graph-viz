@@ -1,0 +1,49 @@
+// This file includes keyframes for animations
+// the mixins required to use them are in bourbon and the mixins file
+
+@include keyframes(rotation) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(359deg));
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    @include scale(1, 1);
+  }
+  50% {
+    @include scale(1.8, 1.8);
+  }
+  100% {
+    @include scale(1, 1);
+  }
+}
+
+@include keyframes(error-shake) {
+  0% {
+    @include transform(translateX(0));
+  }
+
+  12.5% {
+    @include transform(translateX(-6px) rotateY(-5deg));
+  }
+
+  37.5% {
+    @include transform(translateX(5px) rotateY(4deg));
+  }
+
+  62.5% {
+    @include transform(translateX(-3px) rotateY(-2deg));
+  }
+
+  87.5% {
+    @include transform(translateX(2px) rotateY(1deg));
+  }
+
+  100% {
+    @include transform(translateX(0));
+  }
+}

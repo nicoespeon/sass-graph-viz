@@ -1,0 +1,28 @@
+.featured-partners {
+  margin-bottom: 20px;
+  padding: 20px 0;
+  background-color: $white;
+
+  .row {
+    max-width: 650px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    color: $gray-primary;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .featured-partner {
+    padding: 0 15px;
+
+    @media #{$small-only} {
+      margin-left: 0px !important; // Remove margin-left added on component to center on desktop size
+    }
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}

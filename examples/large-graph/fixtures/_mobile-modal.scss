@@ -1,0 +1,57 @@
+.mobile-modal {
+  // Base font size and color so child elements inherit the right styles
+  // Used on results page where base styles are different than landing pages.
+  font-size: 16px;
+  color: $gray-primary;
+
+  // All parent elements (including body & html) must have height 100% too
+  height: 100%;
+  background-color: $white;
+
+  // Add z-index so modal appears above the mobile menu
+  position: relative;
+  z-index: $z-index-2;
+}
+
+.mobile-modal-header {
+  height: 54px;
+  padding: 12px 16px;
+  color: $gray-primary;
+  background-color: $gray-shade;
+  box-shadow: $shadow-z-2;
+  position: relative;
+
+  &.no-shadow {
+    box-shadow: none;
+  }
+}
+
+.mobile-modal-content {
+  background-color: $white;
+}
+
+.mobile-modal-title {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.mobile-modal-body {
+  padding-bottom: 20px;
+}
+
+.mobile-modal .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px 16px;
+
+  svg {
+    fill: $gray-primary;
+    use {
+      fill: $gray-primary;
+    }
+  }
+}

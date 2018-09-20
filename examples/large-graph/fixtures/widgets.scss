@@ -1,0 +1,265 @@
+@import "secondary-file-setup";
+
+@import "designkit/base";
+@import "designkit/forms";
+
+// some colors and dimensions
+$widget-margin: 10px;
+$input-border-radius: 5px;
+$icon-width: 32px;
+$top-bar-height: 35px;
+
+$button-color: $bright-green;
+
+// top bar
+#tb {
+  position: relative;
+  z-index: 2;
+
+  background-color: $blue-primary;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: $white;
+
+  padding: 8px $widget-margin 6px;
+
+  h1 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .icon {
+    width: $icon-width - 1;
+    margin-right: 1px;
+
+    text-align: center;
+    display: inline-block;
+  }
+}
+// main wrapper
+#mw {
+  padding: $widget-margin;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: $top-bar-height;
+  background-image: url("/images/hero/bus.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+#logo {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  bottom: $widget-margin;
+  right: $widget-margin;
+  > img {
+    width: 125px;
+  }
+}
+
+.city-select {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.city-select,
+.aa-hint {
+  border: none;
+  width: 100%;
+  font-size: 12px;
+  line-height: 16px;
+  padding: (36px - 16px)/2;
+  padding-left: $icon-width;
+}
+
+label.city {
+  position: relative;
+  z-index: 100;
+  display: block;
+  margin-bottom: 5px;
+  .placeholder {
+    position: absolute;
+    margin-left: $icon-width;
+    margin-top: 9px;
+    color: $gray-secondary;
+    z-index: 25;
+  }
+  > .icon {
+    display: block;
+    position: absolute;
+    z-index: 25;
+    top: 0;
+    width: $icon-width;
+    margin-top: 9px;
+    font-size: 18px;
+    text-align: center;
+    color: $gray-secondary;
+    @include transition(color 0.5s);
+  }
+  .city-select {
+    z-index: 30;
+  }
+  .aa-hint {
+    z-index: 20;
+  }
+
+  .aa-hint.focus {
+    background: $white !important;
+  }
+
+  &.error {
+    input.city-select {
+      color: $red-primary;
+    }
+    > .icon {
+      color: $red-primary;
+    }
+  }
+  &.good {
+    input.city-select,
+    > .icon {
+      color: $blue-secondary;
+    }
+  }
+}
+
+#city-from {
+  z-index: 50;
+}
+#city-to {
+  z-index: 40;
+}
+
+.hide-wrap {
+  height: 0px;
+  overflow: hidden;
+}
+// search button
+input.city-select,
+.btn,
+.aa-hint {
+  border-radius: $input-border-radius;
+  border: none;
+  display: inline-block;
+  box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+a.btn {
+  text-decoration: none;
+}
+.btn {
+  height: 40px;
+  line-height: 40px;
+  font-family: $font-family-regular;
+  &.only-icon {
+    .btn-text {
+      display: none;
+    }
+  }
+}
+
+#go {
+  background: $button-color;
+  float: right;
+  min-width: 100px;
+  cursor: pointer;
+  text-align: center;
+  @include transition(background 0.3s);
+  color: $white;
+  box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  &:focus {
+    background: (lighten($button-color, 10%));
+  }
+  &:hover {
+    background: (lighten($button-color, 10%));
+    .icon {
+      font-size: 1.1em;
+    }
+  }
+}
+
+// search inputs
+.algolia-autocomplete {
+  display: block !important;
+  font-family: $font-family-regular;
+}
+.aa-hint {
+  color: $gray-secondary;
+  width: 100%;
+  opacity: 1; //fix for mobile safari?
+}
+.aa-dropdown-menu {
+  width: 100%;
+  margin-top: 1px;
+  z-index: 1000;
+}
+.aa-suggestions {
+  box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.4);
+  background: $white;
+  border-radius: $input-border-radius;
+  overflow: hidden;
+}
+.aa-suggestion {
+  color: $gray-primary;
+  padding-left: $icon-width;
+  line-height: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 12px;
+  text-shadow: none;
+  > p {
+    line-height: inherit;
+    display: block;
+    margin: 0;
+  }
+  .icon {
+    position: absolute;
+    left: 0;
+    width: $icon-width;
+    margin-top: 2px;
+    color: $gray-secondary;
+    text-align: center;
+  }
+}
+.aa-suggestion.aa-cursor {
+  background: $blue-primary;
+  color: $white;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.2);
+  .icon {
+    color: $white;
+  }
+}
+
+html.ie7 {
+  #tb .icon {
+    display: none;
+  }
+  #tb h1 {
+    margin-left: $widget-margin;
+  }
+  .btn.only-icon .btn-text {
+    display: inline;
+  }
+  .city-select,
+  .aa-hint,
+  .aa-suggestion {
+    padding-left: $widget-margin;
+  }
+  label.city .placeholder {
+    margin-left: $widget-margin;
+  }
+  .city-select {
+    border: 1px solid transparent;
+  }
+  .aa-hint,
+  #go {
+    border: 1px solid $blue-secondary !important;
+  }
+  label.city.error .aa-hint {
+    border-color: $red-primary;
+  }
+}

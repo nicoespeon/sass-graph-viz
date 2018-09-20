@@ -1,0 +1,148 @@
+/**
+ * Classes Fares
+ */
+.departure-details--class-fare {
+  padding: 20px 16px;
+  border-top: 1px solid $gray-tertiary;
+}
+
+// interconnection
+@include media-breakpoint-down(sm) {
+  .departure-details--class-fare__interconnection {
+    display: flex;
+    flex-direction: row;
+
+    .legs {
+      flex: auto;
+    }
+    .price {
+      flex: 0 0 auto;
+      align-self: center;
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .departure-details--class-fare__interconnection {
+    .legs {
+      display: flex;
+      flex-direction: row;
+
+      > div {
+        flex: 1 0 40%;
+        max-width: 50%;
+        &:nth-child(odd) {
+          padding-right: 8px;
+        }
+        &:nth-child(even) {
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+// grouped
+.departure-details--class-fare__grouped {
+  .list {
+    > div {
+      margin-top: 20px;
+      &:nth-child(1) {
+        margin-top: 0px;
+      }
+
+      & > label {
+        position: relative;
+        display: block;
+        padding: 8px 8px 8px 32px;
+        margin: 0;
+        min-height: 70px;
+        background-color: $gray-shade;
+        cursor: pointer;
+      }
+
+      .custom-control-indicator {
+        left: 8px;
+        top: 11px;
+      }
+
+      .custom-control-description {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .departure-details--class-fare__grouped {
+    .price {
+      text-align: right;
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .departure-details--class-fare__grouped {
+    .list {
+      > div {
+        flex: 1 0 40%;
+        max-width: 50%;
+        &:nth-child(2) {
+          margin-top: 0px;
+        }
+        &:nth-child(odd) {
+          padding-right: 8px;
+        }
+        &:nth-child(even) {
+          padding-left: 8px;
+        }
+
+        .price {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+// single
+@include media-breakpoint-down(sm) {
+  .departure-details--class-fare__single {
+    display: flex;
+    flex-direction: row;
+
+    > div:nth-child(1) {
+      flex: auto;
+    }
+    .price {
+      flex: 0 0 auto;
+      align-self: center;
+    }
+  }
+}
+
+/**
+ * Amenities Terms
+ */
+
+// amenities
+@include media-breakpoint-down(sm) {
+  .departure-details--amenities-terms {
+    .amenities {
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > li {
+          flex: 1 0 40%;
+          max-width: 50%;
+          &:nth-child(odd) {
+            padding-right: 8px;
+          }
+          &:nth-child(even) {
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+$black: #000000;
+$white: #ffffff;
+
+$blue-primary: #127ccb;
+$blue-secondary: #0b72be;
+$blue-shade: #e7f1fa;
+$blue-gradient-end: #5b8fa8;
+$blue-facebook: #39589a;
+
+$gray-primary: #1f242b;
+$gray-secondary: #6b7072;
+$gray-tertiary: #dbdbdb;
+$gray-quaternary: #eceeef;
+$gray-shade: #f6f6f6;
+
+$orange-primary: #fbaf17;
+$orange-secondary: #f19020;
+$orange-tertiary: #dd7e10;
+
+$green-primary: #44951a;
+$green-shade: #d9efce;
+
+$red-primary: #e74c35;
+$red-shade: #fcdbd6;
+
+$yellow-primary: #896b3b;
+$yellow-shade: #fbf6dd;
+
+$translucent-black: rgba(0, 0, 0, 0.9);
+
+// box-shadow
+$shadow-z-1: 0px 0px 2px rgba(0, 0, 0, 0.24);
+$shadow-z-2: 0px 1px 3px rgba(0, 0, 0, 0.24);
+$shadow-z-3: 0px 1px 15px rgba(0, 0, 0, 0.1);
+$shadow-z-2-top-offset: 0px 1px 3px -1px rgba(0, 0, 0, 0.24);
+
+// text-shadow
+$text-shadow-1: 0 1px 0 rgba(0, 0, 0, 0.16);
+
+// z-index
+$z-index-1: 1;
+$z-index-2: 10;
+$z-index-3: 20;
