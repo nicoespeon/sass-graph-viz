@@ -1,6 +1,6 @@
 {
   "name": "sass-graph-viz",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Draw a visual graph of SASS dependencies",
   "repository": "nicoespeon/sass-graph-viz",
   "homepage": "https://github.com/nicoespeon/sass-graph-viz",
