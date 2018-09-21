@@ -2,6 +2,9 @@
   "name": "sass-graph-viz",
   "version": "0.1.0",
   "description": "Draw a visual graph of SASS dependencies",
+  "repository": "nicoespeon/sass-graph-viz",
+  "homepage": "https://github.com/nicoespeon/sass-graph-viz",
+  "bugs": "https://github.com/nicoespeon/sass-graph-viz/issues",
   "keywords": [
     "sass",
     "dependencies",
@@ -11,17 +14,20 @@
     "dataviz"
   ],
   "bin": {
-    "sassgraphviz": "./dist/cli.js",
-    "sgv": "./dist/cli.js"
+    "sassgraphviz": "dist/cli.js",
+    "sgv": "dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rimraf ./dist",
+    "prebuild": "rimraf dist",
     "build": "tsc",
-    "postbuild": "chmod +x ./dist/cli.js && npm run copy-static-files",
-    "copy-static-files": "copyfiles -u 1 src/rendering/**/*.{js,css,pug,json} dist",
+    "postbuild": "chmod +x dist/cli.js && npm run copy-static-files",
+    "copy-static-files": "copyup src/rendering/**/*.{js,css,pug,json} dist",
     "build:watch": "npm run prebuild && tsc-watch --onSuccess \"npm run postbuild\"",
     "test": "jest",
     "prepare": "npm run build",
