@@ -24,6 +24,7 @@
     "copy-static-files": "copyfiles -u 1 src/rendering/**/*.{js,css,pug,json} dist",
     "build:watch": "npm run prebuild && tsc-watch --onSuccess \"npm run postbuild\"",
     "test": "jest",
+    "prepublish": "npm run build",
     "examples": "run-s examples:*",
     "examples:basic-tree": "ts-node examples/basic-tree",
     "examples:two-entry-points": "ts-node examples/two-entry-points",
