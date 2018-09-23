@@ -18,7 +18,8 @@ Usage: sassgraphviz [options] <dir>
 
 Options:
   -s, --simple  Generate a simpler visualization (not recommended for complex graphs)
-  -h, --help    output usage information
+  -p, --port <port>  Port to use [3000]
+  -h, --help  Output usage information
 
 Examples:
   sassgraphviz assets/scss
@@ -40,13 +41,14 @@ const sassGraphViz = require("sass-graph-viz");
 #### To generate a visual graph
 
 ```ts
-generateVisualGraph( pathToFolder: string, useSimpleViz = false );
+generateVisualGraph( pathToFolder: string, useSimpleViz = false, port = 3000 );
 ```
 
 For instance:
 
 - `sassGraphViz.generateVisualGraph('path/to/scss/')` to render the default graph
 - `sassGraphViz.generateVisualGraph('path/to/scss/', true)` for the simpler visualization
+- `sassGraphViz.generateVisualGraph('path/to/scss/', false, 3001)` to use port `3001`
 
 ## I want to modify the source code…
 

@@ -9,7 +9,7 @@ import { Module, render } from "viz.js/full.render";
 import { Graph } from "../../graph";
 import { graphToVizGraph } from "./translator";
 
-export function renderGraphToVizGraph(graph: Graph): void {
+export function renderGraphToVizGraph(port: number, graph: Graph): void {
   const app = express();
   const vizGraph = graphToVizGraph(graph);
 
@@ -17,10 +17,10 @@ export function renderGraphToVizGraph(graph: Graph): void {
     .renderString(`digraph { ${vizGraph} }`)
     .then((graphHtml: any) => {
       app.get("/", (req, res) => res.send(graphHtml));
-      app.listen("3000");
+      app.listen(port);
       // If `wait: true`, opn won't resolve until we quit the browser.
       // => don't wait and exit the process after page is open.
-      return opn("http://localhost:3000", { wait: false });
+      return opn(`http://localhost:${port}`, { wait: false });
     })
     // Wait a bit for the page to be open before we exit.
     .then(() => setTimeout(() => process.exit(0), 300))

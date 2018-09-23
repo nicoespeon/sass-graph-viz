@@ -5,12 +5,15 @@ import * as fs from "fs";
 
 import { generateVisualGraph } from "./index";
 
+const DEFAULT_PORT = 3000;
+
 program
   .arguments("<dir>")
   .option(
     "-s, --simple",
     "Generate a simpler visualization (not recommended for complex graphs)",
   )
+  .option("-p, --port <port>", `Port to use [${DEFAULT_PORT}]`)
   .action(
     (dir): void => {
       const sassFolder = path.join(process.cwd(), dir);
@@ -19,7 +22,9 @@ program
         return process.exit(1);
       }
 
-      generateVisualGraph(sassFolder, program.simple);
+      const port = Number(program.port) || DEFAULT_PORT;
+
+      generateVisualGraph(sassFolder, program.simple, port);
     },
   )
   .parse(process.argv);
