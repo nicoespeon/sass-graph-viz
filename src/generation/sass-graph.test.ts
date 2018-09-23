@@ -17,7 +17,7 @@ describe("sass graph without index", () => {
       visit: () => {},
     };
 
-    const graph = sassGraphGraphToGraph(emptyIndexSassGraph);
+    const graph = sassGraphGraphToGraph(dir, emptyIndexSassGraph);
 
     const emptyGraph = new Graph();
     expect(graph).toEqual(emptyGraph);
@@ -43,7 +43,7 @@ it("return graph for 1 import", () => {
     visit: () => {},
   };
 
-  const graph = sassGraphGraphToGraph(sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("parent", "_child");
@@ -93,7 +93,7 @@ it("return graph for a basic import tree", () => {
     visit: () => {},
   };
 
-  const graph = sassGraphGraphToGraph(sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
@@ -142,11 +142,50 @@ it("display nested directories as folders in nodes", () => {
     visit: () => {},
   };
 
-  const graph = sassGraphGraphToGraph(sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
   expectedGraph.addVertice("main", "components/_footer");
   expectedGraph.addVertice("main", "components/_header");
   expect(graph).toEqual(expectedGraph);
+});
+
+describe("sass graph without dir (focus on file)", () => {
+  it("return empty graph", () => {
+    const dir = "path/to/dir";
+    const emptyIndexSassGraph: sassGraph.Graph = {
+      dir: undefined,
+      extensions: ["scss", "sass"],
+      index: {
+        [`${dir}/main.scss`]: {
+          imports: [`${dir}/_footer.scss`],
+          importedBy: [],
+          modified: "2018-01-01T00:00:00.000Z",
+        },
+        [`${dir}/_footer.scss`]: {
+          imports: [`${dir}/_colors.scss`],
+          importedBy: [`${dir}/main.scss`],
+          modified: "2018-01-01T00:00:00.000Z",
+        },
+        [`${dir}/_colors.scss`]: {
+          imports: [],
+          importedBy: [`${dir}/_footer.scss`],
+          modified: "2018-01-01T00:00:00.000Z",
+        },
+      },
+      loadPaths: ["/Users/espeon/Development/github/nicoespeon/sass-graph-viz"],
+      addFile: () => {},
+      visitAncestors: () => {},
+      visitDescendents: () => {},
+      visit: () => {},
+    };
+
+    const graph = sassGraphGraphToGraph(dir, emptyIndexSassGraph);
+
+    const expectedGraph = new Graph();
+    expectedGraph.addVertice("main", "_footer");
+    expectedGraph.addVertice("_footer", "_colors");
+    expect(graph).toEqual(expectedGraph);
+  });
 });

@@ -1,29 +1,43 @@
 import * as sassGraph from "sass-graph";
 import * as path from "path";
+import * as fs from "fs";
 
 import { Graph } from "../graph";
 
 export type Path = string;
 
-export function generateGraphFromSassGraph(pathToFolder: Path): Graph {
-  const sassGraphGraph = sassGraph.parseDir(pathToFolder);
-  return sassGraphGraphToGraph(sassGraphGraph);
+export function generateGraphFromSassGraph(target: Path): Graph {
+  if (isFolder(target)) {
+    return sassGraphGraphToGraph(target, sassGraph.parseDir(target));
+  }
+
+  const rootFolder = path.dirname(target);
+  return sassGraphGraphToGraph(rootFolder, sassGraph.parseFile(target));
 }
 
-export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
-  const fileInDir = fileInFolder.bind(null, dir);
+function isFolder(target: Path): boolean {
+  return fs.existsSync(target) && fs.lstatSync(target).isDirectory();
+}
+
+export function sassGraphGraphToGraph(
+  rootFolder: Path,
+  { index }: sassGraph.Graph,
+): Graph {
   const graph = new Graph();
 
   Object.keys(index).forEach((child) => {
     const parents = index[child].importedBy;
     parents.forEach((parent) => {
-      graph.addVertice(fileInDir(parent), fileInDir(child));
+      graph.addVertice(
+        fileNameRelativeTo(rootFolder, parent),
+        fileNameRelativeTo(rootFolder, child),
+      );
     });
   });
 
   return graph;
 }
 
-function fileInFolder(rootFolder: Path, file: string): string {
+function fileNameRelativeTo(rootFolder: Path, file: Path): string {
   return path.relative(rootFolder, file).replace(path.extname(file), "");
 }

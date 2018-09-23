@@ -33,6 +33,7 @@
     "prepare": "npm run build",
     "examples": "run-s examples:*",
     "examples:basic-tree": "ts-node examples/basic-tree",
+    "examples:focus-on-file": "ts-node examples/focus-on-file",
     "examples:two-entry-points": "ts-node examples/two-entry-points",
     "examples:nested-folders": "ts-node examples/nested-folders",
     "examples:simple-viz": "ts-node examples/simple-viz",

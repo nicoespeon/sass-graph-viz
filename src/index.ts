@@ -5,7 +5,7 @@ import { renderGraphToVizGraph } from "./rendering/viz.js";
 import { renderGraphToVisGraph } from "./rendering/vis";
 
 export function generateVisualGraph(
-  pathToFolder: Path,
+  target: Path,
   useSimpleViz = false,
   port = 3000,
 ): void {
@@ -16,5 +16,5 @@ export function generateVisualGraph(
   flow(
     generateGraphFromSassGraph,
     (graph) => renderGraph(port, graph),
-  )(pathToFolder);
+  )(target);
 }

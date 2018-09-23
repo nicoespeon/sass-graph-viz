@@ -14,7 +14,7 @@ Install it with [npm](https://www.npmjs.com/package/sass-graph): `npm install -g
 
 ```shell
 $ sassgraphviz --help
-Usage: sassgraphviz [options] <dir>
+Usage: sassgraphviz [options] <target>
 
 Options:
   -s, --simple  Generate a simpler visualization (not recommended for complex graphs)
@@ -24,6 +24,7 @@ Options:
 Examples:
   sassgraphviz assets/scss
   sassgraphviz .
+  sassgraphviz main.scss
 ```
 
 You can also use the shorthand `sgv` instead of `sassgraphviz` (e.g. you can type `sgv assets/scss`).
@@ -41,8 +42,10 @@ const sassGraphViz = require("sass-graph-viz");
 #### To generate a visual graph
 
 ```ts
-generateVisualGraph( pathToFolder: string, useSimpleViz = false, port = 3000 );
+generateVisualGraph( target: string, useSimpleViz = false, port = 3000 );
 ```
+
+`target` can be a folder or a file.
 
 For instance:
 
