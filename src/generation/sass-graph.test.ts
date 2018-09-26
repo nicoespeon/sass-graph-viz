@@ -6,18 +6,11 @@ import { sassGraphGraphToGraph } from "./sass-graph";
 describe("sass graph without index", () => {
   it("return empty graph", () => {
     const dir = "path/to/dir";
-    const emptyIndexSassGraph: sassGraph.Graph = {
-      dir,
-      extensions: ["scss", "sass"],
-      index: {},
-      loadPaths: ["path/to/load"],
-      addFile: () => {},
-      visitAncestors: () => {},
-      visitDescendents: () => {},
-      visit: () => {},
-    };
+    const sassGraphGraphWithoutIndex = new FakeSassGraphGraph()
+      .withDir(dir)
+      .build();
 
-    const graph = sassGraphGraphToGraph(dir, emptyIndexSassGraph);
+    const graph = sassGraphGraphToGraph(dir, sassGraphGraphWithoutIndex);
 
     const emptyGraph = new Graph();
     expect(graph).toEqual(emptyGraph);
@@ -26,24 +19,18 @@ describe("sass graph without index", () => {
 
 it("return graph for 1 import", () => {
   const dir = "path/to/dir";
-  const sassGraphWithIndex: sassGraph.Graph = {
-    dir,
-    extensions: ["scss", "sass"],
-    index: {
+  const sassGraphGraph = new FakeSassGraphGraph()
+    .withDir(dir)
+    .withIndex({
       [`${dir}/_child.scss`]: {
         imports: [],
         importedBy: [`${dir}/parent.scss`],
         modified: "2018-01-01T00:00:00.000Z",
       },
-    },
-    loadPaths: ["path/to/load"],
-    addFile: () => {},
-    visitAncestors: () => {},
-    visitDescendents: () => {},
-    visit: () => {},
-  };
+    })
+    .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("parent", "_child");
@@ -52,10 +39,9 @@ it("return graph for 1 import", () => {
 
 it("return graph for a basic import tree", () => {
   const dir = "path/to/dir";
-  const sassGraphWithIndex: sassGraph.Graph = {
-    dir,
-    extensions: ["scss", "sass"],
-    index: {
+  const sassGraphGraph = new FakeSassGraphGraph()
+    .withDir(dir)
+    .withIndex({
       [`${dir}/_base.scss`]: {
         imports: [],
         importedBy: [`${dir}/main.scss`],
@@ -85,15 +71,10 @@ it("return graph for a basic import tree", () => {
         importedBy: [],
         modified: "2018-01-01T00:00:00.000Z",
       },
-    },
-    loadPaths: ["path/to/load"],
-    addFile: () => {},
-    visitAncestors: () => {},
-    visitDescendents: () => {},
-    visit: () => {},
-  };
+    })
+    .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
@@ -106,10 +87,9 @@ it("return graph for a basic import tree", () => {
 
 it("display nested directories as folders in nodes", () => {
   const dir = "path/to/dir";
-  const sassGraphWithIndex: sassGraph.Graph = {
-    dir,
-    extensions: ["scss", "sass"],
-    index: {
+  const sassGraphGraph = new FakeSassGraphGraph()
+    .withDir(dir)
+    .withIndex({
       [`${dir}/_base.scss`]: {
         imports: [],
         importedBy: [`${dir}/main.scss`],
@@ -134,15 +114,10 @@ it("display nested directories as folders in nodes", () => {
         importedBy: [],
         modified: "2018-01-01T00:00:00.000Z",
       },
-    },
-    loadPaths: ["path/to/load"],
-    addFile: () => {},
-    visitAncestors: () => {},
-    visitDescendents: () => {},
-    visit: () => {},
-  };
+    })
+    .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphWithIndex);
+  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
@@ -154,10 +129,8 @@ it("display nested directories as folders in nodes", () => {
 describe("sass graph without dir (focus on file)", () => {
   it("return empty graph", () => {
     const dir = "path/to/dir";
-    const emptyIndexSassGraph: sassGraph.Graph = {
-      dir: undefined,
-      extensions: ["scss", "sass"],
-      index: {
+    const sassGraphGraphWithoutDir = new FakeSassGraphGraph()
+      .withIndex({
         [`${dir}/main.scss`]: {
           imports: [`${dir}/_footer.scss`],
           importedBy: [],
@@ -173,15 +146,10 @@ describe("sass graph without dir (focus on file)", () => {
           importedBy: [`${dir}/_footer.scss`],
           modified: "2018-01-01T00:00:00.000Z",
         },
-      },
-      loadPaths: ["/Users/espeon/Development/github/nicoespeon/sass-graph-viz"],
-      addFile: () => {},
-      visitAncestors: () => {},
-      visitDescendents: () => {},
-      visit: () => {},
-    };
+      })
+      .build();
 
-    const graph = sassGraphGraphToGraph(dir, emptyIndexSassGraph);
+    const graph = sassGraphGraphToGraph(dir, sassGraphGraphWithoutDir);
 
     const expectedGraph = new Graph();
     expectedGraph.addVertice("main", "_footer");
@@ -189,3 +157,34 @@ describe("sass graph without dir (focus on file)", () => {
     expect(graph).toEqual(expectedGraph);
   });
 });
+
+class FakeSassGraphGraph {
+  private graph: sassGraph.Graph;
+
+  constructor() {
+    this.graph = {
+      dir: undefined,
+      extensions: ["scss", "sass"],
+      index: {},
+      loadPaths: ["path/to/load"],
+      addFile: () => {},
+      visitAncestors: () => {},
+      visitDescendents: () => {},
+      visit: () => {},
+    };
+  }
+
+  build() {
+    return this.graph;
+  }
+
+  withDir(dir: sassGraph.Graph["dir"]): this {
+    this.graph.dir = dir;
+    return this;
+  }
+
+  withIndex(index: sassGraph.Graph["index"]): this {
+    this.graph.index = index;
+    return this;
+  }
+}
