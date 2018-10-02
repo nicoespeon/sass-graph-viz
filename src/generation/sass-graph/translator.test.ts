@@ -1,7 +1,7 @@
 import * as sassGraph from "sass-graph";
 
-import { Graph } from "../graph";
-import { sassGraphGraphToGraph } from "./sass-graph";
+import { Graph } from "../../graph";
+import { sassGraphGraphToGraph } from "./translator";
 
 describe("sass graph without index", () => {
   it("return empty graph", () => {
@@ -10,7 +10,7 @@ describe("sass graph without index", () => {
       .withDir(dir)
       .build();
 
-    const graph = sassGraphGraphToGraph(dir, sassGraphGraphWithoutIndex);
+    const graph = sassGraphGraphToGraph(sassGraphGraphWithoutIndex);
 
     const emptyGraph = new Graph();
     expect(graph).toEqual(emptyGraph);
@@ -30,7 +30,7 @@ it("return graph for 1 import", () => {
     })
     .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
+  const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("parent", "_child");
@@ -74,7 +74,7 @@ it("return graph for a basic import tree", () => {
     })
     .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
+  const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
@@ -117,45 +117,13 @@ it("display nested directories as folders in nodes", () => {
     })
     .build();
 
-  const graph = sassGraphGraphToGraph(dir, sassGraphGraph);
+  const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
   expectedGraph.addVertice("main", "_base");
   expectedGraph.addVertice("main", "components/_footer");
   expectedGraph.addVertice("main", "components/_header");
   expect(graph).toEqual(expectedGraph);
-});
-
-describe("sass graph without dir (focus on file)", () => {
-  it("return empty graph", () => {
-    const dir = "path/to/dir";
-    const sassGraphGraphWithoutDir = new FakeSassGraphGraph()
-      .withIndex({
-        [`${dir}/main.scss`]: {
-          imports: [`${dir}/_footer.scss`],
-          importedBy: [],
-          modified: "2018-01-01T00:00:00.000Z",
-        },
-        [`${dir}/_footer.scss`]: {
-          imports: [`${dir}/_colors.scss`],
-          importedBy: [`${dir}/main.scss`],
-          modified: "2018-01-01T00:00:00.000Z",
-        },
-        [`${dir}/_colors.scss`]: {
-          imports: [],
-          importedBy: [`${dir}/_footer.scss`],
-          modified: "2018-01-01T00:00:00.000Z",
-        },
-      })
-      .build();
-
-    const graph = sassGraphGraphToGraph(dir, sassGraphGraphWithoutDir);
-
-    const expectedGraph = new Graph();
-    expectedGraph.addVertice("main", "_footer");
-    expectedGraph.addVertice("_footer", "_colors");
-    expect(graph).toEqual(expectedGraph);
-  });
 });
 
 class FakeSassGraphGraph {
