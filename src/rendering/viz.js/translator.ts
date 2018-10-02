@@ -4,9 +4,9 @@ type VizGraph = string;
 
 export function graphToVizGraph(graph: Graph): VizGraph {
   return graph
-    .getVertices()
-    .map((vertice) => vertice.map((node) => node.name))
-    .map((vertice) => vertice.map(escapeUnsupportedCharacter))
+    .getEdges()
+    .map((edge) => edge.map((node) => node.name))
+    .map((edge) => edge.map(escapeUnsupportedCharacter))
     .map(([parent, child]) => `${parent} -> ${child}`)
     .join("\n");
 }

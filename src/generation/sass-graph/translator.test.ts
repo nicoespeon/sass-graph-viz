@@ -33,7 +33,7 @@ it("return graph for 1 import", () => {
   const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
-  expectedGraph.addVertice("parent", "_child");
+  expectedGraph.addEdge("parent", "_child");
   expect(graph).toEqual(expectedGraph);
 });
 
@@ -77,11 +77,11 @@ it("return graph for a basic import tree", () => {
   const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
-  expectedGraph.addVertice("main", "_base");
-  expectedGraph.addVertice("_footer", "_colors");
-  expectedGraph.addVertice("_header", "_colors");
-  expectedGraph.addVertice("main", "_footer");
-  expectedGraph.addVertice("main", "_header");
+  expectedGraph.addEdge("main", "_base");
+  expectedGraph.addEdge("_footer", "_colors");
+  expectedGraph.addEdge("_header", "_colors");
+  expectedGraph.addEdge("main", "_footer");
+  expectedGraph.addEdge("main", "_header");
   expect(graph).toEqual(expectedGraph);
 });
 
@@ -120,9 +120,9 @@ it("display nested directories as folders in nodes", () => {
   const graph = sassGraphGraphToGraph(sassGraphGraph);
 
   const expectedGraph = new Graph();
-  expectedGraph.addVertice("main", "_base");
-  expectedGraph.addVertice("main", "components/_footer");
-  expectedGraph.addVertice("main", "components/_header");
+  expectedGraph.addEdge("main", "_base");
+  expectedGraph.addEdge("main", "components/_footer");
+  expectedGraph.addEdge("main", "components/_header");
   expect(graph).toEqual(expectedGraph);
 });
 

@@ -10,10 +10,10 @@ it("translate an empty graph", () => {
   expect(visGraph).toEqual(emptyVisGraph);
 });
 
-it("translate a graph with some vertices", () => {
+it("translate a graph with some edges", () => {
   const graph = new Graph();
-  graph.addVertice("main", "_header");
-  graph.addVertice("main", "_footer");
+  graph.addEdge("main", "_header");
+  graph.addEdge("main", "_footer");
 
   const visGraph = graphToVisGraph(graph);
 
@@ -30,10 +30,10 @@ it("translate a graph with some vertices", () => {
 
 it("sets proper colors to files & partials", () => {
   const graph = new Graph();
-  graph.addVertice("main", "_header");
-  graph.addVertice("main", "_footer");
-  graph.addVertice("mobile", "_header");
-  graph.addVertice("_header", "vars/_colors");
+  graph.addEdge("main", "_header");
+  graph.addEdge("main", "_footer");
+  graph.addEdge("mobile", "_header");
+  graph.addEdge("_header", "vars/_colors");
 
   const visGraph = graphToVisGraph(graph);
 

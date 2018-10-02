@@ -11,7 +11,7 @@ it("compute an empty graph", () => {
 
 it("compute an simple graph", () => {
   const graph = new Graph();
-  graph.addVertice("main", "_header");
+  graph.addEdge("main", "_header");
 
   const vizGraph = graphToVizGraph(graph);
 
@@ -20,10 +20,10 @@ it("compute an simple graph", () => {
 
 it("compute a complex graph", () => {
   const graph = new Graph();
-  graph.addVertice("main", "_header");
-  graph.addVertice("main", "_footer");
-  graph.addVertice("_header", "_colors");
-  graph.addVertice("_footer", "_colors");
+  graph.addEdge("main", "_header");
+  graph.addEdge("main", "_footer");
+  graph.addEdge("_header", "_colors");
+  graph.addEdge("_footer", "_colors");
 
   const vizGraph = graphToVizGraph(graph);
 
@@ -38,7 +38,7 @@ it("compute a complex graph", () => {
 
 it("escape unsupported '-' character in node", () => {
   const graph = new Graph();
-  graph.addVertice("main", "_mobile-sidebar");
+  graph.addEdge("main", "_mobile-sidebar");
 
   const vizGraph = graphToVizGraph(graph);
 
@@ -47,7 +47,7 @@ it("escape unsupported '-' character in node", () => {
 
 it("escape unsupported '/' character in node", () => {
   const graph = new Graph();
-  graph.addVertice("main", "components/_header");
+  graph.addEdge("main", "components/_header");
 
   const vizGraph = graphToVizGraph(graph);
 

@@ -15,7 +15,7 @@ export function graphToVisGraph(graph: Graph): VisGraph {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
 
-  graph.getVertices().forEach(([parent, child]) => {
+  graph.getEdges().forEach(([parent, child]) => {
     const nodeIds = nodes.map(({ id }) => id);
 
     if (!nodeIds.includes(parent.name)) {
