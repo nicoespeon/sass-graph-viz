@@ -1,5 +1,3 @@
-import { flow } from "lodash";
-
 import { Path, generateGraphFromSassGraph } from "./generation/sass-graph";
 import { renderGraphToVizGraph } from "./rendering/viz.js";
 import { renderGraphToVisGraph } from "./rendering/vis";
@@ -13,8 +11,6 @@ export function generateVisualGraph(
     ? renderGraphToVizGraph
     : renderGraphToVisGraph;
 
-  flow(
-    generateGraphFromSassGraph,
-    (graph) => renderGraph(port, graph),
-  )(target);
+  const graph = generateGraphFromSassGraph(target);
+  renderGraph(port, graph);
 }
