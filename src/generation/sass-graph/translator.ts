@@ -1,8 +1,7 @@
 import * as sassGraph from "sass-graph";
-import * as path from "path";
 
 import { Graph } from "../../graph";
-import { Path } from "../../path";
+import { fileNameRelativeTo } from "../../path";
 
 export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   const graph = new Graph();
@@ -18,8 +17,4 @@ export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   });
 
   return graph;
-}
-
-function fileNameRelativeTo(rootFolder: Path, file: Path): string {
-  return path.relative(rootFolder, file).replace(path.extname(file), "");
 }

@@ -1,7 +1,10 @@
+import * as path from "path";
+
 import { generateGraphFromSassGraph } from "./generation/sass-graph";
 import { renderGraphToVizGraph } from "./rendering/viz.js";
 import { renderGraphToVisGraph } from "./rendering/vis";
-import { Path } from "./path";
+import { Path, isFolder, fileNameRelativeTo } from "./path";
+import { Graph } from "./graph";
 
 export function generateVisualGraph(
   target: Path,
@@ -12,6 +15,14 @@ export function generateVisualGraph(
     ? renderGraphToVizGraph
     : renderGraphToVisGraph;
 
-  const graph = generateGraphFromSassGraph(target);
+  let graph: Graph;
+  if (isFolder(target)) {
+    graph = generateGraphFromSassGraph(target);
+  } else {
+    const targetFolder = path.dirname(target);
+    const file = fileNameRelativeTo(targetFolder, target);
+    graph = generateGraphFromSassGraph(targetFolder).focusOnNode(file);
+  }
+
   renderGraph(port, graph);
 }
