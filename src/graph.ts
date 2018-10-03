@@ -1,32 +1,23 @@
 import * as path from "path";
 
 export class Graph {
-  private edges: Set<Edge>;
-
-  constructor() {
-    this.edges = new Set();
-  }
+  private graph: { [parent: string]: string[] } = {};
 
   addEdge(parent: string, child: string) {
-    this.edges.add(new Edge(parent, child));
+    if (!this.graph[parent]) this.graph[parent] = [];
+    this.graph[parent].push(child);
   }
 
   getEdges(): Node[][] {
     const edges: Node[][] = [];
 
-    this.edges.forEach((edge) => {
-      edges.push(edge.nodes);
+    Object.keys(this.graph).forEach((parent) => {
+      this.graph[parent].forEach((child) => {
+        edges.push([new Node(parent), new Node(child)]);
+      });
     });
 
     return edges;
-  }
-}
-
-class Edge {
-  nodes: Node[];
-
-  constructor(parent: string, child: string) {
-    this.nodes = [new Node(parent), new Node(child)];
   }
 }
 
