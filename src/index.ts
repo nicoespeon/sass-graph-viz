@@ -1,6 +1,7 @@
-import { Path, generateGraphFromSassGraph } from "./generation/sass-graph";
+import { generateGraphFromSassGraph } from "./generation/sass-graph";
 import { renderGraphToVizGraph } from "./rendering/viz.js";
 import { renderGraphToVisGraph } from "./rendering/vis";
+import { Path } from "./path";
 
 export function generateVisualGraph(
   target: Path,

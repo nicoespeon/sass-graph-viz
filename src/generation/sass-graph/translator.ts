@@ -2,7 +2,7 @@ import * as sassGraph from "sass-graph";
 import * as path from "path";
 
 import { Graph } from "../../graph";
-import { Path } from "./path";
+import { Path } from "../../path";
 
 export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   const graph = new Graph();
