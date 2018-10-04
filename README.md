@@ -101,6 +101,27 @@ If you don't feel like opening a PR, creating an issue to share some suggestions
 ## I wonder what's new
 
 <details>
+<summary>2.0.0</summary>
+
+**[Breaking change]** Second param (`useSimpleViz: boolean`) was replaced by an `options` object:
+
+```ts
+generateVisualGraph( target: string, options?: Options )
+```
+
+You can generate a simpler visualisation with `useSimpleViz: boolean` option (default `false`).
+
+New features:
+
+- Given target can be a folder, or a file.
+  - Provide a file if you want to focus visualization on its ancestors and descendents.
+- Configure the port with option `port: number` (default `3000`)
+- Exclude omit files which are not under given target folder with option `excludeExternals: boolean` (default `false`).
+  - For example, you may not want to visualize bootstrap files dependencies from `node_modules/`
+
+</details>
+
+<details>
 <summary>1.0.0</summary>
 
 - First release of the library
