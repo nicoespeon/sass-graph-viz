@@ -52,3 +52,25 @@ describe("focus on a node", () => {
     expect(() => graph.focusOnNode(nodeName)).not.toThrow();
   });
 });
+
+describe("without externals", () => {
+  it("should filter out all externals nodes", () => {
+    const graph = new Graph();
+    graph.addEdge("main", "_header");
+    graph.addEdge("main", "../_external-file");
+    graph.addEdge("_header", "_colors");
+    graph.addEdge("_header", "../../node_modules/bootstrap/main");
+    graph.addEdge(
+      "../../node_modules/bootstrap/main",
+      "../../node_modules/bootstrap/_variables",
+    );
+    graph.addEdge("../_external_partial", "_variables");
+
+    const filteredGraph = graph.withoutExternals();
+
+    const expectedGraph = new Graph();
+    expectedGraph.addEdge("main", "_header");
+    expectedGraph.addEdge("_header", "_colors");
+    expect(filteredGraph).toEqual(expectedGraph);
+  });
+});

@@ -17,14 +17,16 @@ $ sassgraphviz --help
 Usage: sassgraphviz [options] <target>
 
 Options:
-  -s, --simple  Generate a simpler visualization (not recommended for complex graphs)
-  -p, --port <port>  Port to use [3000]
-  -h, --help  Output usage information
+  -e, --exclude-externals  Omit files that are not under given target
+  -s, --simple             Generate a simpler visualization (not recommended for complex graphs)
+  -p, --port <port>        Port to use [3000]
+  -h, --help               Output usage information
 
 Examples:
   sassgraphviz assets/scss
   sassgraphviz .
   sassgraphviz main.scss
+  sassgraphviz main.scss -s -e -p 3001
 ```
 
 You can also use the shorthand `sgv` instead of `sassgraphviz` (e.g. you can type `sgv assets/scss`).
@@ -49,6 +51,7 @@ generateVisualGraph( target: string, options?: Options );
 
 `options` are optionals. Values are:
 
+- `excludeExternals: boolean` to omit files that are not under given `target` (default `false`)
 - `useSimpleViz: boolean` to generate a simpler visualization (default `false`)
 - `port: number` to use a custom port (default `3000`)
 

@@ -9,6 +9,10 @@ const DEFAULT_PORT = 3000;
 program
   .arguments("<target>")
   .option(
+    "-e, --exclude-externals",
+    "Omit files that are not under given target",
+  )
+  .option(
     "-s, --simple",
     "Generate a simpler visualization (not recommended for complex graphs)",
   )
@@ -19,6 +23,7 @@ program
       const port = Number(program.port) || DEFAULT_PORT;
 
       generateVisualGraph(targetFullPath, {
+        excludeExternals: program.excludeExternals,
         useSimpleViz: program.simple,
         port,
       });

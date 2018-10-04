@@ -35,6 +35,18 @@ export class Graph {
     return graph;
   }
 
+  withoutExternals(): Graph {
+    const graph = new Graph();
+
+    this.getEdges().forEach(([parent, child]) => {
+      if (!parent.isExternal() && !child.isExternal()) {
+        graph.addEdge(parent.name, child.name);
+      }
+    });
+
+    return graph;
+  }
+
   private isAncestorOrDescendent(node: string, target: string): boolean {
     return this.isAncestor(node, target) || this.isDescendent(node, target);
   }
@@ -75,5 +87,9 @@ class Node {
 
   isPartial(): boolean {
     return path.basename(this.name).startsWith("_");
+  }
+
+  isExternal(): boolean {
+    return this.name.startsWith("..");
   }
 }
