@@ -42,16 +42,21 @@ const sassGraphViz = require("sass-graph-viz");
 #### To generate a visual graph
 
 ```ts
-generateVisualGraph( target: string, useSimpleViz = false, port = 3000 );
+generateVisualGraph( target: string, options?: Options );
 ```
 
 `target` can be a folder or a file.
 
+`options` are optionals. Values are:
+
+- `useSimpleViz: boolean` to generate a simpler visualization (default `false`)
+- `port: number` to use a custom port (default `3000`)
+
 For instance:
 
 - `sassGraphViz.generateVisualGraph('path/to/scss/')` to render the default graph
-- `sassGraphViz.generateVisualGraph('path/to/scss/', true)` for the simpler visualization
-- `sassGraphViz.generateVisualGraph('path/to/scss/', false, 3001)` to use port `3001`
+- `sassGraphViz.generateVisualGraph('path/to/scss/', { useSimpleViz: true })` for the simpler visualization
+- `sassGraphViz.generateVisualGraph('path/to/scss/', { port: 3001 })` to use port `3001`
 
 ## I want to modify the source code…
 

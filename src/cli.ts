@@ -18,7 +18,10 @@ program
       const targetFullPath = path.join(process.cwd(), target);
       const port = Number(program.port) || DEFAULT_PORT;
 
-      generateVisualGraph(targetFullPath, program.simple, port);
+      generateVisualGraph(targetFullPath, {
+        useSimpleViz: program.simple,
+        port,
+      });
     },
   )
   .parse(process.argv);

@@ -6,10 +6,14 @@ import { renderGraphToVisGraph } from "./rendering/vis";
 import { Path, isFolder, fileNameRelativeTo } from "./path";
 import { Graph } from "./graph";
 
+interface Options {
+  useSimpleViz?: boolean;
+  port?: number;
+}
+
 export function generateVisualGraph(
   target: Path,
-  useSimpleViz = false,
-  port = 3000,
+  { useSimpleViz = false, port = 3000 }: Options = {},
 ): void {
   const renderGraph = useSimpleViz
     ? renderGraphToVizGraph
