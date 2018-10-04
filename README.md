@@ -100,12 +100,16 @@ If you don't feel like opening a PR, creating an issue to share some suggestions
 
 ## I wonder what's new
 
-- 1.0.0
-  - First release of the library
-  - Generate graph with CLI (`sassgraphviz <dir>` or `sgv <dir>`)
-  - Option to generate a simpler visualization (`sgv --simple <dir>` or `sgv -s <dir>`)
-  - API method `generateVisualGraph( pathToFolder: string, useSimpleViz = false )`
-  - Large graphs (more than 30 nodes) display a preloader while computing
+<details>
+<summary>1.0.0</summary>
+
+- First release of the library
+- Generate graph with CLI (`sassgraphviz <dir>` or `sgv <dir>`)
+- Option to generate a simpler visualization (`sgv --simple <dir>` or `sgv -s <dir>`)
+- API method `generateVisualGraph( pathToFolder: string, useSimpleViz = false )`
+- Large graphs (more than 30 nodes) display a preloader while computing
+
+</details>
 
 ## I want to know who made that
 
@@ -113,7 +117,8 @@ Made with :heart: and :unicorn: by [Nicolas Carlo](https://twitter.com/nicoespeo
 
 ## I have further questions…
 
-### What's the difference with sass-graph?
+<details>
+<summary>What's the difference with sass-graph?</summary>
 
 Indeed, there is this awesome lib called [sass-graph][sass-graph] which
 
@@ -125,7 +130,10 @@ So I decided to **plug sass-graph with a rendering library**: this is the core o
 
 The difference is that sass-graph-viz generates a visual graph of dependencies in your browser.
 
-### How is this built?
+</details>
+
+<details>
+<summary>How is this built?</summary>
 
 It started with [sass-graph][sass-graph] and a rendering library. For the latter, I went with [viz.js](https://github.com/mdaines/viz.js) first because the API was simple and the result looked great.
 
@@ -155,3 +163,5 @@ For example, in v1, there are also:
 - Another rendering solution using [vis](http://visjs.org) (because viz.js was not enough for real-life graphs)
 
 [sass-graph]: https://www.npmjs.com/package/sass-graph
+
+</details>
