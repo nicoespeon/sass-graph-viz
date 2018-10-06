@@ -28,6 +28,24 @@ it("translate a graph with some edges", () => {
   expect(visGraph).toEqual(expectedVisGraph);
 });
 
+it("translate a graph with orphan nodes", () => {
+  const graph = new Graph();
+  graph.addEdge("main", "_footer");
+  graph.addNode("_header");
+
+  const visGraph = graphToVisGraph(graph);
+
+  const expectedVisGraph = {
+    nodes: [
+      expect.objectContaining({ id: "main", label: "main" }),
+      expect.objectContaining({ id: "_footer", label: "_footer" }),
+      expect.objectContaining({ id: "_header", label: "_header" }),
+    ],
+    edges: [{ from: "main", to: "_footer" }],
+  };
+  expect(visGraph).toEqual(expectedVisGraph);
+});
+
 it("sets proper colors to files & partials", () => {
   const graph = new Graph();
   graph.addEdge("main", "_header");
@@ -43,7 +61,7 @@ it("sets proper colors to files & partials", () => {
     highlight: { background: "#FF9392", border: "#FF2E2C" },
   };
   const expectedPartialColor = { background: "#D2E5FF" };
-  const expectedNodes = [
+  const expectedNodes = expect.arrayContaining([
     expect.objectContaining({ id: "main", color: expectedFileColor }),
     expect.objectContaining({ id: "_header", color: expectedPartialColor }),
     expect.objectContaining({ id: "_footer", color: expectedPartialColor }),
@@ -52,6 +70,6 @@ it("sets proper colors to files & partials", () => {
       id: "vars/_colors",
       color: expectedPartialColor,
     }),
-  ];
+  ]);
   expect(visGraph.nodes).toEqual(expectedNodes);
 });

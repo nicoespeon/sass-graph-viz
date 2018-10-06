@@ -38,6 +38,7 @@
     "examples:two-entry-points": "ts-node examples/two-entry-points",
     "examples:nested-folders": "ts-node examples/nested-folders",
     "examples:circular-reference": "ts-node examples/circular-reference",
+    "examples:orphan-files": "ts-node examples/orphan-files",
     "examples:simple-viz": "ts-node examples/simple-viz",
     "examples:large-graph": "ts-node examples/large-graph"
   },

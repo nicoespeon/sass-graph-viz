@@ -126,6 +126,26 @@ it("display nested directories as folders in nodes", () => {
   expect(graph).toEqual(expectedGraph);
 });
 
+it("create nodes for orphan files", () => {
+  const dir = "path/to/dir";
+  const sassGraphGraph = new FakeSassGraphGraph()
+    .withDir(dir)
+    .withIndex({
+      [`${dir}/_child.scss`]: {
+        imports: [],
+        importedBy: [],
+        modified: "2018-01-01T00:00:00.000Z",
+      },
+    })
+    .build();
+
+  const graph = sassGraphGraphToGraph(sassGraphGraph);
+
+  const expectedGraph = new Graph();
+  expectedGraph.addNode("_child");
+  expect(graph).toEqual(expectedGraph);
+});
+
 class FakeSassGraphGraph {
   private graph: sassGraph.Graph;
 

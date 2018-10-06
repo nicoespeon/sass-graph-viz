@@ -7,14 +7,23 @@ export function sassGraphGraphToGraph({ index, dir }: sassGraph.Graph): Graph {
   const graph = new Graph();
 
   Object.keys(index).forEach((child) => {
-    const parents = index[child].importedBy;
+    const childInDir = fileNameRelativeTo(dir, child);
+    const node = index[child];
+
+    if (hasNoParent(node)) {
+      graph.addNode(childInDir);
+    }
+
+    const parents = node.importedBy;
     parents.forEach((parent) => {
-      graph.addEdge(
-        fileNameRelativeTo(dir, parent),
-        fileNameRelativeTo(dir, child),
-      );
+      const parentInDir = fileNameRelativeTo(dir, parent);
+      graph.addEdge(parentInDir, childInDir);
     });
   });
 
   return graph;
+}
+
+function hasNoParent(node: sassGraph.Node[""]): boolean {
+  return node.importedBy.length === 0;
 }

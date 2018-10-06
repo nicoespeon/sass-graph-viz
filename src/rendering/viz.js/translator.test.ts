@@ -36,6 +36,17 @@ it("compute a complex graph", () => {
   expect(vizGraph).toBe(expectedVizGraph);
 });
 
+it("compute a graph with orphan nodes", () => {
+  const graph = new Graph();
+  graph.addEdge("main", "_header");
+  graph.addNode("_footer");
+
+  const vizGraph = graphToVizGraph(graph);
+
+  const expectedVizGraph = ["main -> _header", "_footer"].join("\n");
+  expect(vizGraph).toBe(expectedVizGraph);
+});
+
 it("escape unsupported '-' character in node", () => {
   const graph = new Graph();
   graph.addEdge("main", "_mobile-sidebar");

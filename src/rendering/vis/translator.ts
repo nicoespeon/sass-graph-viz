@@ -12,30 +12,15 @@ const fileColor: Node["color"] = {
 const partialColor: Node["color"] = { background: "#D2E5FF" };
 
 export function graphToVisGraph(graph: Graph): VisGraph {
-  const nodes: Node[] = [];
-  const edges: Edge[] = [];
+  const nodes = graph.getNodes().map((node) => ({
+    id: node.name,
+    label: node.name,
+    color: node.isPartial() ? partialColor : fileColor,
+  }));
 
-  graph.getEdges().forEach(([parent, child]) => {
-    const nodeIds = nodes.map(({ id }) => id);
-
-    if (!nodeIds.includes(parent.name)) {
-      nodes.push({
-        id: parent.name,
-        label: parent.name,
-        color: parent.isPartial() ? partialColor : fileColor,
-      });
-    }
-
-    if (!nodeIds.includes(child.name)) {
-      nodes.push({
-        id: child.name,
-        label: child.name,
-        color: child.isPartial() ? partialColor : fileColor,
-      });
-    }
-
-    edges.push({ from: parent.name, to: child.name });
-  });
+  const edges = graph
+    .getEdges()
+    .map(([parent, child]) => ({ from: parent.name, to: child.name }));
 
   return { nodes, edges };
 }

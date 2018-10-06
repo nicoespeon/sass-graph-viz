@@ -1,5 +1,33 @@
 import { Graph } from "./graph";
 
+it("should add a node", () => {
+  const graph = new Graph();
+
+  graph.addNode("main");
+
+  const nodes = graph.getNodes().map((node) => node.name);
+  expect(nodes).toEqual(["main"]);
+});
+
+it("should add nodes when adding an edge", () => {
+  const graph = new Graph();
+
+  graph.addEdge("main", "_header");
+
+  const nodes = graph.getNodes().map((node) => node.name);
+  expect(nodes).toEqual(["main", "_header"]);
+});
+
+it("should ignore adding a node that already exists", () => {
+  const graph = new Graph();
+
+  graph.addEdge("main", "_header");
+  graph.addNode("main");
+
+  const edgesCount = graph.getEdges().length;
+  expect(edgesCount).toBe(1);
+});
+
 it("should return graph edges", () => {
   const graph = new Graph();
   graph.addEdge("main", "_base");

@@ -3,9 +3,18 @@ import * as path from "path";
 export class Graph {
   private graph: { [parent: string]: string[] } = {};
 
+  addNode(node: string) {
+    if (!this.graph[node]) this.graph[node] = [];
+  }
+
   addEdge(parent: string, child: string) {
-    if (!this.graph[parent]) this.graph[parent] = [];
+    this.addNode(parent);
+    this.addNode(child);
     this.graph[parent].push(child);
+  }
+
+  getNodes(): Node[] {
+    return Object.keys(this.graph).map((nodeName) => new Node(nodeName));
   }
 
   getEdges(): Node[][] {
