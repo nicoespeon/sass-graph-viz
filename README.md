@@ -101,6 +101,13 @@ If you don't feel like opening a PR, creating an issue to share some suggestions
 ## I wonder what's new
 
 <details>
+<summary>2.0.1</summary>
+
+Visualize orphan files as orphan nodes in the graph. Before, they didn't show up in the graph if they were not linked to another node.
+
+</details>
+
+<details>
 <summary>2.0.0</summary>
 
 **[Breaking change]** Second param (`useSimpleViz: boolean`) was replaced by an `options` object:
