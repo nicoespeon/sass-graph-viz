@@ -31,6 +31,7 @@ export class Graph {
 
   focusOnNode(nodeName: string): Graph {
     const graph = new Graph();
+    graph.addNode(nodeName);
 
     this.getEdges().forEach(([parent, child]) => {
       if (

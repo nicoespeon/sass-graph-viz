@@ -40,6 +40,7 @@
     "examples:circular-reference": "ts-node examples/circular-reference",
     "examples:orphan-files": "ts-node examples/orphan-files",
     "examples:simple-viz": "ts-node examples/simple-viz",
+    "examples:single-file": "ts-node examples/single-file",
     "examples:large-graph": "ts-node examples/large-graph"
   },
   "devDependencies": {

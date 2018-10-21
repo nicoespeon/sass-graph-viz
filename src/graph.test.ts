@@ -79,6 +79,15 @@ describe("focus on a node", () => {
 
     expect(() => graph.focusOnNode(nodeName)).not.toThrow();
   });
+
+  it("should keep an isolated node", () => {
+    const graph = new Graph();
+    graph.addNode("main");
+
+    const filteredGraph = graph.focusOnNode("main");
+
+    expect(filteredGraph).toEqual(graph);
+  });
 });
 
 describe("without externals", () => {
