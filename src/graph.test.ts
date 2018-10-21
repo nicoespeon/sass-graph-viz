@@ -108,6 +108,23 @@ describe("without externals", () => {
     const expectedGraph = new Graph();
     expectedGraph.addEdge("main", "_header");
     expectedGraph.addEdge("_header", "_colors");
+    // `_variables` is internal node + child of external node
+    // => isolated node in the filtered graph.
+    expectedGraph.addNode("_variables");
+    expect(filteredGraph).toEqual(expectedGraph);
+  });
+
+  it("should not filter out isolated nodes", () => {
+    const graph = new Graph();
+    graph.addNode("_isolated_partial");
+    graph.addEdge("main", "_header");
+    graph.addEdge("main", "../_external-file");
+
+    const filteredGraph = graph.withoutExternals();
+
+    const expectedGraph = new Graph();
+    expectedGraph.addNode("_isolated_partial");
+    expectedGraph.addEdge("main", "_header");
     expect(filteredGraph).toEqual(expectedGraph);
   });
 });

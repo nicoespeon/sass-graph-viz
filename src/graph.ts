@@ -48,6 +48,10 @@ export class Graph {
   withoutExternals(): Graph {
     const graph = new Graph();
 
+    this.getNodes().forEach((node) => {
+      if (!node.isExternal()) graph.addNode(node.name);
+    });
+
     this.getEdges().forEach(([parent, child]) => {
       if (!parent.isExternal() && !child.isExternal()) {
         graph.addEdge(parent.name, child.name);
