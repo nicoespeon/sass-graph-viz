@@ -101,6 +101,17 @@ If you don't feel like opening a PR, creating an issue to share some suggestions
 ## I wonder what's new
 
 <details>
+<summary>2.0.2</summary>
+
+Few fixes around isolated nodes. An _isolated node_ is a node without parent and without child.
+
+Render the isolated node when you focus on it. Meaning `sgv _button.scss` will at least render the `_button` node. Previously, it would have displayed an empty page.
+
+Also fix the rendering of isolated nodes when you exclude externals. Previousl, `sgv scss/ -e` would not render nodes that didn't have parent, nor child, after external files have been excluded.
+
+</details>
+
+<details>
 <summary>2.0.1</summary>
 
 Visualize orphan files as orphan nodes in the graph. Before, they didn't show up in the graph if they were not linked to another node.
