@@ -2,19 +2,24 @@ import * as path from "path";
 
 export class Graph {
   private graph: { [parent: string]: string[] } = {};
+  private orphanNodes = new Set<string>();
 
   addNode(node: string) {
-    if (!this.graph[node]) this.graph[node] = [];
+    if (this.graph[node]) return;
+
+    this.graph[node] = [];
+    this.orphanNodes.add(node);
   }
 
   addEdge(parent: string, child: string) {
     this.addNode(parent);
     this.addNode(child);
     this.graph[parent].push(child);
+    this.orphanNodes.delete(child);
   }
 
   getNodes(): Node[] {
-    return Object.keys(this.graph).map((nodeName) => new Node(nodeName));
+    return Object.keys(this.graph).map((nodeName) => this.createNode(nodeName));
   }
 
   getEdges(): Node[][] {
@@ -22,7 +27,7 @@ export class Graph {
 
     Object.keys(this.graph).forEach((parent) => {
       this.graph[parent].forEach((child) => {
-        edges.push([new Node(parent), new Node(child)]);
+        edges.push([this.createNode(parent), this.createNode(child)]);
       });
     });
 
@@ -59,6 +64,16 @@ export class Graph {
     });
 
     return graph;
+  }
+
+  private createNode(nodeName: string): Node {
+    return this.isOrphan(nodeName)
+      ? new OrphanNode(nodeName)
+      : new Node(nodeName);
+  }
+
+  private isOrphan(nodeName: string): boolean {
+    return this.orphanNodes.has(nodeName);
   }
 
   private isAncestorOrDescendent(node: string, target: string): boolean {
@@ -105,5 +120,15 @@ class Node {
 
   isExternal(): boolean {
     return this.name.startsWith("..");
+  }
+
+  isOrphan(): boolean {
+    return false;
+  }
+}
+
+class OrphanNode extends Node {
+  isOrphan() {
+    return true;
   }
 }

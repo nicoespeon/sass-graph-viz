@@ -28,6 +28,21 @@ it("should ignore adding a node that already exists", () => {
   expect(edgesCount).toBe(1);
 });
 
+it("should identify orphan nodes", () => {
+  const graph = new Graph();
+  graph.addEdge("main", "_header");
+  graph.addNode("_base");
+
+  const nodes = graph.getNodes();
+  const mainNode = nodes.find((node) => node.name === "main");
+  const headerNode = nodes.find((node) => node.name === "_header");
+  const baseNode = nodes.find((node) => node.name === "_base");
+
+  expect(mainNode.isOrphan()).toBe(true);
+  expect(headerNode.isOrphan()).toBe(false);
+  expect(baseNode.isOrphan()).toBe(true);
+});
+
 it("should return graph edges", () => {
   const graph = new Graph();
   graph.addEdge("main", "_base");
