@@ -1,5 +1,6 @@
 import { Graph } from "../../graph";
 import { graphToVisGraph } from "./translator";
+import { colors } from "./colors";
 
 it("translate an empty graph", () => {
   const graph = new Graph();
@@ -56,29 +57,18 @@ it("sets proper colors to files & partials", () => {
 
   const visGraph = graphToVisGraph(graph);
 
-  const expectedFileColor = {
-    background: "#FF9392",
-    border: "#FF2E2C",
-    highlight: { background: "#FF9392", border: "#FF2E2C" },
-  };
-  const expectedPartialColor = { background: "#D2E5FF" };
-  const expectedOrphanPartialColor = {
-    background: "#CE83FC",
-    border: "#B042F4",
-    highlight: { background: "#CE83FC", border: "#B042F4" },
-  };
   const expectedNodes = expect.arrayContaining([
-    expect.objectContaining({ id: "main", color: expectedFileColor }),
-    expect.objectContaining({ id: "_header", color: expectedPartialColor }),
-    expect.objectContaining({ id: "_footer", color: expectedPartialColor }),
-    expect.objectContaining({ id: "mobile", color: expectedFileColor }),
+    expect.objectContaining({ id: "main", color: colors.file }),
+    expect.objectContaining({ id: "_header", color: colors.partial }),
+    expect.objectContaining({ id: "_footer", color: colors.partial }),
+    expect.objectContaining({ id: "mobile", color: colors.file }),
     expect.objectContaining({
       id: "vars/_colors",
-      color: expectedPartialColor,
+      color: colors.partial,
     }),
     expect.objectContaining({
       id: "_orphan-partial",
-      color: expectedOrphanPartialColor,
+      color: colors.orphanPartial,
     }),
   ]);
   expect(visGraph.nodes).toEqual(expectedNodes);
