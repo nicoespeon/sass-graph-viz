@@ -52,6 +52,7 @@ it("sets proper colors to files & partials", () => {
   graph.addEdge("main", "_footer");
   graph.addEdge("mobile", "_header");
   graph.addEdge("_header", "vars/_colors");
+  graph.addNode("_orphan-partial");
 
   const visGraph = graphToVisGraph(graph);
 
@@ -61,6 +62,11 @@ it("sets proper colors to files & partials", () => {
     highlight: { background: "#FF9392", border: "#FF2E2C" },
   };
   const expectedPartialColor = { background: "#D2E5FF" };
+  const expectedOrphanPartialColor = {
+    background: "#CE83FC",
+    border: "#B042F4",
+    highlight: { background: "#CE83FC", border: "#B042F4" },
+  };
   const expectedNodes = expect.arrayContaining([
     expect.objectContaining({ id: "main", color: expectedFileColor }),
     expect.objectContaining({ id: "_header", color: expectedPartialColor }),
@@ -69,6 +75,10 @@ it("sets proper colors to files & partials", () => {
     expect.objectContaining({
       id: "vars/_colors",
       color: expectedPartialColor,
+    }),
+    expect.objectContaining({
+      id: "_orphan-partial",
+      color: expectedOrphanPartialColor,
     }),
   ]);
   expect(visGraph.nodes).toEqual(expectedNodes);
