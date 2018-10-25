@@ -101,6 +101,19 @@ If you don't feel like opening a PR, creating an issue to share some suggestions
 ## I wonder what's new
 
 <details>
+<summary>2.1.0</summary>
+
+Help you identify things that are suspicious. Like orphan partials. You shouldn't have partials without parent, it's probably dead code you can remove.
+
+This release revise the colors of displayed nodes to add semantics:
+
+- regular SCSS files are always legit, there is nothing we can tell, so they are **grey**
+- partials which are imported by another file feel valid, so they are **green**
+- orphan partials which are not imported are suspicious, so they are **red**
+
+</details>
+
+<details>
 <summary>2.0.2</summary>
 
 Few fixes around isolated nodes. An _isolated node_ is a node without parent and without child.
