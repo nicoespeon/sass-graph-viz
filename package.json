@@ -14,20 +14,20 @@
     "dataviz"
   ],
   "bin": {
-    "sassgraphviz": "dist/cli.js",
-    "sgv": "dist/cli.js"
+    "sassgraphviz": "dist/src/cli.js",
+    "sgv": "dist/src/cli.js"
   },
   "files": [
     "dist"
   ],
   "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "postbuild": "chmod +x dist/cli.js && npm run copy-static-files",
-    "copy-static-files": "copyup src/rendering/**/*.{js,css,pug,json} dist",
+    "postbuild": "chmod +x dist/src/cli.js && npm run copy-static-files",
+    "copy-static-files": "copyup src/rendering/**/*.{js,css,pug,json} dist/src",
     "build:watch": "npm run prebuild && tsc-watch --onSuccess \"npm run postbuild\"",
     "test": "jest",
     "prepare": "npm run build",

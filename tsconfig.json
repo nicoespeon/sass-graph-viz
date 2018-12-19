@@ -11,7 +11,8 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "resolveJsonModule": true
   },
   "files": ["src/index.ts", "src/cli.ts"],
   "includes": ["examples/**/*.ts"]

@@ -2,12 +2,14 @@
 import * as program from "commander";
 import * as path from "path";
 
+import { version } from "../package.json";
 import { generateVisualGraph } from "./index";
 
 const DEFAULT_PORT = 3000;
 
 program
   .arguments("<target>")
+  .version(version, "-v, --version")
   .option(
     "-e, --exclude-externals",
     "Omit files that are not under given target",
