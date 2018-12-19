@@ -1,5 +1,20 @@
 # Changelog
 
+## [v2.2.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.1.0...v2.2.0) (2018-12-18)
+
+Few enhancements for contributors (Travis, README badges and external changelog).
+
+### Added
+
+New CLI options:
+
+- `-d, --debug` to output details for debugging purposes
+- `-v, --version` to print sass-graph-viz version
+
+New `generateVisualGraph` option:
+
+- `withDebugLogs: boolean` to log details for debugging purposes (default `false`)
+
 ## [v2.1.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.0.2...v2.1.0) (2018-10-25)
 
 Help you identify things that are suspicious. Like orphan partials. You shouldn't have partials without a parent, it's probably dead code you can remove.
