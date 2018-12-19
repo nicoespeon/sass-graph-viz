@@ -66,6 +66,10 @@ export class Graph {
     return graph;
   }
 
+  toString(): string {
+    return JSON.stringify(this.graph, null, 2);
+  }
+
   private createNode(nodeName: string): Node {
     return this.isOrphan(nodeName)
       ? new OrphanNode(nodeName)

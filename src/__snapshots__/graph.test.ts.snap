@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a string representation of the graph 1`] = `
+"{
+  \\"main\\": [
+    \\"_base\\",
+    \\"_header\\"
+  ],
+  \\"_base\\": [],
+  \\"_header\\": [
+    \\"_colors\\"
+  ],
+  \\"_colors\\": [
+    \\"_variables\\"
+  ],
+  \\"_variables\\": []
+}"
+`;

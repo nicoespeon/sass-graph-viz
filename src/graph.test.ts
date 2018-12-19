@@ -63,6 +63,18 @@ it("should return graph edges", () => {
   ]);
 });
 
+it("should return a string representation of the graph", () => {
+  const graph = new Graph();
+  graph.addEdge("main", "_base");
+  graph.addEdge("main", "_header");
+  graph.addEdge("_header", "_colors");
+  graph.addEdge("_colors", "_variables");
+
+  const stringGraph = graph.toString();
+
+  expect(stringGraph).toMatchSnapshot();
+});
+
 describe("focus on a node", () => {
   const nodeName = "_footer";
 
