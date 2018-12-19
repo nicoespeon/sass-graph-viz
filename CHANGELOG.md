@@ -2,11 +2,11 @@
 
 ## [v2.1.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.0.2...v2.1.0) (2018-10-25)
 
-Help you identify things that are suspicious. Like orphan partials. You shouldn't have partials without parent, it's probably dead code you can remove.
+Help you identify things that are suspicious. Like orphan partials. You shouldn't have partials without a parent, it's probably dead code you can remove.
 
 ### Added
 
-This release revise the colors of displayed nodes to add semantics:
+This release revises the colors of displayed nodes to add semantics:
 
 - regular SCSS files are always legit, there is nothing we can tell, so they are **grey**
 - partials which are imported by another file feel valid, so they are **green**
@@ -20,7 +20,7 @@ Few fixes around isolated nodes. An _isolated node_ is a node without parent and
 
 Render the isolated node when you focus on it. Meaning `sgv _button.scss` will at least render the `_button` node. Previously, it would have displayed an empty page.
 
-Also fix the rendering of isolated nodes when you exclude externals. Previousl, `sgv scss/ -e` would not render nodes that didn't have parent, nor child, after external files have been excluded.
+Also, fix the rendering of isolated nodes when you exclude externals. Previously, `sgv scss/ -e` would not render nodes that didn't have parent, nor child, after external files have been excluded.
 
 ## [v2.0.1](https://github.com/nicoespeon/sass-graph-viz/compare/v2.0.0...v2.0.1) (2018-10-11)
 
@@ -38,12 +38,12 @@ Second param (`useSimpleViz: boolean`) was replaced by an `options` object:
 generateVisualGraph( target: string, options?: Options )
 ```
 
-You can generate a simpler visualisation with `useSimpleViz: boolean` option (default `false`).
+You can generate a simpler visualization with `useSimpleViz: boolean` option (default `false`).
 
 ### Added
 
 - Given target can be a folder, or a file.
-  - Provide a file if you want to focus visualization on its ancestors and descendents.
+  - Provide a file if you want to focus visualization on its ancestors and descendants.
 - Configure the port with option `port: number` (default `3000`)
 - Exclude omit files which are not under given target folder with option `excludeExternals: boolean` (default `false`).
   - For example, you may not want to visualize bootstrap files dependencies from `node_modules/`
