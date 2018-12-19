@@ -1,6 +1,6 @@
-# SASS Graph Viz
+# Sass Graph Viz
 
-Draw a visual graph of SASS dependencies.
+Draw a visual graph of Sass dependencies.
 
 ---
 
