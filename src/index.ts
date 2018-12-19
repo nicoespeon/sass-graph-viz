@@ -4,32 +4,51 @@ import { generateGraphFromSassGraph } from "./generation/sass-graph";
 import { renderGraphToVizGraph } from "./rendering/viz.js";
 import { renderGraphToVisGraph } from "./rendering/vis";
 import { Path, isFolder, fileNameRelativeTo } from "./path";
+import { logErrors } from "./logger";
 
 interface Options {
   excludeExternals?: boolean;
   useSimpleViz?: boolean;
+  withDebugLogs?: boolean;
   port?: number;
 }
 
 export function generateVisualGraph(
   target: Path,
-  { excludeExternals = false, useSimpleViz = false, port = 3000 }: Options = {},
+  {
+    excludeExternals = false,
+    useSimpleViz = false,
+    withDebugLogs = false,
+    port = 3000,
+  }: Options = {},
 ): void {
   const renderGraph = useSimpleViz
     ? renderGraphToVizGraph
     : renderGraphToVisGraph;
+  const log = withDebugLogs ? logErrors : () => {};
+
+  log("\nGenerate visual graph for", target);
 
   const targetFolder = isFolder(target) ? target : path.dirname(target);
+  log("Resolved target folder is", targetFolder);
+
   let graph = generateGraphFromSassGraph(targetFolder);
+  log("Generated graph from target folder is", graph.toString());
 
   if (!isFolder(target)) {
     const file = fileNameRelativeTo(targetFolder, target);
+    log("Focus graph on file", file);
+
     graph = graph.focusOnNode(file);
+    log("Focused graph is", graph.toString());
   }
 
   if (excludeExternals) {
+    log("Exclude external elements from graph");
     graph = graph.withoutExternals();
+    log("Graph without external elements is", graph.toString());
   }
 
+  log("Render graph through port", port.toString());
   renderGraph(port, graph);
 }
