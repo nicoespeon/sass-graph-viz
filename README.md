@@ -18,7 +18,7 @@ Draw a visual graph of Sass dependencies.
 
 Install it with [npm](https://www.npmjs.com/package/sass-graph): `npm install -g sass-graph-viz`
 
-```shell
+```
 $ sassgraphviz --help
 Usage: sassgraphviz [options] <target>
 
@@ -26,7 +26,9 @@ Options:
   -e, --exclude-externals  Omit files that are not under given target
   -s, --simple             Generate a simpler visualization (not recommended for complex graphs)
   -p, --port <port>        Port to use [3000]
+  -d, --debug              Output details for debugging purposes
   -h, --help               Output usage information
+  -v, --version            Print sass-graph-viz version
 
 Examples:
   sassgraphviz assets/scss
@@ -59,6 +61,7 @@ generateVisualGraph( target: string, options?: Options );
 
 - `excludeExternals: boolean` to omit files that are not under given `target` (default `false`)
 - `useSimpleViz: boolean` to generate a simpler visualization (default `false`)
+- `withDebugLogs: boolean` to log details for debugging purposes (default `false`)
 - `port: number` to use a custom port (default `3000`)
 
 For instance:
