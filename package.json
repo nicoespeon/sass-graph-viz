@@ -30,7 +30,7 @@
     "copy-static-files": "copyup src/rendering/**/*.{js,css,pug,json} dist/src",
     "build:watch": "npm run prebuild && tsc-watch --onSuccess \"npm run postbuild\"",
     "test": "jest",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "examples": "run-s examples:*",
     "examples:basic-tree": "ts-node examples/basic-tree",
     "examples:without-externals": "ts-node examples/without-externals",
