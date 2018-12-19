@@ -16,6 +16,7 @@ program
     "-s, --simple",
     "Generate a simpler visualization (not recommended for complex graphs)",
   )
+  .option("-d, --debug", "Output details for debugging purposes")
   .option("-p, --port <port>", `Port to use [${DEFAULT_PORT}]`)
   .action(
     (target): void => {
@@ -25,6 +26,7 @@ program
       generateVisualGraph(targetFullPath, {
         excludeExternals: program.excludeExternals,
         useSimpleViz: program.simple,
+        withDebugLogs: program.debug,
         port,
       });
     },
