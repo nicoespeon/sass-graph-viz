@@ -2,6 +2,10 @@
 
 Draw a visual graph of SASS dependencies.
 
+---
+
+[![version](https://img.shields.io/npm/v/sass-graph-viz.svg?logo=npm)](https://www.npmjs.com/package/sass-graph-viz)
+[![Build Status](https://travis-ci.org/nicoespeon/sass-graph-viz.svg?branch=master)](https://travis-ci.org/nicoespeon/sass-graph-viz)
 ![sass-graph-viz-demo](assets/sass-graph-viz-demo.gif)
 
 ## I want to use it…
