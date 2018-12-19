@@ -6,6 +6,8 @@ Draw a visual graph of SASS dependencies.
 
 [![version](https://img.shields.io/npm/v/sass-graph-viz.svg?logo=npm)](https://www.npmjs.com/package/sass-graph-viz)
 [![Build Status](https://travis-ci.org/nicoespeon/sass-graph-viz.svg?branch=master)](https://travis-ci.org/nicoespeon/sass-graph-viz)
+[![Changelog](https://img.shields.io/badge/%F0%9F%93%94-changelog-CD9523.svg)](https://github.com/nicoespeon/sass-graph-viz/blob/master/CHANGELOG.md)
+
 ![sass-graph-viz-demo](assets/sass-graph-viz-demo.gif)
 
 ## I want to use it…
@@ -101,71 +103,6 @@ Since this is the very beginning of the project, I didn't wrote a `CONTRIBUTING.
 I'm here to help. If you have any question, just ask with an issue.
 
 If you don't feel like opening a PR, creating an issue to share some suggestions or report a bug is appreciated.
-
-## I wonder what's new
-
-<details>
-<summary>2.1.0</summary>
-
-Help you identify things that are suspicious. Like orphan partials. You shouldn't have partials without parent, it's probably dead code you can remove.
-
-This release revise the colors of displayed nodes to add semantics:
-
-- regular SCSS files are always legit, there is nothing we can tell, so they are **grey**
-- partials which are imported by another file feel valid, so they are **green**
-- orphan partials which are not imported are suspicious, so they are **red**
-
-</details>
-
-<details>
-<summary>2.0.2</summary>
-
-Few fixes around isolated nodes. An _isolated node_ is a node without parent and without child.
-
-Render the isolated node when you focus on it. Meaning `sgv _button.scss` will at least render the `_button` node. Previously, it would have displayed an empty page.
-
-Also fix the rendering of isolated nodes when you exclude externals. Previousl, `sgv scss/ -e` would not render nodes that didn't have parent, nor child, after external files have been excluded.
-
-</details>
-
-<details>
-<summary>2.0.1</summary>
-
-Visualize orphan files as orphan nodes in the graph. Before, they didn't show up in the graph if they were not linked to another node.
-
-</details>
-
-<details>
-<summary>2.0.0</summary>
-
-**[Breaking change]** Second param (`useSimpleViz: boolean`) was replaced by an `options` object:
-
-```ts
-generateVisualGraph( target: string, options?: Options )
-```
-
-You can generate a simpler visualisation with `useSimpleViz: boolean` option (default `false`).
-
-New features:
-
-- Given target can be a folder, or a file.
-  - Provide a file if you want to focus visualization on its ancestors and descendents.
-- Configure the port with option `port: number` (default `3000`)
-- Exclude omit files which are not under given target folder with option `excludeExternals: boolean` (default `false`).
-  - For example, you may not want to visualize bootstrap files dependencies from `node_modules/`
-
-</details>
-
-<details>
-<summary>1.0.0</summary>
-
-- First release of the library
-- Generate graph with CLI (`sassgraphviz <dir>` or `sgv <dir>`)
-- Option to generate a simpler visualization (`sgv --simple <dir>` or `sgv -s <dir>`)
-- API method `generateVisualGraph( pathToFolder: string, useSimpleViz = false )`
-- Large graphs (more than 30 nodes) display a preloader while computing
-
-</details>
 
 ## I want to know who made that
 
