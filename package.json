@@ -18,7 +18,8 @@
     "sgv": "dist/src/cli.js"
   },
   "files": [
-    "dist"
+    "src",
+    "tsconfig.json"
   ],
   "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
   "license": "MIT",
