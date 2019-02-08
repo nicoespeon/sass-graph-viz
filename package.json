@@ -19,6 +19,7 @@
   },
   "files": [
     "src",
+    "package.json",
     "tsconfig.json"
   ],
   "author": "Nicolas Carlo <nicolascarlo.espeon@gmail.com>",
