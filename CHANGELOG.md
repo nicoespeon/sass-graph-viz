@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.2.1](https://github.com/nicoespeon/sass-graph-viz/compare/v2.2.0...v2.2.1) (2018-02-07)
+
+Fix the npm package by embedding the correct files in the release.
+
+If you tried to install all previous releases, you probably couldn't because the `dist/` folder wasn't here. That's true. I messed up. It only worked for me because I got the local repository linked to my local npm.
+
+Sorry for that. Hopefully _now_ you can use the lib 😅
+
 ## [v2.2.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.1.0...v2.2.0) (2018-12-18)
 
 Few enhancements for contributors (Travis, README badges and external changelog).
