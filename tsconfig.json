@@ -15,5 +15,5 @@
     "resolveJsonModule": true
   },
   "files": ["src/index.ts", "src/cli.ts"],
-  "includes": ["examples/**/*.ts"]
+  "includes": ["examples/**/*.ts", "package.json"]
 }
