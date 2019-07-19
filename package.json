@@ -45,7 +45,9 @@
     "examples:simple-viz": "ts-node examples/simple-viz",
     "examples:single-file": "ts-node examples/single-file",
     "examples:large-graph": "ts-node examples/large-graph",
-    "examples:debug": "ts-node examples/debug"
+    "examples:debug": "ts-node examples/debug",
+    "examples:less": "ts-node examples/less",
+    "examples:css": "ts-node examples/css"
   },
   "devDependencies": {
     "@types/commander": "2.12.2",

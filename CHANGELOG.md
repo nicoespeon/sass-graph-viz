@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+Support LESS and CSS files.
+
+It's not the main target of this library, but it can be handy if you need it. Plus, it was easy to enable, thanks to [sass-graph's work](https://github.com/xzyfer/sass-graph/pull/23).
+
 ## [v2.2.2](https://github.com/nicoespeon/sass-graph-viz/compare/v2.2.1...v2.2.2) (2018-02-07)
 
 Turns out the `package.json` file should be explicitly include in the build, or it won't be properly compiled.
