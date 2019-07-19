@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [v2.3.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.2.2...v2.3.0) (2019-07-19)
 
 Support LESS and CSS files.
 

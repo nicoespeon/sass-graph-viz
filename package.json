@@ -1,6 +1,6 @@
 {
   "name": "sass-graph-viz",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Draw a visual graph of Sass dependencies",
   "repository": "nicoespeon/sass-graph-viz",
   "homepage": "https://github.com/nicoespeon/sass-graph-viz",
