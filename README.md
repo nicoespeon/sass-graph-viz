@@ -114,6 +114,26 @@ Made with :heart: and :unicorn: by [Nicolas Carlo](https://twitter.com/nicoespeo
 ## I have further questions…
 
 <details>
+<summary>Why some nodes are grey, green or red?</summary>
+
+Sass-graph-viz does its best to help you analyze your codebase. Colors add semantics to nodes:
+
+- regular SCSS files are always legit, there is nothing we can tell, so they are **grey**
+- partials which are imported by another file feel valid, so they are **green**
+- orphan partials which are not imported are suspicious, so they are **red**
+
+</details>
+
+<details>
+<summary>I've got LESS/CSS files in my codebase. Will it work?</summary>
+
+Yes, it will.
+
+It's not the main target of this library, but it can be handy if you need it. Plus, it was easy to enable, thanks to [sass-graph's work](https://github.com/xzyfer/sass-graph/pull/23).
+
+</details>
+
+<details>
 <summary>What's the difference with sass-graph?</summary>
 
 Indeed, there is this awesome lib called [sass-graph][sass-graph] which
