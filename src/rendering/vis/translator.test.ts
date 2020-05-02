@@ -73,3 +73,27 @@ it("sets proper colors to files & partials", () => {
   ]);
   expect(visGraph.nodes).toEqual(expectedNodes);
 });
+
+it("escape backslashes in node names", () => {
+  const graph = new Graph();
+  graph.addEdge("main", "..\\src\\_footer");
+  graph.addNode("..\\src\\_header");
+
+  const visGraph = graphToVisGraph(graph);
+
+  const expectedVisGraph = {
+    nodes: [
+      expect.objectContaining({ id: "main", label: "main" }),
+      expect.objectContaining({
+        id: "..\\\\src\\\\_footer",
+        label: "..\\\\src\\\\_footer",
+      }),
+      expect.objectContaining({
+        id: "..\\\\src\\\\_header",
+        label: "..\\\\src\\\\_header",
+      }),
+    ],
+    edges: [{ from: "main", to: "..\\\\src\\\\_footer" }],
+  };
+  expect(visGraph).toEqual(expectedVisGraph);
+});

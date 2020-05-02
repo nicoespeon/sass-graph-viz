@@ -115,7 +115,10 @@ class Node {
   readonly name: string;
 
   constructor(name: string) {
-    this.name = name;
+    // On Windows, paths are delimited with backslashes.
+    // We need to escape it so it can be parsed by JSON.
+    // See https://stackoverflow.com/a/42282604/3911841
+    this.name = name.replace(/\\/g, "\\\\");
   }
 
   isPartial(): boolean {
