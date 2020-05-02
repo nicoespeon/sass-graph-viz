@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.3.1](https://github.com/nicoespeon/sass-graph-viz/compare/v2.3.0...v2.3.1) (2020-05-01)
+
+Make sass-graph-viz work with Windows paths.
+
 ## [v2.3.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.2.2...v2.3.0) (2019-07-19)
 
 Support LESS and CSS files.
