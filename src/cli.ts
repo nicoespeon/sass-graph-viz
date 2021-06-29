@@ -18,6 +18,11 @@ program
     "-s, --simple",
     "Generate a simpler visualization (not recommended for complex graphs)",
   )
+  .option(
+    "-l, --load-paths <paths>",
+    "Add directories to the sass load path",
+    (list) => list.split(","),
+  )
   .option("-d, --debug", "Output details for debugging purposes")
   .option("-p, --port <port>", `Port to use [${DEFAULT_PORT}]`)
   .action(
@@ -29,6 +34,7 @@ program
         excludeExternals: program.excludeExternals,
         useSimpleViz: program.simple,
         withDebugLogs: program.debug,
+        loadPaths: program.loadPaths || [process.cwd()],
         port,
       });
     },

@@ -45,6 +45,7 @@
     "examples:simple-viz": "ts-node examples/simple-viz",
     "examples:single-file": "ts-node examples/single-file",
     "examples:large-graph": "ts-node examples/large-graph",
+    "examples:load-paths": "ts-node examples/load-paths",
     "examples:debug": "ts-node examples/debug",
     "examples:less": "ts-node examples/less",
     "examples:css": "ts-node examples/css"

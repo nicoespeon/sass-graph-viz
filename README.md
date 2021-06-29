@@ -24,6 +24,7 @@ Usage: sassgraphviz [options] <target>
 
 Options:
   -e, --exclude-externals  Omit files that are not under given target
+  -l, --load-paths         Add directories to the sass load path
   -s, --simple             Generate a simpler visualization (not recommended for complex graphs)
   -p, --port <port>        Port to use [3000]
   -d, --debug              Output details for debugging purposes
@@ -34,6 +35,7 @@ Examples:
   sassgraphviz assets/scss
   sassgraphviz .
   sassgraphviz main.scss
+  sassgraphviz main.scss --load-paths path/to/sass-sources-1,path/to/sass-sources-2
   sassgraphviz main.scss -s -e -p 3001
 ```
 
@@ -60,6 +62,7 @@ generateVisualGraph( target: string, options?: Options );
 `options` are optionals. Values are:
 
 - `excludeExternals: boolean` to omit files that are not under given `target` (default `false`)
+- `loadPaths: string[]` to add directories to the sass load path (default `[process.cwd]`)
 - `useSimpleViz: boolean` to generate a simpler visualization (default `false`)
 - `withDebugLogs: boolean` to log details for debugging purposes (default `false`)
 - `port: number` to use a custom port (default `3000`)
@@ -76,9 +79,9 @@ For instance:
 
 First, clone the repository to get code locally: `git clone git@github.com:nicoespeon/sass-graph-viz.git`
 
-Then, install dependencies: `yarn install` (or simply `yarn`)
+Then, install dependencies: `yarn install` (or simply `yarn`)
 
-Finally, if you do some changes, you need to rebuild the lib to use it: `yarn build` (or `yarn build:watch` for the watch mode).
+Finally, if you do some changes, you need to rebuild the lib to use it: `yarn build` (or `yarn build:watch` for the watch mode).
 
 ### And test that nothing has broken
 

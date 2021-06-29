@@ -10,6 +10,7 @@ interface Options {
   excludeExternals?: boolean;
   useSimpleViz?: boolean;
   withDebugLogs?: boolean;
+  loadPaths?: Path[];
   port?: number;
 }
 
@@ -19,6 +20,7 @@ export function generateVisualGraph(
     excludeExternals = false,
     useSimpleViz = false,
     withDebugLogs = false,
+    loadPaths = [],
     port = 3000,
   }: Options = {},
 ): void {
@@ -31,8 +33,9 @@ export function generateVisualGraph(
 
   const targetFolder = isFolder(target) ? target : path.dirname(target);
   log("Resolved target folder is", targetFolder);
+  log("Loaded paths are", loadPaths.join(", "));
 
-  let graph = generateGraphFromSassGraph(targetFolder);
+  let graph = generateGraphFromSassGraph(targetFolder, loadPaths);
   log("Generated graph from target folder is", graph.toString());
 
   if (!isFolder(target)) {

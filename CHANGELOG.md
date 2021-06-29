@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+New CLI options:
+
+- `-l, --load-paths` to add directories to the sass load path
+
+New `generateVisualGraph` option:
+
+- `loadPaths: string[]` to add directories to the sass load path (default `[process.cwd]`)
+
 ## [v2.3.1](https://github.com/nicoespeon/sass-graph-viz/compare/v2.3.0...v2.3.1) (2020-05-01)
 
 Make sass-graph-viz work with Windows paths.
