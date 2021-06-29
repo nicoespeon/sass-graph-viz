@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [v2.4.0](https://github.com/nicoespeon/sass-graph-viz/compare/v2.3.1...v2.4.0) (2021-06-29)
+
 ### Added
 
 New CLI options:
